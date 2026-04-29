@@ -47,14 +47,31 @@ img{display:block;max-width:100%}
 </style>
 <style>
 /* BANNER */
-#banner{background:var(--green);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:14px;position:relative;z-index:1000;flex-wrap:wrap}
-.b-badge-d{background:var(--black);color:var(--green);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:6px}
-.b-badge-o{background:rgba(0,0,0,.12);color:var(--black);font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:6px;border:1px solid rgba(0,0,0,.15)}
-.b-txt{font-size:13px;font-weight:500;color:var(--black)}
-.b-cta{background:var(--black);color:var(--green);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:7px 16px;border-radius:100px;white-space:nowrap;transition:opacity .2s}
-.b-cta:hover{opacity:.8}
-.b-x{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--black);font-size:20px;opacity:.5;padding:4px;line-height:1}
-/* NAV */
+#banner{
+  background:linear-gradient(90deg,#2347E8 0%,#00C8DA 100%);
+  padding:9px 48px 9px 20px;
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;position:relative;z-index:1000;
+  flex-wrap:nowrap;overflow:hidden;
+}
+.b-badge-ps{display:inline-flex;align-items:center;gap:5px;background:#AAFF00;color:#000;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px 5px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;line-height:1;}
+.b-badge-ps svg{width:13px;height:13px;flex-shrink:0}
+.b-badge-fs{display:inline-flex;align-items:center;gap:5px;background:#FF2D9B;color:#fff;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px 5px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;line-height:1;}
+.b-badge-fs svg{width:11px;height:11px;flex-shrink:0}
+.b-txt{font-size:13px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;flex:1;text-align:center;}
+.b-cta{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#000;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 18px;border-radius:100px;white-space:nowrap;flex-shrink:0;transition:opacity .2s;border:none;}
+.b-cta:hover{opacity:.85}
+.b-cta-arrow{font-size:13px;line-height:1}
+.b-x{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:20px;padding:4px;line-height:1;transition:color .2s;}
+.b-x:hover{color:#fff}
+@media(max-width:768px){
+  #banner{padding:8px 36px 8px 10px;gap:6px;justify-content:flex-start;}
+  .b-badge-ps,.b-badge-fs{font-size:9px;padding:4px 9px 4px 8px;}
+  .b-badge-ps svg,.b-badge-fs svg{width:10px;height:10px;}
+  .b-txt{font-size:9.5px;letter-spacing:.03em;flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;}
+  .b-cta{display:none}
+  .b-x{right:8px;font-size:16px;}
+}
 nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .4s}
 nav.sc{background:rgba(0,0,0,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
 .nav-logo{font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--white)}
@@ -351,12 +368,16 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:64px 0 
 
 <!-- BANNER -->
 <div id="banner">
-  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center">
-    <span class="b-badge-d">⚡ Plug&amp;Scale™</span>
-    <span class="b-badge-o">🚀 Disponible Chile</span>
-    <span class="b-txt">Landings + video ads con IA listos en 24 hrs — sin trabajo manual</span>
-  </div>
-  <a href="#pricing" class="b-cta">Comenzar gratis ↗</a>
+  <span class="b-badge-ps">
+    <svg viewBox="0 0 13 13" fill="none"><rect x="1" y="7" width="3" height="5" rx="0.6" fill="#000"/><rect x="5" y="4" width="3" height="8" rx="0.6" fill="#000"/><rect x="9" y="1" width="3" height="11" rx="0.6" fill="#000"/></svg>
+    PLUG&amp;SCALE
+  </span>
+  <span class="b-badge-fs">
+    <svg viewBox="0 0 12 12" fill="none"><path d="M2 2L10 6L6 7.5L4.5 10L2 2Z" fill="white" stroke="white" stroke-width="0.5" stroke-linejoin="round"/></svg>
+    FREE SIGNUP
+  </span>
+  <span class="b-txt">TESTEA, ESCALA, GENERA CON UN SOLO CLICK</span>
+  <a href="#pricing" class="b-cta">Regístrate hoy <span class="b-cta-arrow">↗</span></a>
   <button class="b-x" onclick="document.getElementById('banner').style.display='none'">×</button>
 </div>
 
