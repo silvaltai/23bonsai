@@ -133,16 +133,16 @@ nav.sc{background:#000}
 .ugc-cta{text-align:center;margin-top:56px}
 /* PROBLEMA */
 .prob{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
-.prob-lay{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.prob-l h2{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:14px}
-.prob-l h2 span{color:var(--green)}
-.prob-l p{font-size:15px;color:var(--muted);margin-top:20px;line-height:1.75;max-width:380px}
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
-.pc{background:var(--card);padding:28px;transition:background .3s}
-.pc:hover{background:var(--card2)}
-.pc-ico{font-size:22px;margin-bottom:14px}
-.pc h3{font-size:15px;font-weight:600;margin-bottom:8px}
-.pc p{font-size:13px;color:var(--muted);line-height:1.65}
+.prob-top{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-bottom:56px}
+.prob-l h2{font-size:clamp(44px,7vw,88px);font-weight:800;letter-spacing:-.04em;line-height:.92;margin-top:14px}
+.prob-r{padding-top:72px;display:flex;flex-direction:column;align-items:flex-start;gap:28px}
+.prob-r p{font-size:17px;color:rgba(255,255,255,.5);line-height:1.7;max-width:420px}
+.prob-imgs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pimg{border-radius:20px;overflow:hidden;aspect-ratio:3/4;position:relative;background:var(--card)}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pimg-lbl{position:absolute;top:12px;left:12px;background:rgba(0,0,0,.55);color:#fff;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 13px;border-radius:100px;backdrop-filter:blur(8px)}
+@media(max-width:1024px){.prob-imgs{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.prob-top{grid-template-columns:1fr;gap:24px}.prob-r{padding-top:0}.prob-imgs{grid-template-columns:1fr 1fr;gap:10px}}
 /* LANDING SEC */
 .lsec{background:var(--green);padding:100px 0;overflow:hidden}
 .llay{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -465,20 +465,32 @@ footer{background:var(--dark);border-top:1px solid var(--border);padding:64px 0 
 <!-- PROBLEMA -->
 <section class="prob">
   <div class="max">
-    <div class="prob-lay">
+    <div class="prob-top">
       <div class="prob-l reveal">
         <span class="lbl-g">El problema que resolvemos</span>
-        <h2>El trabajo operativo<br>te está <span>frenando.</span></h2>
-        <p>Tienes el producto, tienes las ganas, pero armar landings, editar ads y confirmar pedidos COD te consume horas que deberían estar en buscar el próximo ganador.</p>
-        <a href="#pricing" class="btn-g" style="margin-top:32px;font-size:13px;">COMENZAR AHORA →</a>
+        <h2>El trabajo operativo<br>te está frenando.</h2>
       </div>
-      <div class="pgrid reveal">
-        <div class="pc"><div class="pc-ico">😩</div><h3>Cada testeo toma días</h3><p>Armar la landing, escribir el copy, editar los ads — demasiado para algo que aún no sabes si funciona.</p></div>
-        <div class="pc"><div class="pc-ico">📉</div><h3>Testeas poco, pierdes más</h3><p>Los drops exitosos testean 3–5 productos simultáneos. Si tardas días en cada uno, nunca llegas.</p></div>
-        <div class="pc"><div class="pc-ico">🔥</div><h3>Tu ganador de hoy caduca</h3><p>Ningún producto dura para siempre. Sin pipeline de testeo constante, el negocio se para.</p></div>
-        <div class="pc"><div class="pc-ico">📱</div><h3>El SAC te consume</h3><p>Confirmar pedidos COD, responder audios, hacer seguimiento — horas que no generan dinero.</p></div>
-        <div class="pc"><div class="pc-ico">🤷</div><h3>No sabes leer las métricas</h3><p>ROAS, CPA, CTR... Los números están pero no sabes qué hacer. Apagar o escalar es adivinar.</p></div>
-        <div class="pc"><div class="pc-ico">💸</div><h3>Pagas 5 herramientas</h3><p>Minea, Atlas, Triple Whale, Klaviyo... Gastas más en herramientas que en pauta publicitaria.</p></div>
+      <div class="prob-r reveal">
+        <p>Tienes el producto, tienes las ganas, pero armar landings, editar ads y confirmar pedidos COD te consume horas que deberían estar en buscar el próximo ganador.</p>
+        <a href="#pricing" class="btn-g" style="font-size:13px;">COMENZAR AHORA →</a>
+      </div>
+    </div>
+    <div class="prob-imgs reveal">
+      <div class="pimg">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=800&q=80&fit=crop" alt="">
+        <div class="pimg-lbl">PRODUCTO</div>
+      </div>
+      <div class="pimg">
+        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=800&q=80&fit=crop" alt="">
+        <div class="pimg-lbl">LANDING</div>
+      </div>
+      <div class="pimg">
+        <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=600&h=800&q=80&fit=crop" alt="">
+        <div class="pimg-lbl">VIDEO AD</div>
+      </div>
+      <div class="pimg">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=800&q=80&fit=crop" alt="">
+        <div class="pimg-lbl">DASHBOARD</div>
       </div>
     </div>
   </div>
