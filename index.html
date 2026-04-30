@@ -72,7 +72,7 @@ img{display:block;max-width:100%}
   .b-cta{display:none}
   .b-x{right:8px;font-size:16px;}
 }
-nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;transition:all .4s;background:#000;border-bottom:1px solid var(--border)}
+nav{position:sticky;top:0;z-index:900;padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;background:#000;border-bottom:1px solid var(--border)}
 nav.sc{background:#000}
 .nav-logo{font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--white)}
 .nav-links{display:flex;align-items:center;gap:32px;list-style:none}
@@ -88,7 +88,7 @@ nav.sc{background:#000}
 @keyframes hzoom{from{transform:scale(1.06)}to{transform:scale(1)}}
 .hgrad{position:absolute;inset:0;background:linear-gradient(to top,#000 22%,rgba(0,0,0,.45) 60%,transparent)}
 .hgrad2{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.65) 0%,transparent 60%)}
-.hero-content{position:relative;z-index:10;width:100%;padding-top:120px}
+.hero-content{position:relative;z-index:10;width:100%;padding-top:60px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;backdrop-filter:blur(10px)}
 .hdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
