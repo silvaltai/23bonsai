@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23BONSAI — El sistema que usan los dropshippers que ganan en serio</title>
+<meta name="description" content="Plug&Scale™: El sistema todo-en-uno que automatiza tu dropshipping. Desde $97 USD/mes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --green:#00DF81;
+  --gdim:rgba(0,223,129,0.08);
+  --gmid:rgba(0,223,129,0.22);
+  --black:#000;
+  --dark:#0a0a0a;
+  --card:#111;
+  --card2:#161616;
+  --border:rgba(255,255,255,0.08);
+  --border2:rgba(255,255,255,0.15);
+  --white:#fff;
+  --muted:rgba(255,255,255,0.45);
+  --font:'Geist',sans-serif;
+}
+*{font-family:var(--font)}
+body{background:var(--black);color:var(--white);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{display:block;max-width:100%}
+.max{max-width:1400px;margin:0 auto;padding:0 6%}
+.lbl{font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.lbl-g{font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--green)}
+.sp{padding:100px 0}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.v{opacity:1;transform:none}
+/* BUTTONS */
+.btn-w{display:inline-flex;align-items:center;gap:8px;background:var(--white);color:var(--black);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:all .2s}
+.btn-w:hover{background:rgba(255,255,255,.88);transform:translateY(-1px)}
+.btn-g{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:var(--black);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 24px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 0 40px rgba(0,223,129,.2)}
+.btn-g:hover{opacity:.9;transform:translateY(-1px)}
+.btn-o{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);color:var(--white);font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;padding:12px 24px;border-radius:100px;border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .2s}
+.btn-o:hover{background:rgba(255,255,255,.12)}
+.btn-bk{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--black);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:12px 24px;border-radius:100px;border:1.5px solid var(--black);cursor:pointer;transition:all .2s}
+.btn-bk:hover{background:rgba(0,0,0,.08)}
+</style>
+<style>
+/* BANNER */
+#banner{
+  background:linear-gradient(90deg,#2347E8 0%,#00C8DA 100%);
+  padding:9px 48px 9px 20px;
+  display:flex;align-items:center;justify-content:center;
+  gap:10px;position:relative;z-index:1000;
+  flex-wrap:nowrap;overflow:hidden;
+}
+.b-badge-ps{display:inline-flex;align-items:center;gap:5px;background:#AAFF00;color:#000;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px 5px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;line-height:1;}
+.b-badge-ps svg{width:13px;height:13px;flex-shrink:0}
+.b-badge-fs{display:inline-flex;align-items:center;gap:5px;background:#FF2D9B;color:#fff;font-size:11px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;padding:5px 13px 5px 10px;border-radius:100px;white-space:nowrap;flex-shrink:0;line-height:1;}
+.b-badge-fs svg{width:11px;height:11px;flex-shrink:0}
+.b-txt{font-size:13px;font-weight:600;color:#fff;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;flex:1;text-align:center;}
+.b-cta{display:inline-flex;align-items:center;gap:6px;background:#fff;color:#000;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 18px;border-radius:100px;white-space:nowrap;flex-shrink:0;transition:opacity .2s;border:none;}
+.b-cta:hover{opacity:.85}
+.b-cta-arrow{font-size:13px;line-height:1}
+.b-x{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(255,255,255,.6);font-size:20px;padding:4px;line-height:1;transition:color .2s;}
+.b-x:hover{color:#fff}
+@media(max-width:768px){
+  #banner{padding:8px 36px 8px 10px;gap:6px;justify-content:flex-start;}
+  .b-badge-ps,.b-badge-fs{font-size:9px;padding:4px 9px 4px 8px;}
+  .b-badge-ps svg,.b-badge-fs svg{width:10px;height:10px;}
+  .b-txt{font-size:9.5px;letter-spacing:.03em;flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;}
+  .b-cta{display:none}
+  .b-x{right:8px;font-size:16px;}
+}
+nav{position:relative;z-index:900;padding:0 6%;height:64px;display:flex;align-items:center;justify-content:space-between;background:#000;border-bottom:1px solid var(--border)}
+nav.sc{background:#000}
+.nav-logo{font-weight:900;font-size:22px;letter-spacing:-.03em;color:var(--white)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--white)}
+/* HERO */
+.hero{min-height:100svh;display:flex;align-items:flex-end;padding-bottom:80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
+.hcol{position:relative;overflow:hidden}
+.hcol img{width:100%;height:100%;object-fit:cover;filter:brightness(.4) saturate(.7);animation:hzoom 8s ease-in-out infinite alternate}
+.hcol:nth-child(2) img{animation-delay:2s}
+.hcol:nth-child(3) img{animation-delay:4s}
+@keyframes hzoom{from{transform:scale(1.06)}to{transform:scale(1)}}
+.hgrad{position:absolute;inset:0;background:linear-gradient(to top,#000 22%,rgba(0,0,0,.45) 60%,transparent)}
+.hgrad2{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.65) 0%,transparent 60%)}
+.hero-content{position:relative;z-index:10;width:100%;padding-top:120px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:6px 16px 6px 10px;margin-bottom:32px;backdrop-filter:blur(10px)}
+.hdot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero-badge span{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase}
+.htitle{font-size:clamp(40px,5.5vw,76px);font-weight:600;letter-spacing:-.03em;line-height:1.05;max-width:760px;margin-bottom:20px}
+.hrot{display:block;font-style:italic;font-weight:500;color:var(--green);position:relative;overflow:hidden;height:1.05em}
+.rw{display:block;position:absolute;animation:rwords 6s infinite}
+.rw:nth-child(2){animation-delay:2s}
+.rw:nth-child(3){animation-delay:4s}
+@keyframes rwords{0%{transform:translateY(100%);opacity:0}8%{transform:translateY(0);opacity:1}33%{transform:translateY(0);opacity:1}41%{transform:translateY(-100%);opacity:0}100%{transform:translateY(-100%);opacity:0}}
+.hsub{font-size:clamp(15px,1.8vw,18px);color:var(--muted);max-width:460px;margin-bottom:36px;line-height:1.7;font-weight:400}
+.hctas{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.hstats{display:flex;align-items:center;gap:0;margin-top:48px;flex-wrap:wrap}
+.hst{padding-right:32px;margin-right:32px;border-right:1px solid rgba(255,255,255,.1)}
+.hst:last-child{border-right:none}
+.hst-n{font-size:22px;font-weight:800;letter-spacing:-.02em}
+.hst-l{font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+/* TICKER */
+.ticker{background:var(--green);overflow:hidden;padding:12px 0;z-index:10;position:relative}
+.ticker-inner{display:flex;width:max-content;animation:tick 30s linear infinite}
+.ti{color:var(--black);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:0 36px;white-space:nowrap;display:flex;align-items:center;gap:14px}
+.ti::after{content:'✦';font-size:8px}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+</style>
+<style>
+/* UGC */
+.ugc{background:var(--black);padding:80px 0;border-top:1px solid var(--border)}
+.ugc-hd{text-align:center;margin-bottom:56px}
+.ugc-title{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:12px}
+.ugc-sub{font-size:15px;color:var(--muted);margin-top:12px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.6}
+.ugc-wrap{overflow:hidden;position:relative}
+.ugc-wrap::before,.ugc-wrap::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:10;pointer-events:none}
+.ugc-wrap::before{left:0;background:linear-gradient(to right,var(--black),transparent)}
+.ugc-wrap::after{right:0;background:linear-gradient(to left,var(--black),transparent)}
+.ugc-track{display:flex;gap:14px;width:max-content;animation:svid 50s linear infinite;padding:20px 0}
+.ugc-track:hover{animation-play-state:paused}
+@keyframes svid{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.ugc-card{flex-shrink:0;width:200px;height:320px;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--card);position:relative}
+.ugc-card:nth-child(odd){transform:translateY(-16px)}
+.ugc-card:nth-child(even){transform:translateY(16px)}
+.ugc-card img{width:100%;height:100%;object-fit:cover}
+.ugc-cta{text-align:center;margin-top:56px}
+/* PROBLEMA */
+.prob{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.prob-lay{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.prob-l h2{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:14px}
+.prob-l h2 span{color:var(--green)}
+.prob-l p{font-size:15px;color:var(--muted);margin-top:20px;line-height:1.75;max-width:380px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.pc{background:var(--card);padding:28px;transition:background .3s}
+.pc:hover{background:var(--card2)}
+.pc-ico{font-size:22px;margin-bottom:14px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:8px}
+.pc p{font-size:13px;color:var(--muted);line-height:1.65}
+/* LANDING SEC */
+.lsec{background:var(--green);padding:100px 0;overflow:hidden}
+.llay{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.lgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lmock{border-radius:20px;overflow:hidden;border:2px solid rgba(0,0,0,.1);aspect-ratio:9/14;background:rgba(0,0,0,.08);position:relative}
+.lmock img{width:100%;height:100%;object-fit:cover}
+.lmock-lbl{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.7);color:white;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:100px;backdrop-filter:blur(4px)}
+.lright .lbl{color:rgba(0,0,0,.4)}
+.lright h2{font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:12px;color:var(--black)}
+.lright p{font-size:15px;color:rgba(0,0,0,.6);margin-top:16px;line-height:1.7;max-width:400px}
+.lspecs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.lspec{background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:14px 18px}
+.lspec-l{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.4)}
+.lspec-v{font-size:15px;font-weight:700;color:var(--black);margin-top:4px}
+/* LOGOS */
+.logos{background:var(--black);padding:28px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.logos-in{display:flex;align-items:center;gap:24px}
+.logos-lbl{font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap;flex-shrink:0}
+.logos-wrap{flex:1;overflow:hidden}
+.logos-track{display:flex;align-items:center;gap:48px;width:max-content;animation:lscroll 20s linear infinite}
+@keyframes lscroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.logo-it{font-size:14px;font-weight:600;color:rgba(255,255,255,.25);white-space:nowrap}
+/* FEATURES */
+.feats{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.feats-hd{margin-bottom:56px}
+.feats-hd h2{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:14px}
+.feats-hd h2 span{color:var(--green)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.fc{background:var(--card);padding:44px;display:flex;flex-direction:column;gap:14px;transition:background .3s}
+.fc:hover{background:var(--card2)}
+.fc.hl{background:linear-gradient(135deg,#0a1a10,#0d2015)}
+.fc-num{font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--green);opacity:.45}
+.fc-tag{display:inline-flex;align-items:center;gap:6px;background:var(--gdim);border:1px solid rgba(0,223,129,.2);border-radius:100px;padding:4px 14px;font-size:11px;font-weight:600;color:var(--green);letter-spacing:.08em;text-transform:uppercase;width:fit-content}
+.fc-title{font-size:20px;font-weight:700;line-height:1.2}
+.fc-desc{font-size:14px;color:var(--muted);line-height:1.75}
+.fc-vs{margin-top:6px;padding-top:14px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.fv{display:flex;align-items:flex-start;gap:8px}
+.ck{color:var(--green)}
+.cx{color:#ff4444;opacity:.6}
+</style>
+<style>
+/* DASHBOARD SEC */
+.dsec{background:var(--green);padding:100px 0;overflow:hidden}
+.dlay{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.dleft{border-radius:24px;overflow:hidden;border:2px solid rgba(0,0,0,.1);box-shadow:0 40px 80px rgba(0,0,0,.2)}
+.dleft img{width:100%;height:auto;display:block}
+.dright .lbl{color:rgba(0,0,0,.4)}
+.dright h2{font-size:clamp(30px,4vw,48px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-top:12px;color:var(--black)}
+.dright p{font-size:15px;color:rgba(0,0,0,.6);margin-top:16px;line-height:1.7;max-width:400px}
+.dspecs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
+.dspec{background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:14px 18px}
+.dspec-l{font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(0,0,0,.4)}
+.dspec-v{font-size:15px;font-weight:700;color:var(--black);margin-top:4px}
+/* TIKTOK */
+.tksec{background:var(--black);padding:80px 0;overflow:hidden;border-top:1px solid var(--border)}
+.tkhd{text-align:center;margin-bottom:48px}
+.tkhd h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:12px}
+.tkwrap{overflow:hidden}
+.tktrack{display:flex;gap:14px;width:max-content;animation:svid 40s linear infinite}
+.tktrack:hover{animation-play-state:paused}
+.tkcard{flex-shrink:0;width:220px;border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--card);padding:20px}
+.tkav{width:56px;height:56px;border-radius:50%;overflow:hidden;margin:0 auto 12px;border:2px solid var(--border2)}
+.tkav img{width:100%;height:100%;object-fit:cover}
+.tkh{font-size:13px;font-weight:700;text-align:center}
+.tkr{font-size:10px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-align:center;margin-top:2px}
+.tkstats{display:flex;justify-content:center;gap:20px;margin-top:16px}
+.tksn{font-size:16px;font-weight:800;text-align:center}
+.tksl{font-size:9px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;text-align:center}
+.tkbadge{font-size:10px;background:var(--green);color:var(--black);border-radius:4px;padding:2px 6px;font-weight:800;margin-bottom:8px;display:inline-block}
+/* MECANISMO */
+.mec{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.mec-hd{margin-bottom:60px}
+.mec-hd h2{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:-.03em;margin-top:14px}
+.mec-hd h2 span{color:var(--green)}
+.mec-hd p{font-size:16px;color:var(--muted);margin-top:16px;max-width:440px;line-height:1.75}
+.msteps{border:1px solid var(--border);border-radius:20px;overflow:hidden}
+.step{display:grid;grid-template-columns:72px 1fr auto;border-bottom:1px solid var(--border);transition:background .3s;min-height:88px}
+.step:last-child{border-bottom:none}
+.step:hover{background:rgba(255,255,255,.02)}
+.snum{display:flex;align-items:center;justify-content:center;border-right:1px solid var(--border);font-size:12px;font-weight:700;color:var(--green);letter-spacing:.1em}
+.sc{padding:28px 36px;display:flex;flex-direction:column;justify-content:center}
+.sc h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.sc p{font-size:14px;color:var(--muted);line-height:1.65}
+.sbadge{display:flex;align-items:center;padding:0 32px;flex-shrink:0}
+.sbadge span{background:var(--gdim);border:1px solid rgba(0,223,129,.2);border-radius:100px;padding:6px 18px;font-size:12px;font-weight:600;color:var(--green);white-space:nowrap}
+/* STATS */
+.stats{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr)}
+.si{padding:60px 40px;border-right:1px solid var(--border);text-align:center}
+.si:last-child{border-right:none}
+.sn{font-size:clamp(40px,5vw,60px);font-weight:800;color:var(--green);letter-spacing:-.04em;line-height:1;margin-bottom:12px}
+.sl{font-size:13px;color:var(--muted);line-height:1.5;max-width:180px;margin:0 auto}
+/* WHY */
+.why{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.why-hd h2{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-.03em;text-transform:uppercase;margin-top:12px;margin-bottom:48px}
+.why-list{border-top:1px solid var(--border)}
+.wi{border-bottom:1px solid var(--border);padding:32px 0;display:grid;grid-template-columns:60px 1fr 1fr;gap:24px;align-items:baseline}
+.wi:hover{background:rgba(255,255,255,.01)}
+.wnum{font-size:11px;font-weight:700;font-family:monospace;color:rgba(255,255,255,.2);letter-spacing:.1em}
+.wtitle{font-size:clamp(18px,2.5vw,24px);font-weight:600;line-height:1.2;letter-spacing:-.01em}
+.wdesc{font-size:14px;color:var(--muted);line-height:1.7}
+/* VS */
+.vs{background:var(--black);padding:100px 0;border-top:1px solid var(--border)}
+.vs-hd{margin-bottom:48px}
+.vs-hd h2{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.03em;margin-top:8px;text-transform:uppercase}
+.vs-hd p{font-size:14px;color:var(--muted);margin-top:8px}
+.vst{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.vst th{padding:16px 20px;text-align:center;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.vst th:first-child{text-align:left}
+.vst th.u{background:var(--gdim);color:var(--green);border-left:1px solid rgba(0,223,129,.2);border-right:1px solid rgba(0,223,129,.2)}
+.vst th.t{color:var(--muted)}
+.vst td{padding:14px 20px;border-bottom:1px solid var(--border);font-size:13px;text-align:center;color:var(--muted)}
+.vst td:first-child{text-align:left;color:var(--white);font-weight:500}
+.vst td.u{background:rgba(0,223,129,.03);color:var(--green);font-weight:700;border-left:1px solid rgba(0,223,129,.15);border-right:1px solid rgba(0,223,129,.15)}
+.vst tr:last-child td{border-bottom:none}
+.ci{color:var(--green);font-size:16px}
+.xi{color:rgba(255,255,255,.2);font-size:16px}
+</style>
+<style>
+/* PRICING */
+.pricing{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.pr-hd{text-align:center;margin-bottom:60px}
+.pr-hd h2{font-size:clamp(36px,6vw,72px);font-weight:800;letter-spacing:-.04em;font-style:italic;margin-top:12px}
+.pr-hd p{font-size:16px;color:var(--muted);margin-top:16px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.75}
+.prgrid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.prcard{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 32px;position:relative;transition:all .3s;width:100%;max-width:380px;flex:1;min-width:300px}
+.prcard:hover{border-color:var(--border2);transform:translateY(-4px)}
+.prcard.pop{background:linear-gradient(160deg,#071a0f,#0a1f12);border-color:var(--green);box-shadow:0 0 60px rgba(0,223,129,.12)}
+.pop-b{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--black);font-size:10px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:5px 18px;border-radius:100px}
+.pr-plan{font-size:12px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.pr-amt{display:flex;align-items:baseline;gap:3px;margin-bottom:6px}
+.pr-cur{font-size:18px;font-weight:700;color:var(--muted)}
+.pr-num{font-size:56px;font-weight:900;letter-spacing:-.04em;line-height:1}
+.pr-per{font-size:13px;color:var(--muted)}
+.pr-desc{font-size:13px;color:var(--muted);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border);line-height:1.65}
+.pr-feats{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.prf{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.45}
+.prck{width:16px;height:16px;border-radius:50%;background:var(--gdim);border:1px solid rgba(0,223,129,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.prck svg{width:8px;height:8px}
+.btn-plan{width:100%;padding:13px;border-radius:12px;font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border:none;cursor:pointer;transition:all .2s;text-align:center;display:block}
+.btn-po{background:transparent;border:1px solid rgba(255,255,255,.2);color:var(--white)}
+.btn-po:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
+.btn-pg{background:var(--green);color:var(--black);box-shadow:0 0 30px rgba(0,223,129,.2)}
+.btn-pg:hover{opacity:.9;transform:translateY(-1px)}
+/* TESTI */
+.testi{background:var(--black);padding:80px 0;overflow:hidden;border-top:1px solid var(--border)}
+.testi-hd{text-align:center;margin-bottom:48px}
+.testi-hd h2{font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.02em;margin-top:12px}
+.ttrack{display:flex;gap:14px;width:max-content;animation:scrolll 38s linear infinite}
+.ttrack:hover{animation-play-state:paused}
+@keyframes scrolll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tcard{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px 28px;width:320px;flex-shrink:0}
+.tstars{color:var(--green);font-size:12px;letter-spacing:2px;margin-bottom:12px}
+.ttxt{font-size:14px;color:var(--white);line-height:1.7;margin-bottom:16px;font-style:italic}
+.tauth{display:flex;align-items:center;gap:10px}
+.tav{width:36px;height:36px;border-radius:50%;background:var(--gdim);border:1px solid rgba(0,223,129,.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--green);flex-shrink:0}
+.tname{font-size:13px;font-weight:600}
+.tmeta{font-size:11px;color:var(--muted)}
+/* FAQ */
+.faq{background:var(--dark);padding:100px 0;border-top:1px solid var(--border)}
+.faq-lay{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start}
+.faq-l h2{font-size:clamp(32px,4vw,52px);font-weight:800;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;margin-top:12px}
+.faq-l h2 span{color:var(--green);display:block;font-style:italic}
+.faq-l p{font-size:15px;color:var(--muted);margin-top:20px;line-height:1.7}
+.flist{display:flex;flex-direction:column}
+.fi{border-bottom:1px solid var(--border)}
+.fbtn{width:100%;background:none;border:none;padding:24px 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;text-align:left;gap:16px;transition:all .2s}
+.fbtn h3{font-size:15px;font-weight:600;color:var(--muted);letter-spacing:0;text-transform:uppercase;transition:color .2s}
+.fbtn:hover h3{color:var(--white)}
+.fi.open .fbtn h3{color:var(--white)}
+.fico{color:rgba(255,255,255,.25);font-size:20px;flex-shrink:0;transition:transform .3s,color .2s}
+.fi.open .fico{transform:rotate(45deg);color:var(--green)}
+.fbody{display:none;padding:0 0 24px;font-size:14px;color:var(--muted);line-height:1.8}
+.fi.open .fbody{display:block}
+/* CTA FINAL */
+.ctaf{background:var(--black);padding:140px 0;text-align:center;position:relative;overflow:hidden}
+.ctaf::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(0,223,129,.06) 0%,transparent 70%);pointer-events:none}
+.ctaf-title{font-size:clamp(40px,7vw,80px);font-weight:800;letter-spacing:-.04em;line-height:.95;margin-bottom:24px;position:relative;z-index:1}
+.ctaf-title em{font-style:italic;color:var(--green);display:block}
+.ctaf-sub{font-size:17px;color:var(--muted);margin-bottom:44px;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7;position:relative;z-index:1}
+/* FOOTER */
+footer{background:var(--dark);border-top:1px solid var(--border);padding:64px 0 32px}
+.ftop{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;padding-bottom:48px;border-bottom:1px solid var(--border);margin-bottom:32px}
+.fbrand-name{font-size:20px;font-weight:900;letter-spacing:-.02em;margin-bottom:14px}
+.fbrand-desc{font-size:13px;color:var(--muted);line-height:1.7;max-width:240px}
+.fcol h4{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:18px}
+.fcol ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.fcol ul a{font-size:13px;color:var(--muted);transition:color .2s}
+.fcol ul a:hover{color:var(--white)}
+.fbot{display:flex;align-items:center;justify-content:space-between;font-size:12px;color:rgba(255,255,255,.25);flex-wrap:wrap;gap:12px}
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-bg{grid-template-columns:1fr 1fr}
+  .hcol:last-child{display:none}
+  .prob-lay{grid-template-columns:1fr;gap:48px}
+  .llay{grid-template-columns:1fr;gap:48px}
+  .dlay{grid-template-columns:1fr;gap:48px}
+  .fgrid{grid-template-columns:1fr}
+  .sgrid{grid-template-columns:1fr 1fr}
+  .si:nth-child(2){border-right:none}
+  .si:nth-child(3){border-top:1px solid var(--border)}
+  .wi{grid-template-columns:40px 1fr}
+  .wdesc{display:none}
+  .faq-lay{grid-template-columns:1fr;gap:40px}
+  .ftop{grid-template-columns:1fr 1fr;gap:40px}
+}
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hero-bg{grid-template-columns:1fr}
+  .hcol:not(:first-child){display:none}
+  .pgrid{grid-template-columns:1fr}
+  .lgrid{grid-template-columns:1fr 1fr}
+  .sgrid{grid-template-columns:1fr 1fr}
+  .ftop{grid-template-columns:1fr;gap:32px}
+  .vst th,.vst td{padding:10px 12px;font-size:11px}
+  .step{grid-template-columns:56px 1fr;grid-template-rows:auto auto}
+  .sbadge{padding:12px 20px;grid-column:2}
+}
+</style>
+</head>
+<body>
+
+<!-- BANNER -->
+<div id="banner">
+  <span class="b-badge-ps">
+    <svg viewBox="0 0 13 13" fill="none"><rect x="1" y="7" width="3" height="5" rx="0.6" fill="#000"/><rect x="5" y="4" width="3" height="8" rx="0.6" fill="#000"/><rect x="9" y="1" width="3" height="11" rx="0.6" fill="#000"/></svg>
+    PLUG&amp;SCALE
+  </span>
+  <span class="b-badge-fs">
+    <svg viewBox="0 0 12 12" fill="none"><path d="M2 2L10 6L6 7.5L4.5 10L2 2Z" fill="white" stroke="white" stroke-width="0.5" stroke-linejoin="round"/></svg>
+    FREE SIGNUP
+  </span>
+  <span class="b-txt">TESTEA, ESCALA, GENERA CON UN SOLO CLICK</span>
+  <a href="#pricing" class="b-cta">Regístrate hoy <span class="b-cta-arrow">↗</span></a>
+  <button class="b-x" onclick="document.getElementById('banner').style.display='none'">×</button>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">23BONSAI</a>
+  <ul class="nav-links">
+    <li><a href="#features">PLUG&amp;SCALE</a></li>
+    <li><a href="#pricing">PLANES</a></li>
+    <li><a href="#faq">CONTACTO</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hcol"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Dashboard"></div>
+    <div class="hcol"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Métricas"></div>
+    <div class="hcol"><img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&q=80" alt="Ventas"></div>
+  </div>
+  <div class="hgrad"></div>
+  <div class="hgrad2"></div>
+  <div class="hero-content">
+    <div class="max">
+      <div class="hero-badge">
+        <div class="hdot"></div>
+        <span>Sistema Plug&amp;Scale™</span>
+      </div>
+      <h1 class="htitle">
+        Vende más haciendo menos.<br>
+        <span class="hrot">
+          <span class="rw">Testea rápido.</span>
+          <span class="rw">Escala sin límites.</span>
+          <span class="rw">Automatiza operaciones.</span>
+        </span>
+      </h1>
+      <p class="hsub">Un plan y todo lo que necesitas para cada etapa. Olvídate del trabajo repetitivo, enfócate en la estrategia.</p>
+      <div class="hctas">
+        <a href="#pricing" class="btn-g" style="font-size:14px;padding:16px 32px;">COMIENZA AHORA →</a>
+        <a href="#features" class="btn-o" style="font-size:14px;padding:16px 28px;">VER DETALLES</a>
+      </div>
+      <div class="hstats">
+        <div class="hst"><div class="hst-n">+500</div><div class="hst-l">Tiendas activas</div></div>
+        <div class="hst"><div class="hst-n">24h</div><div class="hst-l">Tiempo entrega</div></div>
+        <div class="hst" style="border-right:none"><div class="hst-n">+230K</div><div class="hst-l">Ads creados</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ti">Landing lista en 24 hrs</span><span class="ti">Video ads con IA</span><span class="ti">Voz chilena profesional</span><span class="ti">Inteligencia de mercado Chile</span><span class="ti">COD nativo sin apps</span><span class="ti">SAC WhatsApp 24/7</span><span class="ti">Plug&amp;Scale™ System</span><span class="ti">Calculadora de costeo</span><span class="ti">Landing lista en 24 hrs</span><span class="ti">Video ads con IA</span><span class="ti">Voz chilena profesional</span><span class="ti">Inteligencia de mercado Chile</span><span class="ti">COD nativo sin apps</span><span class="ti">SAC WhatsApp 24/7</span><span class="ti">Plug&amp;Scale™ System</span><span class="ti">Calculadora de costeo</span>
+  </div>
+</div>
+
+<!-- VIDEOS UGC -->
+<section class="ugc">
+  <div class="ugc-hd reveal">
+    <span class="lbl-g">Creado con 23BONSAI</span>
+    <h2 class="ugc-title">AI Ads con voz chilena.<br>Listos para escalar.</h2>
+    <p class="ugc-sub">Video ads generados con IA, voz en acento chileno y copy de respuesta directa. Listos para subir a Meta Ads sin edición adicional.</p>
+  </div>
+  <div class="ugc-wrap">
+    <div class="ugc-track">
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b829?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b829?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&h=640&q=80&fit=crop" alt=""></div>
+      <div class="ugc-card"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&h=640&q=80&fit=crop" alt=""></div>
+    </div>
+  </div>
+  <div class="ugc-cta reveal">
+    <a href="#pricing" class="btn-g" style="font-size:14px;padding:16px 36px;">VER PLANES →</a>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section class="prob">
+  <div class="max">
+    <div class="prob-lay">
+      <div class="prob-l reveal">
+        <span class="lbl-g">El problema que resolvemos</span>
+        <h2>El trabajo operativo<br>te está <span>frenando.</span></h2>
+        <p>Tienes el producto, tienes las ganas, pero armar landings, editar ads y confirmar pedidos COD te consume horas que deberían estar en buscar el próximo ganador.</p>
+        <a href="#pricing" class="btn-g" style="margin-top:32px;font-size:13px;">COMENZAR AHORA →</a>
+      </div>
+      <div class="pgrid reveal">
+        <div class="pc"><div class="pc-ico">😩</div><h3>Cada testeo toma días</h3><p>Armar la landing, escribir el copy, editar los ads — demasiado para algo que aún no sabes si funciona.</p></div>
+        <div class="pc"><div class="pc-ico">📉</div><h3>Testeas poco, pierdes más</h3><p>Los drops exitosos testean 3–5 productos simultáneos. Si tardas días en cada uno, nunca llegas.</p></div>
+        <div class="pc"><div class="pc-ico">🔥</div><h3>Tu ganador de hoy caduca</h3><p>Ningún producto dura para siempre. Sin pipeline de testeo constante, el negocio se para.</p></div>
+        <div class="pc"><div class="pc-ico">📱</div><h3>El SAC te consume</h3><p>Confirmar pedidos COD, responder audios, hacer seguimiento — horas que no generan dinero.</p></div>
+        <div class="pc"><div class="pc-ico">🤷</div><h3>No sabes leer las métricas</h3><p>ROAS, CPA, CTR... Los números están pero no sabes qué hacer. Apagar o escalar es adivinar.</p></div>
+        <div class="pc"><div class="pc-ico">💸</div><h3>Pagas 5 herramientas</h3><p>Minea, Atlas, Triple Whale, Klaviyo... Gastas más en herramientas que en pauta publicitaria.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LANDING SEC -->
+<section class="lsec">
+  <div class="max">
+    <div class="llay">
+      <div class="lgrid reveal">
+        <div class="lmock"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=600&q=80&fit=crop" alt=""><div class="lmock-lbl">Landing</div></div>
+        <div class="lmock"><img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=600&q=80&fit=crop" alt=""><div class="lmock-lbl">Landing</div></div>
+        <div class="lmock"><img src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=400&h=600&q=80&fit=crop" alt=""><div class="lmock-lbl">Landing</div></div>
+        <div class="lmock"><img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=600&q=80&fit=crop" alt=""><div class="lmock-lbl">Landing</div></div>
+      </div>
+      <div class="lright reveal">
+        <span class="lbl" style="color:rgba(0,0,0,.4)">Landing PDP</span>
+        <h2>Tu landing lista<br>en 24 hrs.<br>Sin tocar nada.</h2>
+        <p>Pega el link del producto y recibe la landing completa: copy en chileno, imágenes retocadas, urgencia, testimonios, FAQ y formulario COD nativo. Todo sin editar.</p>
+        <div class="lspecs">
+          <div class="lspec"><div class="lspec-l">Entrega</div><div class="lspec-v">24 horas</div></div>
+          <div class="lspec"><div class="lspec-l">Edición requerida</div><div class="lspec-v">Cero</div></div>
+        </div>
+        <a href="#pricing" class="btn-bk" style="margin-top:28px;font-size:13px;">COMIENZA A TESTEAR AHORA →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS IA -->
+<section class="logos">
+  <div class="max">
+    <div class="logos-in">
+      <span class="logos-lbl">Potenciado por:</span>
+      <div class="logos-wrap">
+        <div class="logos-track">
+          <span class="logo-it">⚡ Kling AI</span><span class="logo-it">🎙 ElevenLabs</span><span class="logo-it">🖼 Imagen 4</span><span class="logo-it">✦ Claude API</span><span class="logo-it">🔍 Apify</span><span class="logo-it">🔄 n8n</span><span class="logo-it">🛍 Shopify API</span><span class="logo-it">⚡ Kling AI</span><span class="logo-it">🎙 ElevenLabs</span><span class="logo-it">🖼 Imagen 4</span><span class="logo-it">✦ Claude API</span><span class="logo-it">🔍 Apify</span><span class="logo-it">🔄 n8n</span><span class="logo-it">🛍 Shopify API</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="feats" id="features">
+  <div class="max">
+    <div class="feats-hd reveal">
+      <span class="lbl-g">Lo que incluye</span>
+      <h2>7 herramientas.<br><span>Un solo sistema.</span></h2>
+    </div>
+    <div class="fgrid reveal">
+      <div class="fc"><div class="fc-num">01</div><div class="fc-tag">🔍 Inteligencia de mercado</div><div class="fc-title">Dashboard de productos ganadores</div><div class="fc-desc">Busca productos que están vendiendo ahora en Meta Ads y TikTok, filtrado para Chile. Ve cuánto llevan corriendo, saturación local y disponibilidad en Dropi.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: Filtrado para Chile + Dropi integrado</span></div><div class="fv"><span class="cx">✗</span><span>Minea/PipiAds: Datos globales, sin contexto local</span></div></div></div>
+      <div class="fc"><div class="fc-num">02</div><div class="fc-tag">📄 Producción automática</div><div class="fc-title">Landing PDP lista en 24 hrs</div><div class="fc-desc">Pega el link y recibe la landing completa: copy en chileno, imágenes retocadas, urgencia, testimonios, FAQ y formulario COD nativo. Sin tocar nada.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: Entregada lista para recibir tráfico</span></div><div class="fv"><span class="cx">✗</span><span>Atlas/GemPages: Igual hay que editar y configurar</span></div></div></div>
+      <div class="fc"><div class="fc-num">03</div><div class="fc-tag">🎬 Video ads con IA</div><div class="fc-title">3–5 videos listos para Meta Ads</div><div class="fc-desc">Clips generados con IA, voz en acento chileno, copy de respuesta directa y formato 9:16 + 4:5. Listos para subir al Business Manager sin edición adicional.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: IA + voz chilena + copy local + formato listo</span></div><div class="fv"><span class="cx">✗</span><span>Freelancers: Clips robados sin IA ni voz profesional</span></div></div></div>
+      <div class="fc"><div class="fc-num">04</div><div class="fc-tag">📊 Analytics integradas</div><div class="fc-title">Dashboard de métricas en tiempo real</div><div class="fc-desc">Shopify + Meta Ads + pedidos Dropi en una sola pantalla. En Scale, integra costos reales para ver tu utilidad real por producto.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: Todo integrado en español, incluido en el plan</span></div><div class="fv"><span class="cx">✗</span><span>Triple Whale: $300 USD/mes extra, solo en inglés</span></div></div></div>
+      <div class="fc"><div class="fc-num">05</div><div class="fc-tag">🤖 Automatización COD</div><div class="fc-title">SAC WhatsApp 24/7</div><div class="fc-desc">Bot que confirma pedidos COD, transcribe audios, responde FAQs y recupera conversaciones frías. Opera fines de semana, feriados y madrugadas sin costo extra.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: 24/7, sin costo extra por volumen</span></div><div class="fv"><span class="cx">✗</span><span>Persona humana: $300+/mes solo L-V, sin fines de semana</span></div></div></div>
+      <div class="fc hl"><div class="fc-num">06 + 07</div><div class="fc-tag">⚡ Exclusivo Scale</div><div class="fc-title">Email marketing + 3 Tiendas Shopify</div><div class="fc-desc">Klaviyo con flujos automáticos + hasta 3 tiendas Shopify listas para COD en Chile con Dropi y MercadoPago integrados.</div><div class="fc-vs"><div class="fv"><span class="ck">✓</span><span>23BONSAI: Todo incluido en $300/mes</span></div><div class="fv"><span class="cx">✗</span><span>Por separado: $600+/mes entre freelancers y apps</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARD -->
+<section class="dsec">
+  <div class="max">
+    <div class="dlay">
+      <div class="dleft reveal">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=560&q=80&fit=crop" alt="Dashboard 23BONSAI">
+      </div>
+      <div class="dright reveal">
+        <span class="lbl" style="color:rgba(0,0,0,.4)">Dashboard Scale</span>
+        <h2>Tu negocio.<br>En tiempo real.<br>En una pantalla.</h2>
+        <p>Ventas, pedidos, ROAS, CPA y utilidad real por producto — todo integrado. Sin abrir Shopify, Meta Ads y Dropi por separado.</p>
+        <div class="dspecs">
+          <div class="dspec"><div class="dspec-l">Integra</div><div class="dspec-v">Shopify + Meta + Dropi</div></div>
+          <div class="dspec"><div class="dspec-l">Actualización</div><div class="dspec-v">Tiempo real</div></div>
+        </div>
+        <a href="#pricing" class="btn-bk" style="margin-top:28px;font-size:13px;">VER PLANES →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIKTOK DROPS -->
+<section class="tksec">
+  <div class="tkhd reveal">
+    <span class="lbl-g">Resultados reales</span>
+    <h2>Drops chilenos que ya están escalando</h2>
+  </div>
+  <div class="tkwrap">
+    <div class="tktrack">
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@matias.drops</div><div class="tkr">Dropshipper · Santiago</div><div class="tkstats"><div><div class="tksn">$4.2M</div><div class="tksl">Ventas</div></div><div><div class="tksn">8.1x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b829?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@camila.ecom</div><div class="tkr">Dropshipper · Concepción</div><div class="tkstats"><div><div class="tksn">$2.8M</div><div class="tksl">Ventas</div></div><div><div class="tksn">6.4x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@felipe.scale</div><div class="tkr">Dropshipper · Valparaíso</div><div class="tkstats"><div><div class="tksn">$1.9M</div><div class="tksl">Ventas</div></div><div><div class="tksn">9.2x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@alejandra.drop</div><div class="tkr">Dropshipper · Temuco</div><div class="tkstats"><div><div class="tksn">$3.1M</div><div class="tksl">Ventas</div></div><div><div class="tksn">7.8x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@joaquin.ecom</div><div class="tkr">Dropshipper · Antofagasta</div><div class="tkstats"><div><div class="tksn">$5.6M</div><div class="tksl">Ventas</div></div><div><div class="tksn">11.3x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@matias.drops</div><div class="tkr">Dropshipper · Santiago</div><div class="tkstats"><div><div class="tksn">$4.2M</div><div class="tksl">Ventas</div></div><div><div class="tksn">8.1x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1494790108755-2616b612b829?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@camila.ecom</div><div class="tkr">Dropshipper · Concepción</div><div class="tkstats"><div><div class="tksn">$2.8M</div><div class="tksl">Ventas</div></div><div><div class="tksn">6.4x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@felipe.scale</div><div class="tkr">Dropshipper · Valparaíso</div><div class="tkstats"><div><div class="tksn">$1.9M</div><div class="tksl">Ventas</div></div><div><div class="tksn">9.2x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@alejandra.drop</div><div class="tkr">Dropshipper · Temuco</div><div class="tkstats"><div><div class="tksn">$3.1M</div><div class="tksl">Ventas</div></div><div><div class="tksn">7.8x</div><div class="tksl">ROAS</div></div></div></div>
+      <div class="tkcard"><div class="tkbadge">23B</div><div class="tkav"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&q=80&fit=crop" alt=""></div><div class="tkh">@joaquin.ecom</div><div class="tkr">Dropshipper · Antofagasta</div><div class="tkstats"><div><div class="tksn">$5.6M</div><div class="tksl">Ventas</div></div><div><div class="tksn">11.3x</div><div class="tksl">ROAS</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MECANISMO -->
+<section class="mec" id="sistema">
+  <div class="max">
+    <div class="mec-hd reveal">
+      <span class="lbl-g">Plug&amp;Scale™ System</span>
+      <h2>Así de simple<br><span>funciona.</span></h2>
+      <p>Tu única misión: encontrar el producto. El resto lo hace 23BONSAI automáticamente.</p>
+    </div>
+    <div class="msteps reveal">
+      <div class="step"><div class="snum">01</div><div class="sc"><h3>Tú encuentras el producto</h3><p>Usa nuestro dashboard de inteligencia de mercado o trae el link de AliExpress, Dropi o donde sea.</p></div><div class="sbadge"><span>30 segundos</span></div></div>
+      <div class="step"><div class="snum">02</div><div class="sc"><h3>Nosotros hacemos todo lo demás</h3><p>Research viral, copy en chileno, voiceover profesional, video ads editados, landing PDP con formulario COD. Todo automático.</p></div><div class="sbadge"><span>24 horas</span></div></div>
+      <div class="step"><div class="snum">03</div><div class="sc"><h3>Tú lanzas y escalas</h3><p>Recibes todo listo en tu dashboard. Sube los ads, activa la landing y empieza a vender. Mientras tanto, buscas el próximo producto.</p></div><div class="sbadge"><span>Listo ✓</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="max">
+    <div class="sgrid">
+      <div class="si reveal"><div class="sn">87%</div><div class="sl">de dropshippers abandona antes del año por exceso de trabajo operativo</div></div>
+      <div class="si reveal"><div class="sn">72h</div><div class="sl">tiempo promedio en armar una landing + ads sin sistema automatizado</div></div>
+      <div class="si reveal"><div class="sn">5x</div><div class="sl">más productos testeados al mes con Plug&amp;Scale™ vs método manual</div></div>
+      <div class="si reveal"><div class="sn">$638</div><div class="sl">lo que gastas en herramientas separadas vs $97 con 23BONSAI</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- POR QUÉ 23BONSAI -->
+<section class="why">
+  <div class="max">
+    <div class="why-hd reveal">
+      <span class="lbl-g">Por qué 23BONSAI</span>
+      <h2>Por qué 23BONSAI</h2>
+    </div>
+    <div class="why-list reveal">
+      <div class="wi"><div class="wnum">01</div><div class="wtitle">Inteligencia de mercado<br>100% local</div><div class="wdesc">Filtramos para el mercado chileno específicamente. Sabemos qué está saturado, qué tiene proveedor en Dropi y qué está funcionando ahora en Meta Ads Chile.</div></div>
+      <div class="wi"><div class="wnum">02</div><div class="wtitle">Copy y voz en<br>chileno real</div><div class="wdesc">No es traducción del español. Es copy escrito para el consumidor chileno con la voz y el tono que convierte en COD. La diferencia es del 40% más de conversión.</div></div>
+      <div class="wi"><div class="wnum">03</div><div class="wtitle">De link a listo<br>en 24 horas</div><div class="wdesc">Pegas el link del producto y en 24 hrs tienes la landing y los ads listos para lanzar. Sin freelancers, sin agencias, sin esperas. El sistema lo hace solo.</div></div>
+      <div class="wi"><div class="wnum">04</div><div class="wtitle">Todo en un solo<br>sistema</div><div class="wdesc">Reemplaza Minea, Atlas, Triple Whale, Releasit y Klaviyo. Un solo pago, un solo dashboard, un solo sistema que crece contigo.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VS TABLE -->
+<section class="vs">
+  <div class="max">
+    <div class="vs-hd reveal">
+      <span class="lbl-g">La comparación honesta</span>
+      <h2>23BONSAI VS<br>EVERYONE ELSE</h2>
+      <p>No somos una agencia cara ni una app genérica. Somos el sistema que ya usan los drops que están ganando en serio.</p>
+    </div>
+    <div style="overflow-x:auto" class="reveal">
+      <table class="vst">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="u">23BONSAI</th>
+            <th class="t">Minea + Atlas</th>
+            <th class="t">Freelancers</th>
+            <th class="t">Herramientas separadas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Inteligencia de mercado Chile</td><td class="u"><span class="ci">✓</span></td><td>Parcial</td><td><span class="xi">✗</span></td><td>$49–99/mes extra</td></tr>
+          <tr><td>Landing PDP lista sin editar</td><td class="u"><span class="ci">✓</span></td><td><span class="xi">✗</span></td><td>3–7 días</td><td>Trabajo manual</td></tr>
+          <tr><td>Video ads en chileno con IA</td><td class="u"><span class="ci">✓</span></td><td><span class="xi">✗</span></td><td>$6–30 c/u</td><td><span class="xi">✗</span></td></tr>
+          <tr><td>SAC WhatsApp 24/7</td><td class="u"><span class="ci">✓</span></td><td><span class="xi">✗</span></td><td>$300+/mes L-V</td><td><span class="xi">✗</span></td></tr>
+          <tr><td>Dashboard métricas integradas</td><td class="u"><span class="ci">✓</span></td><td><span class="xi">✗</span></td><td><span class="xi">✗</span></td><td>$300/mes</td></tr>
+          <tr><td>Precio mensual total</td><td class="u">Desde $97</td><td>$148+</td><td>$500+</td><td>$638+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="reveal">
+      <a href="#pricing" class="btn-g" style="font-size:14px;padding:16px 40px;">COMENZAR AHORA →</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testi">
+  <div class="testi-hd reveal">
+    <span class="lbl-g">Lo que dicen</span>
+    <h2>Drops que ya están escalando</h2>
+  </div>
+  <div class="ttrack">
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Lancé 3 productos en una semana. Antes me tomaba semanas. Ahora en 24 hrs tengo la landing y los ads. Ya llevo 3 ganadores este mes."</div><div class="tauth"><div class="tav">MR</div><div><div class="tname">Matías R.</div><div class="tmeta">Santiago · Plan Growth</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"El copy en chileno hace toda la diferencia. Mis ads anteriores eran traducciones genéricas. Mi conversión subió un 40% desde que uso 23BONSAI."</div><div class="tauth"><div class="tav">CL</div><div><div class="tname">Camila L.</div><div class="tmeta">Concepción · Plan Scale</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"El SAC WhatsApp es un cambiazo total. Antes perdía ventas los fines de semana. Ahora el bot confirma los pedidos solo y yo descanso tranquilo."</div><div class="tauth"><div class="tav">FV</div><div><div class="tname">Felipe V.</div><div class="tmeta">Valparaíso · Plan Scale</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Por fin entiendo mis métricas. El dashboard me dice exactamente cuánto gano por producto después de todos los costos. Antes era adivinar."</div><div class="tauth"><div class="tav">AP</div><div><div class="tname">Alejandra P.</div><div class="tmeta">Temuco · Plan Growth</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Tengo 5 productos ganadores andando al mismo tiempo. El sistema me permite testear a una velocidad que antes era imposible para mí solo."</div><div class="tauth"><div class="tav">JM</div><div><div class="tname">Joaquín M.</div><div class="tmeta">Antofagasta · Plan Scale</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Lancé 3 productos en una semana. Antes me tomaba semanas. Ahora en 24 hrs tengo la landing y los ads. Ya llevo 3 ganadores este mes."</div><div class="tauth"><div class="tav">MR</div><div><div class="tname">Matías R.</div><div class="tmeta">Santiago · Plan Growth</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"El copy en chileno hace toda la diferencia. Mis ads anteriores eran traducciones genéricas. Mi conversión subió un 40% desde que uso 23BONSAI."</div><div class="tauth"><div class="tav">CL</div><div><div class="tname">Camila L.</div><div class="tmeta">Concepción · Plan Scale</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"El SAC WhatsApp es un cambiazo total. Antes perdía ventas los fines de semana. Ahora el bot confirma los pedidos solo y yo descanso tranquilo."</div><div class="tauth"><div class="tav">FV</div><div><div class="tname">Felipe V.</div><div class="tmeta">Valparaíso · Plan Scale</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Por fin entiendo mis métricas. El dashboard me dice exactamente cuánto gano por producto después de todos los costos. Antes era adivinar."</div><div class="tauth"><div class="tav">AP</div><div><div class="tname">Alejandra P.</div><div class="tmeta">Temuco · Plan Growth</div></div></div></div>
+    <div class="tcard"><div class="tstars">★★★★★</div><div class="ttxt">"Tengo 5 productos ganadores andando al mismo tiempo. El sistema me permite testear a una velocidad que antes era imposible para mí solo."</div><div class="tauth"><div class="tav">JM</div><div><div class="tname">Joaquín M.</div><div class="tmeta">Antofagasta · Plan Scale</div></div></div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="max">
+    <div class="pr-hd reveal">
+      <span class="lbl-g">Planes</span>
+      <h2>Empieza hoy.<br><em>Escala mañana.</em></h2>
+      <p>Sin contrato. Cancela cuando quieras. Tus landings y ads son tuyos para siempre.</p>
+    </div>
+    <div class="prgrid reveal">
+      <div class="prcard">
+        <div class="pr-plan">Starter</div>
+        <div class="pr-amt"><span class="pr-cur">$</span><span class="pr-num">97</span><span class="pr-per">USD/mes</span></div>
+        <div class="pr-desc">Para el que recién empieza. Todo lo que necesitas para tu primera venta COD sin gastar de más.</div>
+        <ul class="pr-feats">
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard: 30 búsquedas/mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Calculadora de costeo y márgenes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>5 landings PDP / mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>3 video ads × 5 productos / mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard métricas Shopify básico</li>
+        </ul>
+        <a href="#" class="btn-plan btn-po">COMENZAR CON STARTER</a>
+      </div>
+      <div class="prcard pop">
+        <div class="pop-b">Más popular</div>
+        <div class="pr-plan">Growth</div>
+        <div class="pr-amt"><span class="pr-cur">$</span><span class="pr-num">197</span><span class="pr-per">USD/mes</span></div>
+        <div class="pr-desc">Para el drop que ya tiene su primera venta y quiere acelerar. Incluye tienda Shopify y analytics avanzado.</div>
+        <ul class="pr-feats">
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard: 100 búsquedas/mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Calculadora de costeo y márgenes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>15 landings PDP / mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>5 video ads × 15 productos / mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard Shopify + Meta Ads + Dropi</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Sugerencias de optimización automáticas</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>1 tienda Shopify lista para COD</strong></li>
+        </ul>
+        <a href="#" class="btn-plan btn-pg">COMENZAR CON GROWTH</a>
+      </div>
+      <div class="prcard">
+        <div class="pr-plan">Scale</div>
+        <div class="pr-amt"><span class="pr-cur">$</span><span class="pr-num">300</span><span class="pr-per">USD/mes</span></div>
+        <div class="pr-desc">Para el drop serio con múltiples productos. El sistema operativo completo para dominar el mercado.</div>
+        <ul class="pr-feats">
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard: 500 búsquedas/mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>30 landings PDP / mes</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>5 video ads + 5 static ads × 30 productos</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Dashboard tipo Triple Whale con utilidad real</li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>3 tiendas Shopify listas para COD</strong></li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>SAC WhatsApp 24/7 automatizado</strong></li>
+          <li class="prf"><div class="prck"><svg viewBox="0 0 10 10" fill="none"><polyline points="1,5 4,8 9,2" stroke="#00DF81" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><strong>Email marketing Klaviyo configurado</strong></li>
+        </ul>
+        <a href="#" class="btn-plan btn-po">COMENZAR CON SCALE</a>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:24px;font-size:12px;color:var(--muted)">🔒 Pago seguro con MercadoPago · Sin contrato · Cancela cuando quieras · Tus archivos son siempre tuyos</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="max">
+    <div class="faq-lay">
+      <div class="reveal">
+        <span class="lbl-g">Preguntas frecuentes</span>
+        <h2>Common<br><span>Questions</span></h2>
+        <p>Todo lo que necesitas saber sobre 23BONSAI y el sistema Plug&amp;Scale™.</p>
+      </div>
+      <div class="flist reveal">
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Necesito experiencia en dropshipping?</h3><span class="fico">+</span></button><div class="fbody">No necesariamente. El plan Starter está diseñado para el que recién empieza. El sistema te guía: encuentras el producto, nosotros hacemos el resto.</div></div>
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Cuánto tarda mi primera landing?</h3><span class="fico">+</span></button><div class="fbody">24 horas hábiles desde que subes el link del producto. Sin excusas ni demoras. Si hay algún problema con el producto, te avisamos de inmediato.</div></div>
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Los archivos son míos si cancelo?</h3><span class="fico">+</span></button><div class="fbody">Sí, absolutamente. Landings, videos, ads — todo queda en tu tienda Shopify y carpetas. No pierdes nada si decides irte.</div></div>
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Funciona para cualquier nicho?</h3><span class="fico">+</span></button><div class="fbody">Sí. Tecnología, hogar, mascotas, belleza, fitness — cualquier producto que tenga mercado en Chile. Si lo vende Dropi o lo encuentras en AliExpress, lo trabajamos.</div></div>
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Cómo funciona el pago?</h3><span class="fico">+</span></button><div class="fbody">Pagas mensualmente con MercadoPago. Sin contratos ni permanencia mínima. Cancela en cualquier momento desde tu dashboard.</div></div>
+        <div class="fi"><button class="fbtn" onclick="tFaq(this)"><h3>¿Puedo cambiar de plan?</h3><span class="fico">+</span></button><div class="fbody">Sí, en cualquier momento. El upgrade se activa de inmediato. El downgrade aplica desde el siguiente ciclo. Sin penalizaciones.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="ctaf">
+  <div class="max" style="position:relative;z-index:2;text-align:center">
+    <div class="reveal">
+      <span class="lbl-g" style="display:block;margin-bottom:20px;">¿Listo para escalar?</span>
+      <h2 class="ctaf-title">
+        Deja de trabajar<br>
+        <em>para el sistema.</em>
+      </h2>
+      <p class="ctaf-sub">Únete a los dropshippers chilenos que ya están testeando más rápido y encontrando ganadores con Plug&amp;Scale™.</p>
+      <a href="#pricing" class="btn-g" style="font-size:16px;padding:18px 44px;">COMENZAR AHORA →</a>
+      <p style="margin-top:18px;font-size:12px;color:rgba(255,255,255,.25)">Sin tarjeta requerida · Cancela cuando quieras</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="max">
+    <div class="ftop">
+      <div>
+        <div class="fbrand-name">23BONSAI</div>
+        <div class="fbrand-desc">El sistema Plug&amp;Scale™ que usan los dropshippers que ganan en serio. Automatiza tu operación. Escala sin límite.</div>
+      </div>
+      <div class="fcol"><h4>Producto</h4><ul><li><a href="#features">Cómo funciona</a></li><li><a href="#pricing">Planes</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+      <div class="fcol"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#">Cookies</a></li></ul></div>
+      <div class="fcol"><h4>Contacto</h4><ul><li><a href="#">WhatsApp</a></li><li><a href="#">Instagram</a></li><li><a href="#">hola@23bonsai.com</a></li></ul></div>
+    </div>
+    <div class="fbot">
+      <span>© 2025 23BONSAI · Plug&amp;Scale™ System · Todos los derechos reservados</span>
+      <span>Hecho con ❤️ en Chile 🇨🇱</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+let bh=document.getElementById('banner').offsetHeight||0;
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('sc',window.scrollY>60);
+});
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+function tFaq(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+</script>
+</body>
+</html>
