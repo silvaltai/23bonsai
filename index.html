@@ -21,7 +21,7 @@
 <meta name="twitter:image" content="https://www.rasgo.ai/og-twitter-v2.jpg"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=EB+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet"/>
 <link rel="preload" as="image" href="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Hero%20section%20OK/hero1test_zggrff.jpg"/>
 <link rel="preload" as="image" href="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Hero%20section%20OK/hero4test.jpg"/>
 <link rel="preload" as="image" href="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Hero%20section%20OK/hero5test.jpg"/>
@@ -162,6 +162,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   height:100%;display:grid;grid-template-columns:1fr;gap:2px;
   animation:heroFadeIn 1.2s ease both;
 }
+@media(max-width:639px){.hero-col:nth-child(2),.hero-col:nth-child(3){display:none}}
 @media(min-width:640px){.hero-grid{grid-template-columns:1fr 1fr}}
 @media(min-width:768px){.hero-grid{grid-template-columns:1fr 1fr 1fr}}
 .hero-col{overflow:hidden}
@@ -205,7 +206,12 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   white-space:nowrap;
   animation:slideIn .7s cubic-bezier(.22,1,.36,1) both;
 }
-.hero-slide-unit em{font-style:italic;font-weight:600}
+.hero-slide-unit em{
+  font-style:italic;
+  font-family:'EB Garamond','ITC Garamond',Georgia,serif;
+  font-weight:400;
+  letter-spacing:.01em;
+}
 .hero-dot{
   width:clamp(14px,1.8vw,22px);height:clamp(14px,1.8vw,22px);
   border-radius:50%;background:#e1ea27;
@@ -707,7 +713,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   <div class="hero-content">
     <div>
       <div class="hero-badge">
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="#e1ea27" aria-hidden="true"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
   The Realistic AI Platform
 </div>
       <h1 class="hero-h1">
@@ -1428,6 +1434,23 @@ window.addEventListener('scroll', () => {
       unit.style.animation = 'slideIn .7s cubic-bezier(.22,1,.36,1) forwards';
     }, 520);
   }, 3500);
+})();
+  (function(){
+  const phrases=['Look Real.','Look Stunning.','Look Iconic.'];
+  let pIdx=0;
+  const unit=document.getElementById('heroSlideUnit');
+  if(!unit)return;
+  const em=unit.querySelector('em');
+  setInterval(()=>{
+    unit.style.animation='slideOut .5s ease forwards';
+    setTimeout(()=>{
+      pIdx=(pIdx+1)%phrases.length;
+      em.textContent=phrases[pIdx];
+      unit.style.animation='none';
+      unit.offsetWidth;
+      unit.style.animation='slideIn .7s cubic-bezier(.22,1,.36,1) forwards';
+    },520);
+  },3500);
 })();
 </script>
 </body>
