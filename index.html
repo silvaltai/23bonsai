@@ -66,14 +66,9 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   padding:5px 12px;border-radius:100px;white-space:nowrap;flex-shrink:0;
 }
 .banner-text-wrap{flex:1;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.banner-marquee{
-  display:flex;align-items:center;gap:48px;
-  animation:bannerScroll 20s linear infinite;
-  white-space:nowrap;
-}
 .banner-item{
-  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.7);white-space:nowrap;flex-shrink:0;
+  font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.85);white-space:nowrap;
 }
 .banner-cta{
   display:inline-flex;align-items:center;gap:6px;
@@ -88,7 +83,6 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   transition:color .2s;
 }
 .banner-close:hover{color:#fff}
-@keyframes bannerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @media(max-width:640px){
   #top-banner{padding:8px 36px 8px 12px;gap:8px}
   .banner-badge{font-size:9px;padding:4px 10px}
@@ -636,12 +630,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
     FREE SIGNUP
   </div>
   <div class="banner-text-wrap">
-    <div class="banner-marquee">
-      <span class="banner-item">TURN IDEAS INTO AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
-      <span class="banner-item">CREATE AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
-      <span class="banner-item">TURN IDEAS INTO AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
-      <span class="banner-item">CREATE AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
-    </div>
+    <span class="banner-item">TURN IDEAS INTO AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
   </div>
   <a href="https://www.rasgo.ai/auth?mode=signup" class="banner-cta">SIGN UP FREE ↗</a>
   <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
