@@ -85,9 +85,22 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .banner-close:hover{color:#fff}
 @media(max-width:640px){
-  #top-banner{padding:8px 36px 8px 12px;gap:8px;flex-wrap:wrap;justify-content:flex-start}
-  .banner-item{font-size:10px}
+  #top-banner{
+    padding:8px 36px 8px 8px;gap:5px;
+    flex-wrap:nowrap;justify-content:flex-start;overflow:hidden;
+  }
+  .banner-badge{font-size:9px;padding:4px 8px}
+  .banner-badge-pink{font-size:9px;padding:4px 8px}
+  .banner-item{
+    font-size:10px;font-weight:600;
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+    min-width:0;flex:1;
+  }
   .banner-cta{display:none}
+  .banner-close{
+    right:8px;left:auto;
+    font-size:16px;
+  }
 }
 
 /* ── HEADER ── */
