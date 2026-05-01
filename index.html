@@ -216,16 +216,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   border-radius:50%;background:#e1ea27;
   display:inline-block;flex-shrink:0;
 }
-@keyframes slideIn{
-  from{transform:translateX(-110%);opacity:0}
-  to{transform:translateX(0);opacity:1}
-}
-@keyframes slideOut{
-  from{transform:translateX(0);opacity:1}
-  to{transform:translateX(110%);opacity:0}
-}
-.hero-slide-unit.anim-in{animation:slideIn .7s cubic-bezier(.22,1,.36,1) forwards}
-.hero-slide-unit.anim-out{animation:slideOut .5s ease forwards}
+.hero-slide-clip{display:inline-block;vertical-align:middle}
 .hero-sub{
   font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.5);
   font-weight:500;line-height:1.6;max-width:480px;
@@ -1450,17 +1441,48 @@ window.addEventListener('load', function(){
   var unit = document.getElementById('heroSlideUnit');
   var em = unit ? unit.querySelector('em') : null;
   if (!unit || !em) { console.warn('heroSlideUnit no encontrado'); return; }
-  function animIn(){ unit.style.cssText='animation:slideIn .7s cubic-bezier(.22,1,.36,1) forwards'; }
-  function animOut(){ unit.style.cssText='animation:slideOut .5s ease forwards'; }
-  animIn();
-  setInterval(function(){
-    animOut();
-    setTimeout(function(){
-      pIdx = (pIdx + 1) % phrases.length;
-      em.textContent = phrases[pIdx];
-      animIn();
-    }, 520);
-  }, 3500);
+
+  unit.style.animation = 'none';
+
+  var typeSpeed   = 75;
+  var deleteSpeed = 35;
+  var pauseAfter  = 2200;
+  var pauseBefore = 200;
+
+  function typeOut(text, done) {
+    var i = 0;
+    em.textContent = '';
+    (function tick() {
+      if (i < text.length) {
+        em.textContent += text.charAt(i++);
+        setTimeout(tick, typeSpeed);
+      } else {
+        setTimeout(done, pauseAfter);
+      }
+    })();
+  }
+
+  function deleteAll(done) {
+    (function tick() {
+      if (em.textContent.length > 0) {
+        em.textContent = em.textContent.slice(0, -1);
+        setTimeout(tick, deleteSpeed);
+      } else {
+        setTimeout(done, pauseBefore);
+      }
+    })();
+  }
+
+  function loop() {
+    typeOut(phrases[pIdx], function() {
+      deleteAll(function() {
+        pIdx = (pIdx + 1) % phrases.length;
+        loop();
+      });
+    });
+  }
+
+  loop();
 });
 </script>
 </body>
