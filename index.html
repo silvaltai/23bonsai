@@ -1443,5 +1443,26 @@ window.addEventListener('scroll', () => {
   },3500);
 })();
 </script>
+<script>
+window.addEventListener('load', function(){
+  var phrases = ['Look Real.', 'Look Stunning.', 'Look Iconic.'];
+  var pIdx = 0;
+  var unit = document.getElementById('heroSlideUnit');
+  var em = unit ? unit.querySelector('em') : null;
+  if (!unit || !em) { console.warn('heroSlideUnit no encontrado'); return; }
+  function animIn(){ unit.style.cssText='animation:slideIn .7s cubic-bezier(.22,1,.36,1) forwards'; }
+  function animOut(){ unit.style.cssText='animation:slideOut .5s ease forwards'; }
+  animIn();
+  setInterval(function(){
+    animOut();
+    setTimeout(function(){
+      pIdx = (pIdx + 1) % phrases.length;
+      em.textContent = phrases[pIdx];
+      animIn();
+    }, 520);
+  }, 3500);
+});
+</script>
+</body>
 </body>
 </html>
