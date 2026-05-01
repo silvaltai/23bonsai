@@ -105,8 +105,10 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* ── HEADER ── */
 #main-header{
-  position:fixed;left:0;right:0;z-index:100;
-  transition:all .5s;background:transparent;top:0;
+  position:fixed;left:0;right:0;z-index:300;
+  transition:background .5s,backdrop-filter .5s,border-color .5s,top .25s ease;
+  background:transparent;
+}
 }
 #main-header.scrolled{background:rgba(0,0,0,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .header-inner{
@@ -138,6 +140,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .hamburger{display:flex;flex-direction:column;gap:5px;padding:4px;color:rgba(255,255,255,.7)}
 .hamburger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:all .3s}
 @media(min-width:768px){.hamburger{display:none}}
+@media(max-width:767px){#main-header.scrolled .hamburger{display:none !important}}
 .mobile-menu{
   display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:99;
   background:#000;padding:80px 24px 24px;flex-direction:column;gap:24px;
@@ -650,7 +653,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   </div>
   <span class="banner-item">TURN IDEAS INTO AI VISUALS, CHARACTERS, AND VIDEOS FASTER</span>
   <a href="https://www.rasgo.ai/auth?mode=signup" class="banner-cta">SIGN UP FREE ↗</a>
-  <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Close">×</button>
+  <button class="banner-close" onclick="this.parentElement.style.display='none';updateHeader()" aria-label="Close">×</button>
 </div>
 
 <!-- HEADER -->
@@ -1341,9 +1344,19 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <script>
 // Header scroll
 const header = document.getElementById('main-header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 80);
-});
+const banner = document.getElementById('top-banner');
+
+function updateHeader() {
+  const bannerVisible = banner && banner.style.display !== 'none';
+  const bh = bannerVisible ? banner.offsetHeight : 0;
+  const hasPassed = window.scrollY >= bh;
+  header.style.top = hasPassed ? '0px' : bh + 'px';
+  header.classList.toggle('scrolled', window.scrollY > bh + 20);
+}
+
+window.addEventListener('scroll', updateHeader, {passive: true});
+window.addEventListener('resize', updateHeader);
+updateHeader(); // ejecutar al cargar la página
 
 // Scroll reveal
 const sr = new IntersectionObserver((entries) => {
