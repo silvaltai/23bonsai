@@ -224,6 +224,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   from{transform:translateX(0);opacity:1}
   to{transform:translateX(110%);opacity:0}
 }
+.hero-slide-unit.anim-in{animation:slideIn .7s cubic-bezier(.22,1,.36,1) forwards}
+.hero-slide-unit.anim-out{animation:slideOut .5s ease forwards}
 .hero-sub{
   font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.5);
   font-weight:500;line-height:1.6;max-width:480px;
@@ -1425,28 +1427,20 @@ window.addEventListener('scroll', () => {
 (function(){
   var phrases=['Look Real.','Look Stunning.','Look Iconic.'];
   var pIdx=0;
-  function runSlide(){
-    var unit=document.getElementById('heroSlideUnit');
-    if(!unit)return;
-    var em=unit.querySelector('em');
-    // entrada inicial
-    unit.style.animation='slideIn .7s cubic-bezier(.22,1,.36,1) forwards';
-    setInterval(function(){
-      unit.style.animation='slideOut .5s ease forwards';
-      setTimeout(function(){
-        pIdx=(pIdx+1)%phrases.length;
-        em.textContent=phrases[pIdx];
-        unit.style.animation='none';
-        void unit.offsetWidth;
-        unit.style.animation='slideIn .7s cubic-bezier(.22,1,.36,1) forwards';
-      },520);
-    },3500);
-  }
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',runSlide);
-  } else {
-    runSlide();
-  }
+  var unit=document.getElementById('heroSlideUnit');
+  if(!unit)return;
+  var em=unit.querySelector('em');
+  unit.classList.add('anim-in');
+  setInterval(function(){
+    unit.classList.remove('anim-in');
+    unit.classList.add('anim-out');
+    setTimeout(function(){
+      pIdx=(pIdx+1)%phrases.length;
+      em.textContent=phrases[pIdx];
+      unit.classList.remove('anim-out');
+      unit.classList.add('anim-in');
+    },500);
+  },3500);
 })();
 </script>
 </body>
