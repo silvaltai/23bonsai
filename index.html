@@ -180,7 +180,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 @media(min-width:640px){.hero-content{padding-bottom:48px;padding-left:48px;padding-right:48px}}
 @media(min-width:768px){.hero-content{padding-bottom:64px;padding-left:80px;padding-right:80px}}
-@media(min-width:1024px){.hero-content{padding-bottom:80px;padding-left:112px;padding-right:112px}}
+@media(min-width:1024px){.hero-content{padding-bottom:80px;padding-left:56px;padding-right:56px}}
 .hero-badge{
   display:inline-flex;align-items:center;gap:8px;
   padding:8px 16px;border-radius:100px;
@@ -199,17 +199,20 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   animation:heroFadeIn 1s .35s ease both;opacity:0;
 }
 @media(min-width:640px){.hero-h1{margin-bottom:20px}}
-.hero-rotate-wrap{display:inline-block;overflow:hidden;vertical-align:middle}
-.hero-rotate{
-  display:flex;flex-direction:column;
-  animation:textRotate 5s ease-in-out infinite;
+.hero-slide-clip{display:inline-block;overflow:hidden;vertical-align:middle;max-width:100%}
+.hero-slide-unit{
+  display:inline-flex;align-items:center;gap:14px;
+  white-space:nowrap;
+  animation:slideIn .7s cubic-bezier(.22,1,.36,1) both;
 }
-.hero-rotate span{display:block;white-space:nowrap}
-@keyframes textRotate{
-  0%,35%{transform:translateY(0)}
-  50%,85%{transform:translateY(-1.05em)}
-  100%{transform:translateY(0)}
+.hero-slide-unit em{font-style:italic;font-weight:600}
+.hero-dot{
+  width:clamp(14px,1.8vw,22px);height:clamp(14px,1.8vw,22px);
+  border-radius:50%;background:#e1ea27;
+  display:inline-block;flex-shrink:0;
 }
+@keyframes slideIn{from{transform:translateX(-110%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideOut{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}
 .hero-sub{
   font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.5);
   font-weight:500;line-height:1.6;max-width:480px;
@@ -226,7 +229,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   display:inline-flex;align-items:center;justify-content:center;gap:12px;
   padding:16px 32px;background:var(--yellow2);color:#000;
   font-size:clamp(14px,1.5vw,18px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;
-  border-radius:100px;transition:all .3s;
+  border-radius:14px;transition:all .3s;
   box-shadow:0 0 40px -10px rgba(241,251,40,.5);
 }
 .btn-primary:hover{transform:scale(1.05)}
@@ -237,7 +240,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);
   color:#fff;font-size:clamp(14px,1.5vw,18px);font-weight:700;
   letter-spacing:-.01em;text-transform:uppercase;
-  border-radius:100px;transition:all .3s;
+  border-radius:14px;transition:all .3s;
 }
 .btn-secondary:hover{background:rgba(255,255,255,.1)}
 @media(min-width:1024px){.btn-secondary{padding:20px 48px}}
@@ -245,10 +248,11 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   display:flex;align-items:center;gap:24px;margin-top:32px;
   animation:heroFadeIn 1s .8s ease both;opacity:0;
 }
-@media(min-width:640px){.hero-stats{margin-top:40px;gap:56px}}
-.hero-stat-num{font-size:clamp(22px,3vw,32px);font-weight:700;color:#fff}
-.hero-stat-lbl{font-size:10px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px}
-.hero-stat-div{width:1px;height:16px;background:rgba(255,255,255,.2)}
+@media(min-width:640px){.hero-stats{margin-top:40px;gap:40px}}
+.hero-stat-item{display:flex;align-items:center;gap:8px}
+.hero-stat-num{font-size:clamp(16px,2vw,22px);font-weight:700;color:#fff}
+.hero-stat-lbl{font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:0}
+.hero-stat-div{width:1px;height:14px;background:rgba(255,255,255,.2)}
 
 /* ── SECTION WRAPPER ── */
 .section{padding:40px 0}
@@ -702,16 +706,19 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   <div class="hero-grad2"></div>
   <div class="hero-content">
     <div>
-      <div class="hero-badge">The Realistic AI Platform</div>
+      <div class="hero-badge">
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+  The Realistic AI Platform
+</div>
       <h1 class="hero-h1">
-        Make AI Influencers<br>
-        <div class="hero-rotate-wrap">
-          <div class="hero-rotate">
-            <span>Look Real.</span>
-            <span>Look Real.</span>
-          </div>
-        </div>
-      </h1>
+  Make AI Influencers<br>
+  <span class="hero-slide-clip">
+    <span class="hero-slide-unit" id="heroSlideUnit">
+      <em>Look Real.</em>
+      <span class="hero-dot"></span>
+    </span>
+  </span>
+</h1>
       <p class="hero-sub">Generate realistic AI influencer visuals for content creation, advertising, and brand storytelling.</p>
       <div class="hero-ctas">
         <a href="https://www.rasgo.ai/auth?mode=signup" class="btn-primary">
@@ -721,16 +728,16 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
         <a href="#built-with" class="btn-secondary">See Examples</a>
       </div>
       <div class="hero-stats">
-        <div>
-          <div class="hero-stat-num">2M+</div>
-          <div class="hero-stat-lbl">Images Processed</div>
-        </div>
-        <div class="hero-stat-div"></div>
-        <div>
-          <div class="hero-stat-num">50K+</div>
-          <div class="hero-stat-lbl">Creators</div>
-        </div>
-      </div>
+  <div class="hero-stat-item">
+    <span class="hero-stat-num">2M+</span>
+    <span class="hero-stat-lbl">Images Processed</span>
+  </div>
+  <div class="hero-stat-div"></div>
+  <div class="hero-stat-item">
+    <span class="hero-stat-num">50K+</span>
+    <span class="hero-stat-lbl">Creators</span>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1404,6 +1411,24 @@ const banner = document.getElementById('top-banner');
 window.addEventListener('scroll', () => {
   const bh = banner && banner.style.display !== 'none' ? banner.offsetHeight : 0;
 });
+  // Hero slide cycling
+(function(){
+  const phrases = ['Look Real.', 'Look Stunning.', 'Look Iconic.'];
+  let pIdx = 0;
+  const unit = document.getElementById('heroSlideUnit');
+  if (!unit) return;
+  const em = unit.querySelector('em');
+  setInterval(() => {
+    unit.style.animation = 'slideOut .5s ease forwards';
+    setTimeout(() => {
+      pIdx = (pIdx + 1) % phrases.length;
+      em.textContent = phrases[pIdx];
+      unit.style.animation = 'none';
+      unit.offsetWidth; // force reflow
+      unit.style.animation = 'slideIn .7s cubic-bezier(.22,1,.36,1) forwards';
+    }, 520);
+  }, 3500);
+})();
 </script>
 </body>
 </html>
