@@ -338,17 +338,17 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* ── AI LOGOS MARQUEE ── */
 .logos-section{
-  padding:20px 0;background:#000;border-top:1px solid var(--border);
+  padding:16px 0;background:#000;border-top:1px solid var(--border);
   display:flex;align-items:center;gap:40px;overflow:hidden;
 }
 .logos-label{
   font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
   color:rgba(255,255,255,.55);white-space:nowrap;padding-left:40px;flex-shrink:0;
 }
-.logos-track{display:flex;align-items:center;gap:56px;width:max-content;animation:marqScroll 18s linear infinite}
+.logos-track{display:flex;align-items:center;gap:48px;width:max-content;animation:marqScroll 18s linear infinite}
 .logos-track:hover{animation-play-state:paused}
-.logo-item img{height:40px;width:auto;object-fit:contain;opacity:1;filter:grayscale(100%) brightness(3)}
-@media(min-width:640px){.logo-item img{height:44px}}
+.logo-item{display:flex;align-items:center;justify-content:center;height:36px;width:140px}
+.logo-item img{height:100%;width:100%;object-fit:contain;filter:grayscale(100%) brightness(3)}
 
 /* ── AI VIDEO SECTION ── */
 .aiv-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
