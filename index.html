@@ -109,7 +109,6 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   transition:background .5s,backdrop-filter .5s,border-color .5s,top .25s ease;
   background:transparent;
 }
-}
 #main-header.scrolled{background:rgba(0,0,0,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
 .header-inner{
   max-width:1400px;margin:0 auto;padding:0 24px;
@@ -216,7 +215,6 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   border-radius:50%;background:#e1ea27;
   display:inline-block;flex-shrink:0;
 }
-.hero-slide-clip{display:inline-block;vertical-align:middle}
 .hero-sub{
   font-size:clamp(14px,2vw,20px);color:rgba(255,255,255,.5);
   font-weight:500;line-height:1.6;max-width:480px;
@@ -281,8 +279,9 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .section-sub-dark{color:rgba(0,0,0,.5)}
 
-/* scroll reveal */
-.sr{opacity:0;transform:translateY(32px);transition:opacity .7s,transform .7s}
+/* ── SCROLL REVEAL — FIX: visible by default, animate as enhancement ── */
+.sr{opacity:1;transform:none;transition:opacity .7s,transform .7s}
+.sr.ri{opacity:0;transform:translateY(32px)}
 .sr.visible{opacity:1;transform:none}
 
 /* ── BUILT WITH RASGO (video marquee) ── */
@@ -711,17 +710,17 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   <div class="hero-content">
     <div>
       <div class="hero-badge">
-  <svg width="12" height="12" viewBox="0 0 24 24" fill="#e1ea27" aria-hidden="true"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
-  The Realistic AI Platform
-</div>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="#e1ea27" aria-hidden="true"><path d="M12 0l2.5 9.5L24 12l-9.5 2.5L12 24l-2.5-9.5L0 12l9.5-2.5z"/></svg>
+        The Realistic AI Platform
+      </div>
       <h1 class="hero-h1">
-  Make AI Influencers<br>
-  <span class="hero-slide-clip">
-    <span class="hero-slide-unit" id="heroSlideUnit">
-      <em>Look Real.</em><span class="hero-dot"></span>
-    </span>
-  </span>
-</h1>
+        Make AI Influencers<br>
+        <span class="hero-slide-clip">
+          <span class="hero-slide-unit" id="heroSlideUnit">
+            <em>Look Real.</em><span class="hero-dot"></span>
+          </span>
+        </span>
+      </h1>
       <p class="hero-sub">Generate realistic AI influencer visuals for content creation, advertising, and brand storytelling.</p>
       <div class="hero-ctas">
         <a href="https://www.rasgo.ai/auth?mode=signup" class="btn-primary">
@@ -731,16 +730,16 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
         <a href="#built-with" class="btn-secondary">See Examples</a>
       </div>
       <div class="hero-stats">
-  <div class="hero-stat-item">
-    <span class="hero-stat-num">2M+</span>
-    <span class="hero-stat-lbl">Images Processed</span>
-  </div>
-  <div class="hero-stat-div"></div>
-  <div class="hero-stat-item">
-    <span class="hero-stat-num">50K+</span>
-    <span class="hero-stat-lbl">Creators</span>
-  </div>
-</div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">2M+</span>
+          <span class="hero-stat-lbl">Images Processed</span>
+        </div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat-item">
+          <span class="hero-stat-num">50K+</span>
+          <span class="hero-stat-lbl">Creators</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -756,7 +755,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   </div>
   <div class="marquee-outer" style="margin-top:32px">
     <div class="marquee-track" id="video-marquee">
-      <!-- 9 videos × 2 for seamless loop -->
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo1_zsyeyg.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo2_t62da0.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo3_gqbel6.mp4" type="video/mp4"/></video></div>
@@ -766,7 +764,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo7_kvy4tj.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo8_f0gbis.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo9_z10khp.mp4" type="video/mp4"/></video></div>
-      <!-- duplicate for seamless loop -->
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo1_zsyeyg.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo2_t62da0.mp4" type="video/mp4"/></video></div>
       <div class="video-card"><video autoplay muted loop playsinline><source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo3_gqbel6.mp4" type="video/mp4"/></video></div>
@@ -825,7 +822,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/soralogo_ubmrv5.webp" alt="Sora" loading="lazy"/></div>
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/midjourney_gh0xvb.png" alt="Midjourney" loading="lazy"/></div>
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/bytedance_ihohrr.webp" alt="ByteDance" loading="lazy"/></div>
-      <!-- duplicate -->
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/Google-Gemini-Logo_hnjyua.png" alt="Google Gemini" loading="lazy"/></div>
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/Klinglogo_pnuv5v.png" alt="Kling" loading="lazy"/></div>
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/soralogo_ubmrv5.webp" alt="Sora" loading="lazy"/></div>
@@ -871,7 +867,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   </div>
   <div class="marquee-outer" style="margin-top:32px">
     <div class="tiktok-marquee">
-      <!-- Creators × 2 for loop -->
       <div class="creator-card">
         <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
         <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/iamsammieAi_saz6qs.jpg" alt="@iamsammieAi" loading="lazy"/></div>
@@ -902,7 +897,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
         <div><div class="creator-name">@realcamiladiaz</div><div class="creator-role">TikTok Creator</div></div>
         <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">6.7K</div><div class="creator-stat-lbl">Followers</div></div><div class="creator-stat"><div class="creator-stat-num">11K</div><div class="creator-stat-lbl">Likes</div></div></div>
       </div>
-      <!-- duplicate for seamless loop -->
       <div class="creator-card">
         <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
         <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/iamsammieAi_saz6qs.jpg" alt="@iamsammieAi" loading="lazy"/></div>
@@ -966,7 +960,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
     <div class="up-inner">
       <div class="up-content sr">
         <span class="section-label-dark" style="font-size:11px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;color:rgba(0,0,0,.3);display:block;margin-bottom:16px">Upscale &amp; Enhance</span>
-        <h3 class="up-content h3" style="font-size:clamp(24px,3vw,40px);font-weight:600;letter-spacing:-.03em;margin-bottom:12px;color:#000">Upscale your images with our Rasgo Upscaler up to 8K resolution.</h3>
+        <h3 style="font-size:clamp(24px,3vw,40px);font-weight:600;letter-spacing:-.03em;margin-bottom:12px;color:#000">Upscale your images with our Rasgo Upscaler up to 8K resolution.</h3>
       </div>
       <div class="up-compare sr">
         <div class="up-img-wrap">
@@ -1152,7 +1146,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
       <p class="section-sub" style="margin-top:12px">Choose the tier that matches your production scale.<br>Monthly credits refresh every billing cycle. No hidden fees.</p>
     </div>
     <div class="pricing-grid sr">
-      <!-- Starter -->
       <div class="pricing-card">
         <div class="plan-name">Starter</div>
         <div class="plan-tagline">Entry plan for casual creators.</div>
@@ -1161,9 +1154,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
           <div class="plan-credits-lbl">monthly tokens</div>
           <div class="plan-credits-sub">Refills every billing cycle</div>
         </div>
-        <div class="plan-price-wrap">
-          <span class="plan-price">$19.99</span>
-        </div>
+        <div class="plan-price-wrap"><span class="plan-price">$19.99</span></div>
         <div class="plan-price-period" style="margin-bottom:4px">Billed monthly</div>
         <div class="plan-renew">Renews at $19.99</div>
         <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Get Plan</a>
@@ -1190,8 +1181,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
           <li class="plan-tool"><span>Product Placement</span><span>—</span></li>
         </ul>
       </div>
-
-      <!-- Creator (featured) -->
       <div class="pricing-card featured">
         <div class="featured-badge">Most Popular · Creator 30% Off</div>
         <div class="plan-name">Creator</div>
@@ -1232,8 +1221,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
           <li class="plan-tool"><span>Product Placement</span><span>—</span></li>
         </ul>
       </div>
-
-      <!-- Pro -->
       <div class="pricing-card">
         <div class="plan-name">Pro</div>
         <div class="plan-tagline">Serious creator tier.</div>
@@ -1352,7 +1339,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 </footer>
 
 <script>
-// Header scroll
+// Header scroll — banner-aware
 const header = document.getElementById('main-header');
 const banner = document.getElementById('top-banner');
 
@@ -1366,18 +1353,20 @@ function updateHeader() {
 
 window.addEventListener('scroll', updateHeader, {passive: true});
 window.addEventListener('resize', updateHeader);
-updateHeader(); // ejecutar al cargar la página
+updateHeader();
 
-// Scroll reveal
-const sr = new IntersectionObserver((entries) => {
+// Scroll reveal — FIX: add .ri first so elements start hidden, then reveal on scroll
+const srEls = document.querySelectorAll('.sr');
+srEls.forEach(el => el.classList.add('ri'));
+const srObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       e.target.classList.add('visible');
-      sr.unobserve(e.target);
+      srObs.unobserve(e.target);
     }
   });
-}, { threshold: 0.06 });
-document.querySelectorAll('.sr').forEach(el => sr.observe(el));
+}, { threshold: 0.04, rootMargin: '0px 0px -20px 0px' });
+srEls.forEach(el => srObs.observe(el));
 
 // FAQ
 function toggleFaq(btn) {
@@ -1408,83 +1397,35 @@ if ('IntersectionObserver' in window) {
   document.querySelectorAll('.video-card').forEach(c => vObs.observe(c));
 }
 
-// Smooth banner close with offset adjustment
-const banner = document.getElementById('top-banner');
-// Header offset on scroll
-window.addEventListener('scroll', () => {
-  const bh = banner && banner.style.display !== 'none' ? banner.offsetHeight : 0;
-});
-  // Hero slide cycling
-(function(){
-  var phrases=['Look Real.','Look Stunning.','Look Iconic.'];
-  var pIdx=0;
-  var unit=document.getElementById('heroSlideUnit');
-  if(!unit)return;
-  var em=unit.querySelector('em');
-  unit.classList.add('anim-in');
-  setInterval(function(){
-    unit.classList.remove('anim-in');
-    unit.classList.add('anim-out');
-    setTimeout(function(){
-      pIdx=(pIdx+1)%phrases.length;
-      em.textContent=phrases[pIdx];
-      unit.classList.remove('anim-out');
-      unit.classList.add('anim-in');
-    },500);
-  },3500);
-})();
-</script>
-<script>
+// Hero typewriter
 window.addEventListener('load', function(){
   var phrases = ['Look Real.', 'Look Stunning.', 'Look Iconic.'];
   var pIdx = 0;
   var unit = document.getElementById('heroSlideUnit');
   var em = unit ? unit.querySelector('em') : null;
-  if (!unit || !em) { console.warn('heroSlideUnit no encontrado'); return; }
-
+  if (!unit || !em) return;
   unit.style.animation = 'none';
-
-  var typeSpeed   = 75;
-  var deleteSpeed = 35;
-  var pauseAfter  = 2200;
-  var pauseBefore = 200;
-
+  var typeSpeed = 75, deleteSpeed = 35, pauseAfter = 2200, pauseBefore = 200;
   function typeOut(text, done) {
-    var i = 0;
-    em.textContent = '';
+    var i = 0; em.textContent = '';
     (function tick() {
-      if (i < text.length) {
-        em.textContent += text.charAt(i++);
-        setTimeout(tick, typeSpeed);
-      } else {
-        setTimeout(done, pauseAfter);
-      }
+      if (i < text.length) { em.textContent += text.charAt(i++); setTimeout(tick, typeSpeed); }
+      else { setTimeout(done, pauseAfter); }
     })();
   }
-
   function deleteAll(done) {
     (function tick() {
-      if (em.textContent.length > 0) {
-        em.textContent = em.textContent.slice(0, -1);
-        setTimeout(tick, deleteSpeed);
-      } else {
-        setTimeout(done, pauseBefore);
-      }
+      if (em.textContent.length > 0) { em.textContent = em.textContent.slice(0,-1); setTimeout(tick, deleteSpeed); }
+      else { setTimeout(done, pauseBefore); }
     })();
   }
-
   function loop() {
     typeOut(phrases[pIdx], function() {
-      deleteAll(function() {
-        pIdx = (pIdx + 1) % phrases.length;
-        loop();
-      });
+      deleteAll(function() { pIdx = (pIdx+1) % phrases.length; loop(); });
     });
   }
-
   loop();
 });
 </script>
-</body>
 </body>
 </html>
