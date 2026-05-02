@@ -338,7 +338,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* ── AI LOGOS MARQUEE ── */
 .logos-section{
-  padding:16px 0;background:#000;border-top:1px solid var(--border);
+  padding:20px 0;background:#000;border-top:1px solid var(--border);
   display:flex;align-items:center;gap:40px;overflow:hidden;
 }
 .logos-label{
@@ -348,8 +348,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .logos-track{display:flex;align-items:center;gap:56px;width:max-content;animation:marqScroll 18s linear infinite}
 .logos-track:hover{animation-play-state:paused}
 .logo-item{display:flex;align-items:center;flex-shrink:0}
-.logo-item img{height:32px;width:auto;object-fit:contain;filter:grayscale(100%) brightness(3)}
-.logo-item.logo-icon-only img{height:24px}
+.logo-item img{height:48px !important;width:auto !important;max-width:none !important;object-fit:contain;filter:brightness(0) invert(1);opacity:0.55}
+.logo-item.logo-icon-only img{height:28px !important}
 
 /* ── AI VIDEO SECTION ── */
 .aiv-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
