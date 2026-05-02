@@ -295,7 +295,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .marquee-outer::before{left:0;background:linear-gradient(to right,#000,transparent)}
 .marquee-outer::after{right:0;background:linear-gradient(to left,#000,transparent)}
-.marquee-track{display:flex;gap:16px;width:max-content;animation:marqScroll 40s linear infinite}
+.marquee-track{display:flex;gap:16px;width:max-content;animation:marqScroll 40s linear infinite;align-items:flex-start}
 .marquee-track:hover{animation-play-state:paused}
 @media(min-width:640px){.marquee-track{gap:24px}}
 @keyframes marqScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
@@ -307,6 +307,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 @media(min-width:640px){.video-card{width:200px;height:300px}}
 @media(min-width:1024px){.video-card{width:220px;height:330px}}
 .video-card video{width:100%;height:100%;object-fit:cover;pointer-events:none}
+.video-card:nth-child(even){margin-top:48px}
 
 /* ── FACE DRIFT SECTION ── */
 .fd-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
@@ -748,7 +749,6 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <section class="bwr-section sr" id="built-with">
   <div class="container">
     <div class="bwr-header sr">
-      <span class="section-label">## Built with Rasgo</span>
       <h2 style="font-size:clamp(28px,4vw,44px);font-weight:600;letter-spacing:-.03em">Built with Rasgo</h2>
       <p>Watch AI-generated videos with natural lip-sync, emotion, and personality</p>
     </div>
