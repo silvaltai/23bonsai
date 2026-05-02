@@ -311,10 +311,9 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* ── FACE DRIFT SECTION ── */
 .fd-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.fd-inner{display:grid;gap:32px;align-items:center}
-@media(min-width:1024px){.fd-inner{grid-template-columns:1fr 1fr;gap:64px}}
-.fd-content{}
-.fd-content h2{margin-top:16px}
+.fd-top{display:grid;gap:32px;margin-bottom:40px}
+@media(min-width:1024px){.fd-top{grid-template-columns:1fr 1fr;gap:64px;align-items:flex-end}}
+.fd-aside{display:flex;flex-direction:column;justify-content:flex-end}
 .fd-cta{
   display:inline-flex;align-items:center;gap:12px;margin-top:32px;
   padding:16px 40px;background:var(--yellow2);color:#000;
@@ -323,6 +322,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .fd-cta:hover{transform:scale(1.05)}
 .fd-images{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(min-width:1024px){.fd-images{grid-template-columns:repeat(4,1fr)}}
 .fd-img-wrap{
   border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);
   position:relative;aspect-ratio:4/5;background:#111;
