@@ -337,14 +337,17 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 
 /* ── AI LOGOS MARQUEE ── */
-.logos-section{padding:32px 0;background:#000;border-top:1px solid var(--border)}
+.logos-section{
+  padding:20px 0;background:#000;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:40px;overflow:hidden;
+}
 .logos-label{
-  font-size:11px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);text-align:center;margin-bottom:24px;
+  font-size:13px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:rgba(255,255,255,.55);white-space:nowrap;padding-left:40px;flex-shrink:0;
 }
 .logos-track{display:flex;align-items:center;gap:56px;width:max-content;animation:marqScroll 18s linear infinite}
 .logos-track:hover{animation-play-state:paused}
-.logo-item img{height:24px;width:auto;object-fit:contain;opacity:.6;filter:grayscale(20%)}
+.logo-item img{height:24px;width:auto;object-fit:contain;opacity:.75;filter:grayscale(100%) brightness(2)}
 @media(min-width:640px){.logo-item img{height:28px}}
 
 /* ── AI VIDEO SECTION ── */
@@ -818,7 +821,7 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <!-- AI PARTNER LOGOS -->
 <section class="logos-section">
   <p class="logos-label">Powered by Leading AI Models:</p>
-  <div class="marquee-outer">
+  <div class="marquee-outer" style="flex:1;min-width:0">
     <div class="logos-track">
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/Google-Gemini-Logo_hnjyua.png" alt="Google Gemini" loading="lazy"/></div>
       <div class="logo-item"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Partner%20logos%20OK/Klinglogo_pnuv5v.png" alt="Kling" loading="lazy"/></div>
