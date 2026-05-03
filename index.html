@@ -356,28 +356,45 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .logo-bytedance img{height:130px !important}
 
 /* ── AI VIDEO SECTION ── */
-.aiv-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
+.aiv-section{padding:72px 0;background:#e9f329;color:#000}
 .aiv-inner{display:grid;gap:32px;align-items:center}
-@media(min-width:1024px){.aiv-inner{grid-template-columns:1fr 1fr;gap:64px}}
+@media(min-width:1024px){.aiv-inner{grid-template-columns:1fr 1fr;gap:72px;align-items:start}}
 .aiv-video-wrap{
   border-radius:32px;overflow:hidden;
-  background:rgba(0,0,0,.2);border:1px solid rgba(255,255,255,.15);
-  position:relative;aspect-ratio:9/16;max-height:600px;
+  background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.08);
+  position:relative;aspect-ratio:9/16;max-height:640px;
 }
 @media(min-width:1024px){.aiv-video-wrap{max-height:none}}
 .aiv-video-wrap video{width:100%;height:100%;object-fit:cover}
-.aiv-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.aiv-content{padding-top:8px}
+@media(min-width:1024px){.aiv-content{padding-top:24px}}
+.aiv-section .section-label{color:rgba(0,0,0,.45);margin-bottom:24px}
+.aiv-section .section-h2{color:#000;font-size:clamp(38px,5.5vw,64px);margin:0 0 28px}
+.aiv-section .section-sub{color:rgba(0,0,0,.55);font-size:clamp(16px,1.6vw,20px);margin:0 0 44px;max-width:520px}
+.aiv-tags{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;max-width:560px}
+@media(max-width:520px){.aiv-tags{grid-template-columns:1fr}}
 .aiv-tag{
-  padding:6px 16px;background:rgba(255,255,255,.08);backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.15);border-radius:100px;
-  font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#fff;
+  padding:20px 24px;background:#ccd523;
+  border:none;border-radius:18px;
+  display:flex;flex-direction:column;gap:8px;
 }
-.aiv-tag span{color:rgba(255,255,255,.4)}
-.aiv-content{}
-.aiv-content h2{margin-top:16px;margin-bottom:16px}
-.aiv-content p{margin-bottom:32px}
+.aiv-tag span{
+  font-size:11px;font-weight:900;letter-spacing:.25em;
+  text-transform:uppercase;color:rgba(0,0,0,.55);
+}
+.aiv-tag strong{
+  font-size:18px;font-weight:700;color:#000;letter-spacing:-.01em;
+}
 .aiv-btns{display:flex;flex-direction:column;gap:12px}
 @media(min-width:640px){.aiv-btns{flex-direction:row}}
+.aiv-cta{
+  display:inline-flex;align-items:center;justify-content:center;gap:14px;
+  padding:24px 56px;background:#000;color:#e9f329;
+  font-size:15px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:100px;transition:all .3s;
+}
+.aiv-cta:hover{transform:scale(1.03);background:#0a0a0a}
+.aiv-cta svg{stroke:#e9f329}
 
 /* ── TIKTOK SECTION ── */
 .tiktok-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
@@ -850,18 +867,27 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
         <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover">
           <source src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Feature%20Demo%20video%20OK/qiE0cc9YdpuZiVMOsTz_7_output_dxg6an.mp4" type="video/mp4"/>
         </video>
-        <div style="position:absolute;top:16px;left:16px;padding:4px 12px;background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border-radius:100px;font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.2)">AI Video</div>
+        <div style="position:absolute;top:16px;left:16px;padding:4px 12px;background:rgba(0,0,0,.5);backdrop-filter:blur(16px);border-radius:100px;font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.2)">AI Video</div>
       </div>
       <div class="aiv-content sr" style="order:2">
         <span class="section-label">AI Video</span>
-        <h2 class="section-h2" style="margin-top:16px">Bring Your AI Influencer To Life.</h2>
-        <p class="section-sub" style="margin-top:16px;margin-bottom:32px">Create AI Influencers with hyper-realistic movement and natural expressions.</p>
+        <h2 class="section-h2">Bring Your AI Influencer To Life.</h2>
+        <p class="section-sub">Create AI Influencers with hyper-realistic movement and natural expressions.</p>
         <div class="aiv-tags">
-          <div class="aiv-tag"><span>Motion</span> Kling 3.0</div>
-          <div class="aiv-tag"><span>Base Image</span> Nano Banana 2</div>
+          <div class="aiv-tag">
+            <span>Motion</span>
+            <strong>Kling 3.0</strong>
+          </div>
+          <div class="aiv-tag">
+            <span>Base Image</span>
+            <strong>Nano Banana 2</strong>
+          </div>
         </div>
         <div class="aiv-btns">
-          <a href="https://www.rasgo.ai/auth?mode=signup&redirect=%2Fdashboard" class="btn-primary" style="font-size:14px;padding:14px 32px">Create AI Influencers</a>
+          <a href="https://www.rasgo.ai/auth?mode=signup&redirect=%2Fdashboard" class="aiv-cta">
+            Create AI Influencers
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
       </div>
     </div>
