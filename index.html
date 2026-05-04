@@ -557,148 +557,268 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* ── PRODUCT PHOTOSHOOT SECTION ── */
 .ps-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.ps-header{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-@media(min-width:1024px){.ps-header{flex-direction:row;align-items:flex-end;justify-content:space-between}}
-.ps-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-@media(min-width:640px){.ps-gallery{grid-template-columns:repeat(3,1fr);gap:12px}}
-.ps-img{border-radius:16px;overflow:hidden;aspect-ratio:3/4;background:#111}
+.ps-header{text-align:center;max-width:760px;margin:0 auto 40px}
+.ps-header .section-h2{margin-top:16px}
+.ps-header .section-sub{margin-top:14px}
+.ps-row{display:flex;flex-direction:column;align-items:center;gap:16px}
+@media(min-width:1024px){.ps-row{flex-direction:row;align-items:center;gap:20px}}
+.ps-upload{
+  flex:0 0 auto;width:120px;aspect-ratio:1/1;
+  display:flex;align-items:center;justify-content:center;
+  padding:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;font-size:11px;font-weight:700;color:rgba(255,255,255,.4);
+  text-align:center;line-height:1.35;
+}
+@media(min-width:640px){.ps-upload{width:140px;border-radius:18px;font-size:12px}}
+@media(min-width:1024px){.ps-upload{width:180px;border-radius:20px;font-size:13px}}
+.ps-arrow{display:flex;align-items:center;justify-content:center;color:var(--yellow2);flex-shrink:0}
+.ps-arrow svg{transform:rotate(90deg)}
+@media(min-width:1024px){.ps-arrow svg{transform:none}}
+.ps-gallery{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
+@media(min-width:640px){.ps-gallery{grid-template-columns:repeat(6,1fr);gap:12px}}
+.ps-img{border-radius:18px;overflow:hidden;aspect-ratio:1/1;background:#111}
+@media(min-width:1024px){.ps-img{border-radius:20px}}
 .ps-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
 .ps-img:hover img{transform:scale(1.04)}
-.ps-upload{
-  display:flex;align-items:center;gap:10px;
-  padding:12px 20px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-  border-radius:12px;font-size:13px;font-weight:600;color:rgba(255,255,255,.4);
-}
+.ps-cta-wrap{text-align:center;margin-top:40px}
 .ps-cta{
-  display:inline-flex;align-items:center;gap:12px;margin-top:32px;
-  padding:14px 36px;background:var(--yellow2);color:#000;
-  font-size:13px;font-weight:900;text-transform:uppercase;
-  border-radius:100px;transition:all .3s;
+  display:inline-flex;align-items:center;gap:14px;
+  padding:18px 44px;background:var(--yellow2);color:#000;
+  font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;
+  border-radius:100px;transition:all .3s;box-shadow:0 10px 40px -10px rgba(225,234,50,.5);
 }
+@media(min-width:640px){.ps-cta{padding:20px 52px;font-size:20px;gap:16px}}
 .ps-cta:hover{transform:scale(1.05)}
 
 /* ── WHY RASGO SECTION ── */
-.why-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.why-header{text-align:center;margin-bottom:48px}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-@media(min-width:1024px){.why-grid{grid-template-columns:repeat(4,1fr)}}
-.why-card{padding:32px 24px;background:var(--card);border:1px solid var(--border2);border-radius:24px}
-.why-num{font-size:12px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:16px}
-.why-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px;letter-spacing:-.02em}
-.why-desc{font-size:14px;color:rgba(255,255,255,.4);font-weight:500;line-height:1.6}
+.why-section{padding:40px 0 56px;background:#050505;color:#fff;border-top:1px solid var(--border)}
+.why-wrap{max-width:896px;margin:0 auto}
+.why-h2{
+  font-size:clamp(28px,5vw,48px);
+  font-weight:600;
+  letter-spacing:-.04em;
+  line-height:.9;
+  text-transform:uppercase;
+  color:#fff;
+  text-align:left;
+  margin:0 0 40px;
+}
+@media(min-width:640px){
+  .why-h2{font-size:clamp(32px,5vw,56px);margin-bottom:56px}
+}
+.why-row{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:24px 0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+  align-items:baseline;
+}
+@media(min-width:640px){.why-row{padding:32px 0}}
+@media(min-width:1024px){
+  .why-row{
+    grid-template-columns:60px 1fr 1fr;
+    gap:40px;
+  }
+}
+.why-row:last-of-type{border-bottom:1px solid rgba(255,255,255,.08)}
+.why-num{
+  font-family:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  font-size:12px;
+  letter-spacing:.15em;
+  color:rgba(255,255,255,.2);
+  margin:0;
+}
+.why-title{
+  font-size:20px;
+  font-weight:600;
+  line-height:1.2;
+  letter-spacing:-.02em;
+  color:#fff;
+  margin:0;
+}
+@media(min-width:640px){.why-title{font-size:24px}}
+@media(min-width:768px){.why-title{font-size:30px}}
+.why-desc{
+  font-size:14px;
+  color:rgba(255,255,255,.4);
+  font-weight:500;
+  line-height:1.6;
+  margin:0;
+  max-width:28rem;
+}
+@media(min-width:640px){.why-desc{font-size:16px}}
 
 /* ── COMPARISON TABLE ── */
 .cmp-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.cmp-header{text-align:center;margin-bottom:40px}
+.cmp-header{text-align:left;margin-bottom:40px;max-width:900px}
+.cmp-header h2{font-size:clamp(36px,5vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1;margin-bottom:10px}
+.cmp-header .section-sub{font-size:15px;color:rgba(255,255,255,.5);font-weight:500;margin-top:0 !important}
 .cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.cmp-table{width:100%;border-collapse:collapse;min-width:680px}
+.cmp-table{width:100%;border-collapse:collapse;min-width:640px;font-size:13px}
+.cmp-table thead tr{background:rgba(255,255,255,.04)}
 .cmp-table th{
-  padding:14px 20px;text-align:left;font-size:12px;font-weight:900;
-  letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);
-  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:14px 16px;text-align:left;font-size:12px;font-weight:600;
+  letter-spacing:.02em;color:rgba(255,255,255,.5);
+  border-bottom:1px solid rgba(255,255,255,.06);
 }
 .cmp-table th:not(:first-child){text-align:center}
-.cmp-table th.rasgo-col{color:var(--yellow2)}
-.cmp-table td{
-  padding:16px 20px;font-size:14px;font-weight:500;color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.05);
+.cmp-table th.rasgo-col{
+  color:#fff;font-weight:700;
+  background:#171706;
+  border-left:1px solid rgba(225,234,50,.15);
+  border-right:1px solid rgba(225,234,50,.15);
 }
-.cmp-table td:not(:first-child){text-align:center;font-size:18px}
+.cmp-table td{
+  padding:14px 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.cmp-table td:not(:first-child){text-align:center}
+.cmp-table td.rasgo-cell{
+  background:#171706;
+  border-left:1px solid rgba(225,234,50,.15);
+  border-right:1px solid rgba(225,234,50,.15);
+}
 .cmp-table tr:last-child td{border-bottom:none}
-.cmp-table tr:hover td{background:rgba(255,255,255,.02)}
-.cmp-yes{color:#4ade80;font-weight:900}
-.cmp-no{color:rgba(255,255,255,.2);font-size:14px;font-weight:500}
-.cmp-partial{color:rgba(255,255,255,.4);font-size:14px;font-weight:500}
-.cmp-na{color:rgba(255,255,255,.15);font-size:12px;font-weight:500}
-.cmp-cta-wrap{text-align:center;margin-top:32px}
+.cmp-check{color:#10b981;display:inline-block;vertical-align:middle}
+.cmp-x{color:rgba(255,255,255,.2);display:inline-block;vertical-align:middle}
+.cmp-partial{color:#e5ac00;font-weight:700;font-size:18px;line-height:1}
+.cmp-na{color:rgba(255,255,255,.2);font-size:12px;font-weight:500}
+.cmp-cta-wrap{text-align:center;margin-top:40px}
 .cmp-cta{
-  display:inline-flex;align-items:center;gap:12px;
-  padding:16px 48px;background:var(--yellow2);color:#000;
-  font-size:14px;font-weight:900;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:14px;
+  padding:22px 72px;background:var(--yellow2);color:#000;
+  font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;
   border-radius:100px;transition:all .3s;
+  box-shadow:0 0 50px -10px rgba(225,234,50,.4);
 }
 .cmp-cta:hover{transform:scale(1.05)}
+@media(max-width:640px){
+  .cmp-cta{padding:18px 48px;font-size:15px}
+  .cmp-table{font-size:12px}
+  .cmp-table td,.cmp-table th{padding:12px 10px}
+}
 
 /* ── PRICING SECTION ── */
-.pricing-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.pricing-header{text-align:center;margin-bottom:48px}
-.pricing-header h2{margin-bottom:16px}
-.pricing-header p{max-width:520px;margin:0 auto;text-align:center}
+.pricing-section{padding:96px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
+.pricing-header{text-align:center;margin-bottom:72px;display:flex;flex-direction:column;align-items:center}
+.pricing-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 18px;background:#0a0a0a;border:1px solid rgba(255,255,255,.08);
+  border-radius:100px;margin-bottom:28px;
+}
+.pricing-badge svg{width:13px;height:13px;color:#fff;flex-shrink:0}
+.pricing-badge span{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+.pricing-header h2.section-h2{
+  font-size:clamp(48px,9vw,112px);font-weight:900;font-style:italic;
+  letter-spacing:-.04em;line-height:.95;margin-bottom:24px;color:#fff;
+}
+.pricing-header p.section-sub{
+  max-width:640px;margin:0 auto;text-align:center;
+  font-size:clamp(16px,1.6vw,20px);color:rgba(255,255,255,.45);font-weight:500;line-height:1.5;
+}
 .pricing-grid{display:grid;gap:16px}
-@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr);align-items:start;gap:20px}}
 .pricing-card{
-  border:1px solid rgba(255,255,255,.1);border-radius:24px;
-  padding:32px 28px;background:var(--card);
+  border-radius:32px;padding:40px 32px;background:#0a0a0a;
   display:flex;flex-direction:column;position:relative;
+  border:1px solid rgba(255,255,255,.06);
 }
 .pricing-card.featured{
-  border-color:var(--yellow2);background:rgba(241,251,40,.04);
+  background:#e2ea34;border-color:#e2ea34;
+  box-shadow:0 0 100px rgba(226,234,52,.3),0 0 40px rgba(226,234,52,.2);
 }
 .featured-badge{
-  position:absolute;top:-12px;left:50%;transform:translateX(-50%);
-  padding:4px 20px;background:var(--yellow2);color:#000;
-  font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+  padding:7px 24px;background:#0a0a0a;color:#e2ea34;
+  font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;
   border-radius:100px;white-space:nowrap;
 }
-.plan-name{font-size:20px;font-weight:900;letter-spacing:-.02em;color:#fff;margin-bottom:4px}
-.plan-tagline{font-size:13px;color:rgba(255,255,255,.4);font-weight:500;margin-bottom:24px}
-.plan-credits{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.08)}
-.plan-credits-num{font-size:16px;font-weight:700;color:#fff}
-.plan-credits-lbl{font-size:11px;color:rgba(255,255,255,.3);font-weight:500}
-.plan-credits-sub{font-size:11px;color:rgba(255,255,255,.2);margin-top:4px}
-.plan-price-wrap{display:flex;align-items:baseline;gap:4px;margin-bottom:4px}
-.plan-price-old{font-size:18px;font-weight:600;color:rgba(255,255,255,.2);text-decoration:line-through;margin-right:6px}
-.plan-price{font-size:40px;font-weight:900;letter-spacing:-.04em;color:#fff}
-.plan-price-period{font-size:14px;color:rgba(255,255,255,.4);font-weight:500}
-.plan-renew{font-size:11px;color:rgba(255,255,255,.2);margin-bottom:24px}
+.plan-name{
+  font-size:24px;font-weight:900;letter-spacing:.02em;
+  text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:36px;
+}
+.pricing-card.featured .plan-name{color:#000}
+.plan-price-wrap{display:flex;align-items:baseline;gap:2px;margin-bottom:32px;flex-wrap:wrap}
+.plan-currency{font-size:20px;font-weight:700;color:rgba(255,255,255,.35);margin-right:4px;align-self:center}
+.pricing-card.featured .plan-currency{color:#000}
+.plan-price{font-size:clamp(56px,7vw,72px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1}
+.pricing-card.featured .plan-price{color:#000}
+.plan-price-cents{font-size:24px;font-weight:700;color:rgba(255,255,255,.35);align-self:flex-end;margin-bottom:10px}
+.pricing-card.featured .plan-price-cents{color:#000}
+.plan-price-period{font-size:14px;color:rgba(255,255,255,.3);font-weight:500;margin-left:6px;align-self:flex-end;margin-bottom:12px}
+.pricing-card.featured .plan-price-period{color:rgba(0,0,0,.5)}
+.plan-credits{
+  display:inline-block;padding:14px 22px;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.06);border-radius:100px;
+  margin-bottom:20px;align-self:flex-start;
+}
+.pricing-card.featured .plan-credits{background:rgba(0,0,0,.08);border-color:rgba(0,0,0,.12)}
+.plan-credits-num{font-size:14px;font-weight:800;color:#fff;display:inline}
+.pricing-card.featured .plan-credits-num{color:#000}
+.plan-credits-lbl{font-size:14px;color:rgba(255,255,255,.4);font-weight:500;display:inline;margin-left:4px}
+.pricing-card.featured .plan-credits-lbl{color:rgba(0,0,0,.55)}
+.plan-tagline{font-size:14px;color:rgba(255,255,255,.4);font-weight:500;margin-bottom:32px}
+.pricing-card.featured .plan-tagline{color:rgba(0,0,0,.65)}
+.plan-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px;flex:1}
+.plan-feature{
+  display:flex;align-items:flex-start;gap:12px;
+  font-size:14px;color:rgba(255,255,255,.85);font-weight:500;line-height:1.4;
+}
+.plan-feature::before{
+  content:'';display:block;width:7px;height:7px;border-radius:50%;
+  background:#e2ea34;flex-shrink:0;margin-top:7px;
+}
+.pricing-card.featured .plan-feature{color:#000}
+.pricing-card.featured .plan-feature::before{background:#000}
 .plan-btn{
-  display:block;width:100%;padding:14px;text-align:center;
-  background:var(--yellow2);color:#000;
-  font-size:13px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
-  border-radius:100px;transition:all .3s;margin-bottom:24px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;padding:18px 24px;text-align:center;
+  background:#e2ea34;color:#000;
+  font-size:13px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;
+  border-radius:100px;transition:all .3s;
 }
-.plan-btn:hover{opacity:.9;transform:translateY(-1px)}
-.plan-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
-.plan-tag{
-  padding:5px 12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
-  border-radius:100px;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);
-}
-.plan-includes-title{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:16px}
-.plan-features{list-style:none;display:flex;flex-direction:column;gap:12px}
-.plan-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:rgba(255,255,255,.7);font-weight:500}
-.plan-feature::before{content:'✓';color:#4ade80;font-weight:900;flex-shrink:0;margin-top:1px}
-.plan-tools-title{font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:24px;margin-bottom:16px}
-.plan-tools{list-style:none;display:flex;flex-direction:column;gap:8px}
-.plan-tool{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:rgba(255,255,255,.6)}
-.plan-tool span{font-size:11px;font-weight:700;color:rgba(255,255,255,.3);text-align:right}
-.pricing-note{text-align:center;margin-top:32px;font-size:12px;color:rgba(255,255,255,.2);line-height:1.6;max-width:600px;margin-left:auto;margin-right:auto}
-.pricing-link{text-align:center;margin-top:20px}
-.pricing-link a{font-size:14px;font-weight:700;color:rgba(255,255,255,.5);text-decoration:underline;text-underline-offset:4px}
+.plan-btn span{transition:transform .3s}
+.plan-btn:hover{transform:translateY(-2px)}
+.plan-btn:hover span{transform:translateX(4px)}
+.pricing-card.featured .plan-btn{background:#0a0a0a;color:#e2ea34}
 
 /* ── FAQ SECTION ── */
 .faq-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.faq-header{text-align:center;margin-bottom:48px}
-.faq-header h2{margin-bottom:8px}
-.faq-header p{font-size:14px;color:rgba(255,255,255,.4);font-weight:500}
-.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:0}
-.faq-item{border-bottom:1px solid rgba(255,255,255,.08)}
-.faq-item:first-child{border-top:1px solid rgba(255,255,255,.08)}
+.faq-inner{display:grid;gap:32px;grid-template-columns:1fr}
+@media(min-width:768px){.faq-inner{grid-template-columns:1fr 1.4fr;gap:48px;align-items:start}}
+@media(min-width:1024px){.faq-inner{grid-template-columns:1fr 1.6fr;gap:80px}}
+.faq-header{text-align:left;margin-bottom:0}
+.faq-header h2{
+  margin-bottom:20px;text-transform:uppercase;line-height:.95;letter-spacing:-.02em;
+  font-weight:800;
+}
+.faq-header h2 .faq-accent{color:var(--yellow2);display:block}
+.faq-header p{font-size:15px;color:rgba(255,255,255,.4);font-weight:500;max-width:320px;line-height:1.5}
+.faq-list{max-width:none;margin:0;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.1)}
+.faq-item:first-child{border-top:1px solid rgba(255,255,255,.1)}
 .faq-btn{
   width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;
-  padding:24px 0;text-align:left;cursor:pointer;
+  padding:28px 0;text-align:left;cursor:pointer;background:transparent;border:0;
 }
-.faq-q{font-size:16px;font-weight:600;color:#fff;letter-spacing:-.02em}
+.faq-q{
+  font-size:15px;font-weight:700;color:rgba(255,255,255,.45);letter-spacing:.04em;
+  text-transform:uppercase;line-height:1.35;
+}
+@media(min-width:768px){.faq-q{font-size:17px}}
 .faq-icon{
-  width:28px;height:28px;border-radius:100%;border:1px solid rgba(255,255,255,.15);
+  width:auto;height:auto;border-radius:0;border:0;background:transparent;
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;transition:all .3s;color:rgba(255,255,255,.5);font-size:18px;
+  flex-shrink:0;transition:all .3s;color:rgba(255,255,255,.45);font-size:22px;font-weight:300;
 }
-.faq-item.open .faq-icon{transform:rotate(45deg);background:rgba(255,255,255,.1)}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:transparent;color:var(--yellow2)}
+.faq-item.open .faq-q{color:#fff}
 .faq-body{
   max-height:0;overflow:hidden;transition:max-height .4s ease;
 }
 .faq-item.open .faq-body{max-height:300px}
-.faq-body p{font-size:15px;color:rgba(255,255,255,.5);font-weight:500;line-height:1.7;padding-bottom:24px}
+.faq-body p{font-size:15px;color:rgba(255,255,255,.5);font-weight:500;line-height:1.7;padding-bottom:28px}
 
 /* ── FOOTER ── */
 footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
@@ -1194,30 +1314,28 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <section class="ps-section">
   <div class="container">
     <div class="ps-header sr">
-      <div>
-        <span class="section-label">Product Photoshoot</span>
-        <h2 class="section-h2" style="margin-top:16px">One Product. Endless Scenes.</h2>
-        <p class="section-sub" style="margin-top:12px">Upload a single product image and generate professional photoshoots across different settings, lighting, and styles. No studio needed.</p>
+      <span class="section-label">Product Photoshoot</span>
+      <h2 class="section-h2">One Product. Endless Scenes.</h2>
+      <p class="section-sub">Upload a single product image and generate professional photoshoots across different settings, lighting, and styles. No studio needed.</p>
+    </div>
+    <div class="ps-row sr">
+      <div class="ps-upload">Upload your product image</div>
+      <div class="ps-arrow">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </div>
-      <div>
-        <div class="ps-upload">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-          Upload your product image
-        </div>
+      <div class="ps-gallery">
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image1-v2_o1yzyi.jpg" alt="Product photoshoot" loading="lazy"/></div>
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image5_pecobs.jpg" alt="Product photoshoot" loading="lazy"/></div>
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image4_uwpwyd.jpg" alt="Product photoshoot" loading="lazy"/></div>
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image6_iceibh.jpg" alt="Product photoshoot" loading="lazy"/></div>
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image2_wi6t6q.jpg" alt="Product photoshoot" loading="lazy"/></div>
+        <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image3_tfdyhb.jpg" alt="Product photoshoot" loading="lazy"/></div>
       </div>
     </div>
-    <div class="ps-gallery sr">
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image1-v2_o1yzyi.jpg" alt="Product photoshoot" loading="lazy"/></div>
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image5_pecobs.jpg" alt="Product photoshoot" loading="lazy"/></div>
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image4_uwpwyd.jpg" alt="Product photoshoot" loading="lazy"/></div>
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image6_iceibh.jpg" alt="Product photoshoot" loading="lazy"/></div>
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image2_wi6t6q.jpg" alt="Product photoshoot" loading="lazy"/></div>
-      <div class="ps-img"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Bottom%20gallery/image3_tfdyhb.jpg" alt="Product photoshoot" loading="lazy"/></div>
-    </div>
-    <div style="text-align:center;margin-top:32px">
+    <div class="ps-cta-wrap">
       <a href="https://www.rasgo.ai/auth?mode=signup&redirect=%2Fproduct-photoshoot" class="ps-cta">
         Try Product Photoshoot
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
@@ -1226,28 +1344,26 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <!-- WHY RASGO -->
 <section class="why-section">
   <div class="container">
-    <div class="why-header sr">
-      <h2 class="section-h2" style="text-align:center">Why Rasgo</h2>
-    </div>
-    <div class="why-grid sr">
-      <div class="why-card">
+    <div class="why-wrap sr">
+      <h2 class="why-h2">Why Rasgo</h2>
+      <div class="why-row">
         <div class="why-num">01</div>
-        <div class="why-title">Hyper-Realistic Generations</div>
+        <div class="why-title">Hyper-Realistic<br>Generations</div>
         <div class="why-desc">Rasgo produces AI humans with lifelike skin texture, natural lighting, and anatomical accuracy that other generators can't match.</div>
       </div>
-      <div class="why-card">
+      <div class="why-row">
         <div class="why-num">02</div>
-        <div class="why-title">Human-First Upscaler</div>
+        <div class="why-title">Human-First<br>Upscaler</div>
         <div class="why-desc">The only upscaler engineered for AI portraits. Reconstructs skin pores, iris detail, and hair strands instead of smoothing them away.</div>
       </div>
-      <div class="why-card">
+      <div class="why-row">
         <div class="why-num">03</div>
-        <div class="why-title">Consistent AI Influencers</div>
+        <div class="why-title">Consistent<br>AI Influencers</div>
         <div class="why-desc">Generate the same AI influencer across photos, styles, scenes, and content without losing facial identity, vibe, or brand consistency.</div>
       </div>
-      <div class="why-card">
+      <div class="why-row">
         <div class="why-num">04</div>
-        <div class="why-title">Product Placement</div>
+        <div class="why-title">Product<br>Placement</div>
         <div class="why-desc">Place any product naturally into your AI influencer's hands. Create authentic branded content and photoshoots without expensive studios.</div>
       </div>
     </div>
@@ -1258,8 +1374,8 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <section class="cmp-section">
   <div class="container">
     <div class="cmp-header sr">
-      <h2 class="section-h2" style="text-align:center">Rasgo vs Everyone Else</h2>
-      <p class="section-sub" style="text-align:center;margin-top:12px">See how we stack up against the tools you're comparing us to.</p>
+      <h2>Rasgo vs Everyone Else</h2>
+      <p class="section-sub">See how we stack up against the tools you're comparing us to.</p>
     </div>
     <div class="cmp-wrap sr">
       <table class="cmp-table">
@@ -1274,21 +1390,77 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
           </tr>
         </thead>
         <tbody>
-          <tr><td>Realistic AI Humans</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-partial">~</span></td><td><span class="cmp-partial">~</span></td><td><span class="cmp-na">N/A</span></td><td><span class="cmp-na">N/A</span></td></tr>
-          <tr><td>Skin Pore-Level Upscale</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-na">N/A</span></td><td><span class="cmp-na">N/A</span></td><td><span class="cmp-partial">~</span></td><td><span class="cmp-partial">~</span></td></tr>
-          <tr><td>Consistent AI Influencers</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-na">N/A</span></td><td><span class="cmp-na">N/A</span></td></tr>
-          <tr><td>8K Output</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td></tr>
-          <tr><td>AI Video Generation</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td></tr>
-          <tr><td>Product Placement</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td></tr>
-          <tr><td>AI Avatars</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-partial">~</span></td><td><span class="cmp-partial">~</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td></tr>
-          <tr><td>Product Photoshoot</td><td><span class="cmp-yes">✓</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td><td><span class="cmp-no">✕</span></td></tr>
+          <tr>
+            <td>Realistic AI Humans</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><span class="cmp-partial">~</span></td>
+            <td><span class="cmp-partial">~</span></td>
+            <td><span class="cmp-na">N/A</span></td>
+            <td><span class="cmp-na">N/A</span></td>
+          </tr>
+          <tr>
+            <td>Skin Pore-Level Upscale</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><span class="cmp-na">N/A</span></td>
+            <td><span class="cmp-na">N/A</span></td>
+            <td><span class="cmp-partial">~</span></td>
+            <td><span class="cmp-partial">~</span></td>
+          </tr>
+          <tr>
+            <td>Consistent AI Influencers</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><span class="cmp-na">N/A</span></td>
+            <td><span class="cmp-na">N/A</span></td>
+          </tr>
+          <tr>
+            <td>8K Output</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+          </tr>
+          <tr>
+            <td>AI Video Generation</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+          </tr>
+          <tr>
+            <td>Product Placement</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+          </tr>
+          <tr>
+            <td>AI Avatars</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><span class="cmp-partial">~</span></td>
+            <td><span class="cmp-partial">~</span></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+          </tr>
+          <tr>
+            <td>Product Photoshoot</td>
+            <td class="rasgo-cell"><svg class="cmp-check" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+            <td><svg class="cmp-x" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></td>
+          </tr>
         </tbody>
       </table>
     </div>
     <div class="cmp-cta-wrap sr">
       <a href="https://www.rasgo.ai/auth?mode=signup&redirect=%2Fdashboard" class="cmp-cta">
         Start Now
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </div>
@@ -1298,28 +1470,27 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
 <section class="pricing-section" id="pricing">
   <div class="container">
     <div class="pricing-header sr">
-      <span class="section-label" style="display:block;text-align:center;margin-bottom:12px">Pricing</span>
+      <div class="pricing-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
+        <span>Pricing</span>
+      </div>
       <h2 class="section-h2">Start Creating Today.</h2>
-      <p class="section-sub" style="margin-top:12px">Choose the tier that matches your production scale.<br>Monthly credits refresh every billing cycle. No hidden fees.</p>
+      <p class="section-sub">Choose the tier that matches your production scale.<br>Monthly credits refresh every billing cycle. No hidden fees.</p>
     </div>
     <div class="pricing-grid sr">
+      <!-- STARTER -->
       <div class="pricing-card">
         <div class="plan-name">Starter</div>
-        <div class="plan-tagline">Entry plan for casual creators.</div>
+        <div class="plan-price-wrap">
+          <span class="plan-currency">$</span>
+          <span class="plan-price">19</span>
+          <span class="plan-price-cents">.99</span>
+          <span class="plan-price-period">/month</span>
+        </div>
         <div class="plan-credits">
-          <div class="plan-credits-num">500 credits/mo.</div>
-          <div class="plan-credits-lbl">monthly tokens</div>
-          <div class="plan-credits-sub">Refills every billing cycle</div>
+          <span class="plan-credits-num">500</span><span class="plan-credits-lbl">monthly tokens</span>
         </div>
-        <div class="plan-price-wrap"><span class="plan-price">$19.99</span></div>
-        <div class="plan-price-period" style="margin-bottom:4px">Billed monthly</div>
-        <div class="plan-renew">Renews at $19.99</div>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Get Plan</a>
-        <div class="plan-tags">
-          <span class="plan-tag">Community Support</span>
-          <span class="plan-tag">Standard Speed</span>
-        </div>
-        <div class="plan-includes-title">What's included</div>
+        <div class="plan-tagline">Entry plan for casual creators.</div>
         <ul class="plan-features">
           <li class="plan-feature">Character Studio access</li>
           <li class="plan-feature">Product Photoshoot access</li>
@@ -1327,138 +1498,92 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
           <li class="plan-feature">Motion Control video generation</li>
           <li class="plan-feature">Community support</li>
         </ul>
-        <div class="plan-tools-title">Tools included</div>
-        <ul class="plan-tools">
-          <li class="plan-tool"><span>Character Studio</span><span>Included</span></li>
-          <li class="plan-tool"><span>Product Photoshoot</span><span>Included</span></li>
-          <li class="plan-tool"><span>Upscale</span><span>Included</span></li>
-          <li class="plan-tool"><span>Image Studio</span><span>Basic</span></li>
-          <li class="plan-tool"><span>Video Studio</span><span>Motion Control</span></li>
-          <li class="plan-tool"><span>Cinema Studio</span><span>—</span></li>
-          <li class="plan-tool"><span>Product Placement</span><span>—</span></li>
-        </ul>
+        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Subscribe <span aria-hidden="true">→</span></a>
       </div>
+      <!-- CREATOR -->
       <div class="pricing-card featured">
-        <div class="featured-badge">Most Popular · Creator 30% Off</div>
+        <div class="featured-badge">Popular</div>
         <div class="plan-name">Creator</div>
-        <div class="plan-tagline">Best value for growing creators.</div>
-        <div class="plan-credits">
-          <div class="plan-credits-num">1,200 credits/mo.</div>
-          <div class="plan-credits-lbl">monthly tokens</div>
-          <div class="plan-credits-sub">Refills every billing cycle</div>
-        </div>
         <div class="plan-price-wrap">
-          <span class="plan-price-old">$42.99</span>
-          <span class="plan-price">$29.99</span>
+          <span class="plan-currency">$</span>
+          <span class="plan-price">29</span>
+          <span class="plan-price-cents">.99</span>
+          <span class="plan-price-period">/month</span>
         </div>
-        <div class="plan-price-period" style="margin-bottom:4px">Billed monthly</div>
-        <div class="plan-renew">Renews at $29.99</div>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Get Plan</a>
-        <div class="plan-tags">
-          <span class="plan-tag">4K Quality</span>
-          <span class="plan-tag">Priority Support</span>
-          <span class="plan-tag">Kling 2.6</span>
-          <span class="plan-tag">All Models</span>
+        <div class="plan-credits">
+          <span class="plan-credits-num">1,200</span><span class="plan-credits-lbl">monthly tokens</span>
         </div>
-        <div class="plan-includes-title">What's included</div>
+        <div class="plan-tagline">Best value for growing creators.</div>
         <ul class="plan-features">
           <li class="plan-feature">Everything in Starter</li>
           <li class="plan-feature">Kling 2.6 video generation</li>
           <li class="plan-feature">4K quality available</li>
           <li class="plan-feature">Priority support</li>
         </ul>
-        <div class="plan-tools-title">Tools included</div>
-        <ul class="plan-tools">
-          <li class="plan-tool"><span>Character Studio</span><span>Included</span></li>
-          <li class="plan-tool"><span>Product Photoshoot</span><span>Included</span></li>
-          <li class="plan-tool"><span>Upscale</span><span>4K Output</span></li>
-          <li class="plan-tool"><span>Image Studio</span><span>All Models</span></li>
-          <li class="plan-tool"><span>Video Studio</span><span>Kling 2.6</span></li>
-          <li class="plan-tool"><span>Cinema Studio</span><span>Included</span></li>
-          <li class="plan-tool"><span>Product Placement</span><span>—</span></li>
-        </ul>
+        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Subscribe <span aria-hidden="true">→</span></a>
       </div>
+      <!-- PRO -->
       <div class="pricing-card">
         <div class="plan-name">Pro</div>
-        <div class="plan-tagline">Serious creator tier.</div>
-        <div class="plan-credits">
-          <div class="plan-credits-num">3,000 credits/mo.</div>
-          <div class="plan-credits-lbl">monthly tokens</div>
-          <div class="plan-credits-sub">Refills every billing cycle</div>
-        </div>
         <div class="plan-price-wrap">
-          <span class="plan-price-old">$85.99</span>
-          <span class="plan-price">$59.99</span>
+          <span class="plan-currency">$</span>
+          <span class="plan-price">59</span>
+          <span class="plan-price-cents">.99</span>
+          <span class="plan-price-period">/month</span>
         </div>
-        <div class="plan-price-period" style="margin-bottom:4px">Billed monthly</div>
-        <div class="plan-renew">Renews at $59.99</div>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Get Plan</a>
-        <div class="plan-tags">
-          <span class="plan-tag">Kling 3.0</span>
-          <span class="plan-tag">Early Access</span>
-          <span class="plan-tag">Custom Workflows</span>
-          <span class="plan-tag">8K Upscale</span>
-          <span class="plan-tag">Priority Support</span>
+        <div class="plan-credits">
+          <span class="plan-credits-num">3,000</span><span class="plan-credits-lbl">monthly tokens</span>
         </div>
-        <div class="plan-includes-title">What's included</div>
+        <div class="plan-tagline">Serious creator tier.</div>
         <ul class="plan-features">
           <li class="plan-feature">Everything in Creator</li>
           <li class="plan-feature">Kling 3.0 Standard access</li>
           <li class="plan-feature">Early feature access</li>
           <li class="plan-feature">Custom workflows</li>
         </ul>
-        <div class="plan-tools-title">Tools included</div>
-        <ul class="plan-tools">
-          <li class="plan-tool"><span>Character Studio</span><span>Included</span></li>
-          <li class="plan-tool"><span>Product Photoshoot</span><span>Included</span></li>
-          <li class="plan-tool"><span>Upscale</span><span>8K Output</span></li>
-          <li class="plan-tool"><span>Image Studio</span><span>All Models</span></li>
-          <li class="plan-tool"><span>Video Studio</span><span>Kling 3.0</span></li>
-          <li class="plan-tool"><span>Cinema Studio</span><span>Pro</span></li>
-          <li class="plan-tool"><span>Product Placement</span><span>Included</span></li>
-        </ul>
+        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Subscribe <span aria-hidden="true">→</span></a>
       </div>
     </div>
-    <p class="pricing-note sr">Prices exclude VAT and local taxes, calculated at checkout.<br>Access to new models and advanced features may roll out gradually and may not be available to all users at launch.</p>
-    <div class="pricing-link sr"><a href="https://www.rasgo.ai/pricing">View full pricing page →</a></div>
   </div>
 </section>
 
 <!-- FAQ -->
 <section class="faq-section">
   <div class="container">
-    <div class="faq-header sr">
-      <h2 class="section-h2">Common Questions</h2>
-      <p>Everything you need to know about Rasgo.</p>
-    </div>
-    <div class="faq-list sr">
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span class="faq-q">How does Rasgo work?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-body"><p>Rasgo uses advanced AI models to generate hyper-realistic human images, videos, and consistent AI influencers. Simply enter a text prompt or upload a reference image, and Rasgo handles the rest, from generation to upscaling to video creation.</p></div>
+    <div class="faq-inner">
+      <div class="faq-header sr">
+        <h2 class="section-h2">Common <span class="faq-accent">Questions</span></h2>
+        <p>Everything you need to know about Rasgo.</p>
       </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span class="faq-q">What can I create with Rasgo?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-body"><p>You can generate AI influencer photos, create videos with natural lip-sync and movement, upscale images up to 8K, place products into influencer scenes, and run full product photoshoots, all from one platform.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span class="faq-q">How fast is image generation?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-body"><p>Most images generate in under 15 seconds. Video generation and upscaling times vary depending on resolution and complexity, but are typically completed within a minute.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFaq(this)">
-          <span class="faq-q">What formats and resolutions are supported?</span>
-          <div class="faq-icon">+</div>
-        </button>
-        <div class="faq-body"><p>Rasgo supports PNG, JPEG, and WebP for images, and MP4 for video. The upscaler can output images up to 8K resolution (7680 x 4320px), ready for print and production use.</p></div>
+      <div class="faq-list sr">
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q">How does Rasgo work?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-body"><p>Rasgo uses advanced AI models to generate hyper-realistic human images, videos, and consistent AI influencers. Simply enter a text prompt or upload a reference image, and Rasgo handles the rest, from generation to upscaling to video creation.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q">What can I create with Rasgo?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-body"><p>You can generate AI influencer photos, create videos with natural lip-sync and movement, upscale images up to 8K, place products into influencer scenes, and run full product photoshoots, all from one platform.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q">How fast is image generation?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-body"><p>Most images generate in under 15 seconds. Video generation and upscaling times vary depending on resolution and complexity, but are typically completed within a minute.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q">What formats and resolutions are supported?</span>
+            <div class="faq-icon">+</div>
+          </button>
+          <div class="faq-body"><p>Rasgo supports PNG, JPEG, and WebP for images, and MP4 for video. The upscaler can output images up to 8K resolution (7680 x 4320px), ready for print and production use.</p></div>
+        </div>
       </div>
     </div>
   </div>
