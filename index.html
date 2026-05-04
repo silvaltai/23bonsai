@@ -821,56 +821,40 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .faq-body p{font-size:15px;color:rgba(255,255,255,.5);font-weight:500;line-height:1.7;padding-bottom:28px}
 
 /* ── FOOTER ── */
-footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.footer-inner{display:grid;gap:32px}
+footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(--border)}
+@media(min-width:640px){footer{padding:128px 0 48px}}
+.footer-inner{display:grid;gap:40px;margin-bottom:56px}
+@media(min-width:640px){.footer-inner{gap:64px;margin-bottom:96px}}
 @media(min-width:768px){.footer-inner{grid-template-columns:1fr 1fr;align-items:start}}
 @media(min-width:1024px){.footer-inner{grid-template-columns:2fr 1fr 1fr}}
-.footer-brand{}
-.footer-logo{font-size:22px;font-weight:900;letter-spacing:-.04em;color:#fff;margin-bottom:12px}
-.footer-desc{font-size:13px;color:rgba(255,255,255,.3);font-weight:500;line-height:1.6;max-width:320px}
-.footer-col h4{font-size:11px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:16px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
-.footer-col li a{font-size:14px;color:rgba(255,255,255,.5);font-weight:500;transition:color .2s}
+.footer-brand{display:flex;flex-direction:column;gap:20px}
+@media(min-width:640px){.footer-brand{gap:32px}}
+.footer-logo{font-size:30px;font-weight:900;font-style:italic;letter-spacing:-.05em;color:#fff;line-height:1}
+.footer-desc{font-size:16px;color:rgba(255,255,255,.4);font-weight:500;line-height:1.625;max-width:448px}
+@media(min-width:640px){.footer-desc{font-size:18px}}
+.footer-col{display:flex;flex-direction:column;gap:20px}
+@media(min-width:640px){.footer-col{gap:24px}}
+.footer-col h4{font-size:10px;font-weight:900;letter-spacing:.4em;text-transform:uppercase;color:#e1ea32;margin:0}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:16px;margin:0;padding:0}
+.footer-col li a{font-size:14px;color:rgba(255,255,255,.4);font-weight:500;transition:color .2s}
 .footer-col li a:hover{color:#fff}
 .footer-bot{
-  margin-top:40px;padding-top:24px;border-top:1px solid rgba(255,255,255,.06);
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;
+  padding-top:32px;border-top:1px solid rgba(255,255,255,.05);
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:24px;
+  font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.3em;color:rgba(255,255,255,.2);
 }
-.footer-copy{font-size:12px;color:rgba(255,255,255,.2)}
+@media(min-width:640px){.footer-bot{padding-top:48px;gap:32px;letter-spacing:.4em}}
+@media(min-width:768px){.footer-bot{flex-direction:row;align-items:center}}
+.footer-bot-left,.footer-bot-right{display:flex;flex-direction:column;gap:16px}
+@media(min-width:640px){.footer-bot-left,.footer-bot-right{flex-direction:row;align-items:center;gap:48px}}
+.footer-tagline{display:none;font-style:italic;opacity:.4}
+@media(min-width:768px){.footer-tagline{display:inline}}
 .footer-back{
-  font-size:12px;font-weight:700;color:rgba(255,255,255,.2);cursor:pointer;transition:color .2s;
+  display:none;font:inherit;color:inherit;letter-spacing:inherit;
+  background:none;border:none;cursor:pointer;transition:color .2s;padding:0;
 }
+@media(min-width:640px){.footer-back{display:inline}}
 .footer-back:hover{color:#fff}
-/* ── OVERRIDE PRODUCT PLACEMENT (sección 9) ── */
-.pp-content .section-h2,
-.pp-content h2{
-  font-size:clamp(36px,4.2vw,52px) !important;
-  line-height:1.05 !important;
-  letter-spacing:-.035em !important;
-  margin-top:16px !important;
-  margin-bottom:24px !important;
-  max-width:none !important;
-}
-.pp-content .section-sub{
-  font-size:clamp(15px,1.3vw,17px) !important;
-  max-width:560px !important;
-  line-height:1.55 !important;
-}
-.pp-cta{
-  gap:14px !important;
-  margin-top:36px !important;
-  padding:22px 44px !important;
-  font-size:15px !important;
-  letter-spacing:.02em !important;
-}
-.pp-cta svg{
-  width:20px !important;
-  height:20px !important;
-  stroke-width:3 !important;
-}
-</style>
-</head>
-<body>
 
 <!-- TOP BANNER -->
 <div id="top-banner">
@@ -1614,8 +1598,14 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
       </div>
     </div>
     <div class="footer-bot">
-      <span class="footer-copy">© 2026 Rasgo AI · Make AI Look Real · All Rights Reserved</span>
-      <button class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top ↑</button>
+      <div class="footer-bot-left">
+        <span>© 2026 Rasgo AI</span>
+        <span class="footer-tagline">Make AI Look Real</span>
+      </div>
+      <div class="footer-bot-right">
+        <span>All Rights Reserved</span>
+        <button class="footer-back" onclick="window.scrollTo({top:0,behavior:'smooth'})">Back to Top ↑</button>
+      </div>
     </div>
   </div>
 </footer>
