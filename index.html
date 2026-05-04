@@ -463,33 +463,66 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .up-label{margin-top:14px;text-align:center;font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .up-label-yellow{color:var(--yellow2)}
 
-/* ── PIXEL REALISM SECTION ── */
-.real-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
-.real-inner{display:grid;gap:40px;align-items:center}
-@media(min-width:1024px){.real-inner{grid-template-columns:1fr 1fr;gap:64px}}
-.real-content{}
-.real-content h2{margin-top:16px;margin-bottom:24px}
-.real-tags{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
-.real-tag{
-  padding:8px 20px;border-radius:100px;border:1px solid rgba(255,255,255,.15);
-  font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#fff;
+/* ── PIXEL REALISM SECTION (11) ── */
+.real-section{padding:80px 0;background:var(--yellow2);color:#000;overflow:hidden}
+@media(min-width:1024px){.real-section{padding:120px 0}}
+.real-block{display:grid;gap:32px;align-items:center}
+@media(min-width:1024px){.real-block{grid-template-columns:1fr 1fr;gap:96px}}
+.real-block + .real-block{margin-top:48px}
+@media(min-width:1024px){.real-block + .real-block{margin-top:80px}}
+
+/* Bloque 2: en desktop imagen izquierda, texto derecha */
+@media(min-width:1024px){
+  .real-block-2 .real-img-2{order:1}
+  .real-block-2 .real-content-2{order:2}
 }
-.real-img-wrap{
-  border-radius:32px;overflow:hidden;border:1px solid rgba(255,255,255,.1);
-  position:relative;aspect-ratio:3/4;background:#111;cursor:zoom-in;
-}
-.real-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.real-img-wrap:hover img{transform:scale(2.5);transform-origin:50% 30%}
-.real-stats{display:flex;gap:32px;margin-top:32px}
-.real-stat-num{font-size:32px;font-weight:700;color:#fff}
-.real-stat-lbl{font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
-.real-try{
-  display:inline-flex;align-items:center;gap:12px;margin-top:24px;
-  padding:14px 36px;background:var(--yellow2);color:#000;
-  font-size:13px;font-weight:900;text-transform:uppercase;
-  border-radius:100px;transition:all .3s;
-}
-.real-try:hover{transform:scale(1.05)}
+
+/* Tipografía */
+.real-h2{font-size:clamp(44px,7vw,84px);font-weight:700;line-height:.92;letter-spacing:-.03em;text-transform:uppercase;color:#000;margin:0}
+.real-h3{font-size:clamp(36px,5vw,60px);font-weight:600;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:#000;margin:0}
+.real-sub{font-size:18px;line-height:1.55;font-weight:500;color:rgba(0,0,0,.6);max-width:480px;margin-top:24px}
+
+/* Badges grandes tipo card */
+.real-badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;max-width:480px}
+.real-badge{padding:24px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:24px;transition:background .3s}
+@media(min-width:640px){.real-badge{padding:32px;border-radius:32px}}
+.real-badge:hover{background:rgba(0,0,0,.1)}
+.real-badge-ic{width:24px;height:24px;color:rgba(0,0,0,.4);margin-bottom:24px;display:block}
+.real-badge-ttl{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;line-height:1.3}
+.real-badge-sub{display:block;margin-top:4px;font-size:10px;font-weight:500;color:rgba(0,0,0,.4);text-transform:uppercase;letter-spacing:.1em}
+
+/* Imágenes */
+.real-img-1{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:4/5;background:#111}
+.real-img-2{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:4/3;background:#111}
+@media(min-width:768px){.real-img-1,.real-img-2{border-radius:48px}}
+.real-img-1 img{width:100%;height:100%;object-fit:cover;display:block}
+.real-img-2 img{position:absolute;top:50%;left:50%;width:auto;height:auto;min-width:100%;min-height:100%;object-fit:cover;transform:translate(-50%,calc(-50% - 20px)) scale(1.5);user-select:none}
+
+/* Pill superior "Zoom in and drag" */
+.real-zoom-hint{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:100px;z-index:2;white-space:nowrap}
+.real-zoom-hint svg{color:var(--yellow2);width:14px;height:14px;flex-shrink:0;animation:realPulse 2s ease-in-out infinite}
+@keyframes realPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.real-zoom-hint span{font-size:10px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:#fff}
+
+/* Pill inferior con controles */
+.real-zoom-ctrl{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:100px;z-index:2}
+.real-zoom-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.05);color:#fff;border:none;cursor:pointer;transition:background .3s;padding:0}
+.real-zoom-btn:hover{background:rgba(255,255,255,.1)}
+.real-zoom-btn-yellow{background:var(--yellow2);color:#000;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.real-zoom-btn-yellow:hover{background:#d4dd2a}
+.real-zoom-pct{height:40px;padding:0 18px;display:flex;align-items:center;border-radius:100px;background:rgba(255,255,255,.05);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#fff}
+
+/* Stats con separador vertical */
+.real-stats{display:flex;align-items:center;gap:24px;margin-top:32px}
+.real-stat-num{font-size:32px;font-weight:900;color:#000;line-height:1}
+.real-stat-lbl{font-size:10px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(0,0,0,.4);margin-top:6px}
+.real-stat-div{width:1px;height:48px;background:rgba(0,0,0,.15)}
+
+/* Botón negro con texto amarillo */
+.real-cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:16px 32px;background:#000;color:var(--yellow2);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;border-radius:100px;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.2);text-decoration:none}
+.real-cta:hover{transform:scale(1.05)}
+.real-cta svg{transition:transform .3s}
+.real-cta:hover svg{transform:translateX(4px)}
 
 /* ── IMAGE GEN SECTION ── */
 .imgen-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
@@ -1047,39 +1080,70 @@ footer{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--bord
   </div>
 </section>
 
-<!-- PIXEL REALISM SECTION -->
+<!-- PIXEL REALISM SECTION (11) -->
 <section class="real-section">
   <div class="container">
-    <div class="real-inner">
-      <div class="real-img-wrap sr" style="order:1">
-        <img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Realism%20showcase%20OK/Generated_Image_March_19_2026_-_9_42PM_yqedfs.jpg" alt="Pixel-perfect AI realism" loading="lazy"/>
-        <div style="position:absolute;bottom:16px;left:16px;padding:6px 14px;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border-radius:100px;font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)">Zoom in and drag to explore</div>
-      </div>
-      <div class="real-content sr" style="order:2">
-        <span class="section-label">Pixel-Perfect Realism</span>
-        <h2 class="section-h2" style="margin-top:16px">Pixel-Perfect Realism</h2>
-        <p class="section-sub" style="margin-top:16px">Every pore, every strand, every micro-expression, preserved. Rasgo reconstructs the fine details that other AI tools destroy, so your influencers look real at any resolution.</p>
-        <div class="real-tags" style="margin-top:24px">
-          <div class="real-tag">Skin Detail Pores &amp; Texture</div>
-          <div class="real-tag">Print Ready</div>
+
+    <!-- Bloque 1: texto izquierda + imagen derecha -->
+    <div class="real-block real-block-1">
+      <div class="real-content-1 sr">
+        <h2 class="real-h2">Pixel-Perfect<br>Realism</h2>
+        <p class="real-sub">Every pore, every strand, every micro-expression, preserved. Rasgo reconstructs the fine details that other AI tools destroy, so your influencers look real at any resolution.</p>
+        <div class="real-badges">
+          <div class="real-badge">
+            <svg class="real-badge-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/><path d="M9 21H3v-6"/></svg>
+            <div class="real-badge-ttl">Skin Detail<span class="real-badge-sub">Pores &amp; Texture</span></div>
+          </div>
+          <div class="real-badge">
+            <svg class="real-badge-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+            <div class="real-badge-ttl">Print Ready</div>
+          </div>
         </div>
+      </div>
+      <div class="real-img-1 sr">
+        <img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Realism%20showcase%20OK/Generated_Image_March_19_2026_-_9_42PM_yqedfs.jpg" alt="Pixel-perfect AI realism" loading="lazy"/>
+      </div>
+    </div>
+
+    <!-- Bloque 2: imagen izquierda (zoom) + texto derecha -->
+    <div class="real-block real-block-2">
+      <div class="real-img-2 sr">
+        <div class="real-zoom-hint">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.037 4.688a.495.495 0 0 1 .651-.651l16 6.5a.5.5 0 0 1-.063.947l-6.124 1.58a2 2 0 0 0-1.438 1.435l-1.579 6.126a.5.5 0 0 1-.947.063z"/></svg>
+          <span>Zoom in and drag to explore</span>
+        </div>
+        <img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/AI%20Realism%20showcase%20OK/Generated_Image_March_19_2026_-_9_42PM_yqedfs.jpg" alt="Zoomable detail" draggable="false" loading="lazy"/>
+        <div class="real-zoom-ctrl">
+          <button class="real-zoom-btn" type="button" aria-label="Zoom out">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/></svg>
+          </button>
+          <div class="real-zoom-pct">150%</div>
+          <button class="real-zoom-btn real-zoom-btn-yellow" type="button" aria-label="Zoom in">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="real-content-2 sr">
+        <h3 class="real-h3">See Every Detail</h3>
+        <p class="real-sub">Zoom in and judge for yourself. Rasgo reconstructs skin at pixel level with natural pore structures, realistic light scattering, and subtle imperfections that make AI faces indistinguishable from real photography.</p>
         <div class="real-stats">
           <div class="real-stat">
             <div class="real-stat-num">1000%</div>
             <div class="real-stat-lbl">Magnification</div>
           </div>
+          <div class="real-stat-div"></div>
           <div class="real-stat">
             <div class="real-stat-num">8K+</div>
             <div class="real-stat-lbl">Detail Depth</div>
           </div>
         </div>
-        <p style="margin-top:16px;font-size:14px;color:rgba(255,255,255,.4);font-weight:500;line-height:1.6">See Every Detail — Zoom in and judge for yourself. Rasgo reconstructs skin at pixel level with natural pore structures, realistic light scattering, and subtle imperfections that make AI faces indistinguishable from real photography.</p>
-        <a href="https://www.rasgo.ai/auth?mode=signup&redirect=%2Fdashboard" class="real-try" style="margin-top:24px;display:inline-flex">
+        <a href="https://www.rasgo.ai/auth?mode=signup&amp;redirect=%2Fdashboard" class="real-cta">
           Try Upscaler
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
     </div>
+
   </div>
 </section>
 
