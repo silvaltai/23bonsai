@@ -718,7 +718,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   font-size:clamp(16px,1.6vw,20px);color:rgba(255,255,255,.45);font-weight:500;line-height:1.5;
 }
 .pricing-grid{display:grid;gap:16px}
-@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(4,1fr);align-items:start;gap:20px}}
+@media(min-width:768px){.pricing-grid{grid-template-columns:repeat(3,1fr);align-items:start;gap:20px}}
 .pricing-card{
   border-radius:32px;padding:40px 32px;background:#0a0a0a;
   display:flex;flex-direction:column;position:relative;
@@ -742,9 +742,9 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .plan-price-wrap{display:flex;align-items:baseline;gap:2px;margin-bottom:32px;flex-wrap:wrap}
 .plan-currency{font-size:20px;font-weight:700;color:rgba(255,255,255,.35);margin-right:4px;align-self:center}
 .pricing-card.featured .plan-currency{color:#000}
-.plan-price{font-size:clamp(40px,5vw,56px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1}
+.plan-price{font-size:clamp(56px,7vw,72px);font-weight:900;letter-spacing:-.04em;color:#fff;line-height:1}
 .pricing-card.featured .plan-price{color:#000}
-.plan-price-cents{font-size:20px;font-weight:700;color:rgba(255,255,255,.35);align-self:flex-end;margin-bottom:10px}
+.plan-price-cents{font-size:24px;font-weight:700;color:rgba(255,255,255,.35);align-self:flex-end;margin-bottom:10px}
 .pricing-card.featured .plan-price-cents{color:#000}
 .plan-price-period{font-size:14px;color:rgba(255,255,255,.3);font-weight:500;margin-left:6px;align-self:flex-end;margin-bottom:12px}
 .pricing-card.featured .plan-price-period{color:rgba(0,0,0,.5)}
@@ -763,7 +763,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .plan-features{list-style:none;display:flex;flex-direction:column;gap:14px;margin-bottom:32px;flex:1}
 .plan-feature{
   display:flex;align-items:flex-start;gap:12px;
-  font-size:13px;color:rgba(255,255,255,.85);font-weight:500;line-height:1.4;
+  font-size:14px;color:rgba(255,255,255,.85);font-weight:500;line-height:1.4;
 }
 .plan-feature::before{
   content:'';display:block;width:7px;height:7px;border-radius:50%;
@@ -782,106 +782,6 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .plan-btn:hover{transform:translateY(-2px)}
 .plan-btn:hover span{transform:translateX(4px)}
 .pricing-card.featured .plan-btn{background:#0a0a0a;color:#e2ea34}
-
-<section class="pricing-section" id="pricing">
-  <div class="container">
-    <div class="pricing-header sr">
-      <div class="pricing-badge">
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>
-        <span>Precios</span>
-      </div>
-      <h2 class="section-h2">Empieza a vender hoy.</h2>
-      <p class="section-sub">Elige el plan que se ajusta a tu velocidad de ejecución.<br>Pagas por velocidad y resultados, no por "tener una tienda".</p>
-    </div>
-    <div class="pricing-grid sr">
-      <div class="pricing-card">
-        <div class="featured-badge">Empieza Gratis</div>
-        <div class="plan-name">Free</div>
-        <div class="plan-price-wrap">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">0</span>
-          <span class="plan-price-period">/mes</span>
-        </div>
-        <div class="plan-tagline">Para empezar sin excusas.</div>
-        <ul class="plan-features">
-          <li class="plan-feature">1 Landing page lista para vender</li>
-          <li class="plan-feature">3 Video Ads (1 producto)</li>
-          <li class="plan-feature">Calculadora drop básica</li>
-          <li class="plan-feature">Acceso a comunidad</li>
-          <li class="plan-feature">Soporte por comunidad</li>
-        </ul>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Probar Gratis <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="pricing-card">
-        <div class="featured-badge">Más vendido</div>
-        <div class="plan-name">Starter</div>
-        <div class="plan-price-wrap">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">97</span>
-          <span class="plan-price-cents">USD</span>
-          <span class="plan-price-period">/mes</span>
-        </div>
-        <div class="plan-tagline">Para dejar de adivinar.</div>
-        <ul class="plan-features">
-          <li class="plan-feature">Búsqueda de productos (hasta 30/mes)</li>
-          <li class="plan-feature">Calculadora drop completa</li>
-          <li class="plan-feature">5 Landings de producto</li>
-          <li class="plan-feature">3 Video Ads + 2 Static Ads por producto (hasta 5 productos/mes)</li>
-          <li class="plan-feature">Métricas básicas Shopify</li>
-          <li class="plan-feature">Soporte estándar</li>
-        </ul>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Empezar Ahora <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="featured-badge">Popular</div>
-        <div class="plan-name">Growth</div>
-        <div class="plan-price-wrap">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">150</span>
-          <span class="plan-price-cents">USD</span>
-          <span class="plan-price-period">/mes</span>
-        </div>
-        <div class="plan-tagline">Para escalar con datos.</div>
-        <ul class="plan-features">
-          <li class="plan-feature">Todo lo de Starter</li>
-          <li class="plan-feature">Búsqueda de productos (hasta 100/mes)</li>
-          <li class="plan-feature">15 Landings de producto</li>
-          <li class="plan-feature">5 Video Ads + 3 Static Ads por producto (hasta 15 productos/mes)</li>
-          <li class="plan-feature">Métricas Shopify + Meta Ads</li>
-          <li class="plan-feature">Seguimiento de pedidos entregados</li>
-          <li class="plan-feature">1 Tienda Shopify</li>
-          <li class="plan-feature">Sugerencias de optimización de presupuesto</li>
-          <li class="plan-feature">Soporte prioritario</li>
-        </ul>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Escalar Ahora <span aria-hidden="true">→</span></a>
-      </div>
-      <div class="pricing-card">
-        <div class="plan-name">Scale</div>
-        <div class="plan-price-wrap">
-          <span class="plan-currency">$</span>
-          <span class="plan-price">300</span>
-          <span class="plan-price-cents">USD</span>
-          <span class="plan-price-period">/mes</span>
-        </div>
-        <div class="plan-tagline">Para operar como un equipo completo.</div>
-        <ul class="plan-features">
-          <li class="plan-feature">Todo lo de Growth</li>
-          <li class="plan-feature">Búsqueda de productos (hasta 500/mes)</li>
-          <li class="plan-feature">Calculadora drop avanzada (costos reales completos)</li>
-          <li class="plan-feature">30 Landings de producto</li>
-          <li class="plan-feature">5 Video Ads + 5 Static Ads por producto (hasta 30 productos/mes)</li>
-          <li class="plan-feature">Dashboard de control total (ventas, ads, costos, entregas)</li>
-          <li class="plan-feature">Sugerencias automáticas de optimización</li>
-          <li class="plan-feature">3 Tiendas Shopify</li>
-          <li class="plan-feature">SAC WhatsApp activo</li>
-          <li class="plan-feature">Mail Marketing activo (Klaviyo)</li>
-          <li class="plan-feature">Acceso anticipado a nuevas funciones</li>
-        </ul>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Escalar Sin Fricción <span aria-hidden="true">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
 
 /* ── FAQ SECTION ── */
 .faq-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
