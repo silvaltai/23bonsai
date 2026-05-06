@@ -1702,7 +1702,7 @@ window.addEventListener('load', function(){
 
 <script>
   const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI": "anon";
 
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -1711,10 +1711,7 @@ window.addEventListener('load', function(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { error } = await supabaseClient.auth.signUp({
-      email: email,
-      password: password
-    });
+    const { error } = await supabaseClient.auth.signUp({ email, password });
 
     if (error) {
       alert("Error: " + error.message);
@@ -1728,10 +1725,7 @@ window.addEventListener('load', function(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { error } = await supabaseClient.auth.signInWithPassword({
-      email: email,
-      password: password
-    });
+    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
 
     if (error) {
       alert("Error login: " + error.message);
@@ -1749,27 +1743,29 @@ window.addEventListener('load', function(){
   }
 
   // CHECK USER
-  <script>
-async function checkUser() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
+  async function checkUser() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
 
-  const authBox = document.getElementById("authBox");
-  const logoutBtn = document.getElementById("logoutBtn");
+    const authBox = document.getElementById("authBox");
+    const logoutBtn = document.getElementById("logoutBtn");
 
-  console.log("Usuario logueado:", user);
+    console.log("Usuario:", user);
 
-  if (user) {
-    if (authBox) authBox.style.display = "none";
-
-    if (logoutBtn) {
-      logoutBtn.style.display = "block";
-      logoutBtn.innerText = "Cerrar sesión (" + user.email + ")";
+    if (user) {
+      if (authBox) authBox.style.display = "none";
+      if (logoutBtn) {
+        logoutBtn.style.display = "block";
+        logoutBtn.innerText = "Cerrar sesión (" + user.email + ")";
+      }
+    } else {
+      if (authBox) authBox.style.display = "block";
+      if (logoutBtn) logoutBtn.style.display = "none";
     }
-  } else {
-    if (authBox) authBox.style.display = "block";
-    if (logoutBtn) logoutBtn.style.display = "none";
   }
-}
+
+  document.addEventListener("DOMContentLoaded", function() {
+    checkUser();
+  });
 </script>
  <div id="authBox" style="margin-top:20px;">
   <input type="email" id="email" placeholder="Tu email" />
