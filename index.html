@@ -1739,6 +1739,18 @@ window.addEventListener('load', function(){
       alert("Sesión iniciada correctamente");
     }
   }
+async function checkUser() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    alert("Usuario logueado: " + user.email);
+  } else {
+    console.log("No hay usuario logueado");
+  }
+}
+document.addEventListener("DOMContentLoaded", function() {
+  checkUser();
+});
 </script>
   <div style="margin-top:20px;">
   <input type="email" id="email" placeholder="Tu email" />
