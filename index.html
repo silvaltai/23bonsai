@@ -1739,20 +1739,26 @@ window.addEventListener('load', function(){
       alert("Sesión iniciada correctamente");
     }
   }
-async function checkUser() {
-  const { data: { user } } = await supabaseClient.auth.getUser();
 
-  if (user) {
-    alert("Usuario logueado: " + user.email);
-  } else {
-    console.log("No hay usuario logueado");
+  // CHECK USER
+  async function checkUser() {
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    const authBox = document.getElementById("authBox");
+
+    if (user) {
+      if (authBox) authBox.style.display = "none";
+      alert("Bienvenido " + user.email);
+    } else {
+      if (authBox) authBox.style.display = "block";
+    }
   }
-}
-document.addEventListener("DOMContentLoaded", function() {
-  checkUser();
-});
+
+  document.addEventListener("DOMContentLoaded", function() {
+    checkUser();
+  });
 </script>
-  <div style="margin-top:20px;">
+  <div id="authBox" style="margin-top:20px;">
   <input type="email" id="email" placeholder="Tu email" />
   <input type="password" id="password" placeholder="Tu contraseña" />
   <button onclick="signUp()">Crear cuenta</button>
