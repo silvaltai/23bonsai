@@ -1749,31 +1749,39 @@ window.addEventListener('load', function(){
   }
 
   // CHECK USER
-  async function checkUser() {
-    const { data: { user } } = await supabaseClient.auth.getUser();
+  <script>
+async function checkUser() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
-    const authBox = document.getElementById("authBox");
-    const logoutBtn = document.getElementById("logoutBtn");
+  const authBox = document.getElementById("authBox");
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    if (user) {
-      if (authBox) authBox.style.display = "none";
-      if (logoutBtn) logoutBtn.style.display = "block";
-      console.log("Usuario logueado:", user.email);
-    } else {
-      if (authBox) authBox.style.display = "block";
-      if (logoutBtn) logoutBtn.style.display = "none";
+  console.log("Usuario logueado:", user);
+
+  if (user) {
+    if (authBox) authBox.style.display = "none";
+
+    if (logoutBtn) {
+      logoutBtn.style.display = "block";
+      logoutBtn.innerText = "Cerrar sesión (" + user.email + ")";
     }
+  } else {
+    if (authBox) authBox.style.display = "block";
+    if (logoutBtn) logoutBtn.style.display = "none";
   }
-
-  document.addEventListener("DOMContentLoaded", function() {
-    checkUser();
-  });
+}
 </script>
   <div id="authBox" style="margin-top:20px;">
   <input type="email" id="email" placeholder="Tu email" />
   <input type="password" id="password" placeholder="Tu contraseña" />
   <button onclick="signUp()">Crear cuenta</button>
   <button onclick="login()">Iniciar sesión</button>
+</div>
+
+<button id="logoutBtn" onclick="logout()" 
+style="display:none; position:fixed; top:20px; right:20px; z-index:9999; padding:10px;">
+  Cerrar sesión
+</button>
 </div>
 
 <button id="logoutBtn" onclick="logout()" style="display:none; margin-top:10px;">
