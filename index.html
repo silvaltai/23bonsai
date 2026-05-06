@@ -1698,11 +1698,12 @@ window.addEventListener('load', function(){
   loop();
 });
 </script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<!-- SUPABASE + AUTH COMPLETO -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 
 <script>
   const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
-  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI": "anon";
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
 
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -1767,15 +1768,18 @@ window.addEventListener('load', function(){
     checkUser();
   });
 </script>
- <div id="authBox" style="margin-top:20px;">
+
+<!-- FORMULARIO -->
+<div id="authBox" style="margin-top:20px;">
   <input type="email" id="email" placeholder="Tu email" />
   <input type="password" id="password" placeholder="Tu contraseña" />
   <button onclick="signUp()">Crear cuenta</button>
   <button onclick="login()">Iniciar sesión</button>
 </div>
 
+<!-- LOGOUT -->
 <button id="logoutBtn" onclick="logout()" 
-style="display:none; position:fixed; top:20px; right:20px; z-index:9999; padding:10px;">
+style="display:none; position:fixed; top:20px; right:20px; z-index:9999; padding:10px; background:white; color:black;">
   Cerrar sesión
 </button>
 </body>
