@@ -1471,8 +1471,9 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
           <li class="plan-feature">3 Video Ads + 2 Static Ads /producto</li>
           <li class="plan-feature">Métricas básicas de rendimiento</li>
         </ul>
-        <a href="https://www.rasgo.ai/auth?mode=signup" class="plan-btn">Actívalo ahora<span aria-hidden="true">→</span></a>
-      </div>
+        <a href="#" onclick="selectPlan('starter')" class="plan-btn">
+  Actívalo ahora <span aria-hidden="true">→</span>
+</a>
       <!-- GROWTH -->
       <div class="pricing-card featured">
         <div class="featured-badge">Más Vendido</div>
@@ -1767,6 +1768,25 @@ window.addEventListener('load', function(){
   document.addEventListener("DOMContentLoaded", function() {
     checkUser();
   });
+async function selectPlan(planName) {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    alert("Debes iniciar sesión primero");
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ plan: planName })
+    .eq('id', user.id);
+
+  if (error) {
+    alert("Error al guardar el plan");
+  } else {
+    alert("Plan seleccionado: " + planName);
+  }
+}
 </script>
 
 <!-- FORMULARIO -->
