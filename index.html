@@ -31,7 +31,7 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smo
 :root{
   --font:'Geist',sans-serif;
   --green:#00df81;
-  --yellow2:#e1ea32;
+  --green2:#00df81;
   --black:#000;
   --white:#fff;
   --border:rgba(255,255,255,0.08);
@@ -229,7 +229,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 @media(min-width:640px){.hero-ctas{flex-direction:row;align-items:center;gap:16px}}
 .btn-primary{
   display:inline-flex;align-items:center;justify-content:center;gap:12px;
-  padding:16px 32px;background:var(--yellow2);color:#000;
+  padding:16px 32px;background:var(--green2);color:#000;
   font-size:clamp(14px,1.5vw,18px);font-weight:900;letter-spacing:-.01em;text-transform:uppercase;
   border-radius:14px;transition:all .3s;
   box-shadow:0 0 40px -10px rgba(241,251,40,.5);
@@ -316,7 +316,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .fd-aside{display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 .fd-cta{
   display:inline-flex;align-items:center;gap:12px;margin-top:32px;
-  padding:16px 40px;background:var(--yellow2);color:#000;
+  padding:16px 40px;background:var(--green2);color:#000;
   font-size:16px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
   border-radius:100px;transition:all .3s;box-shadow:0 0 40px -10px rgba(241,251,40,.5);
   align-self:flex-start;white-space:nowrap;
@@ -437,7 +437,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .pp-cta{
   display:inline-flex;align-items:center;gap:10px;margin-top:24px;
-  padding:11px 26px;background:var(--yellow2);color:#000;
+  padding:11px 26px;background:var(--green2);color:#000;
   font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
   border-radius:100px;transition:all .3s;box-shadow:0 0 40px -10px rgba(241,251,40,.5);
 }
@@ -456,15 +456,15 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 @media(max-width:768px){.up-compare{gap:12px}}
 .up-img-wrap{position:relative}
 .up-img-wrap img{width:100%;height:auto;display:block;border-radius:18px;object-fit:cover;aspect-ratio:4/5}
-.up-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--yellow2)}
+.up-arrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--green2)}
 .up-arrow svg{width:32px;height:32px}
 @media(max-width:768px){.up-arrow svg{width:22px;height:22px}}
 .up-arrow-label{font-size:10px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.4)}
 .up-label{margin-top:14px;text-align:center;font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.up-label-yellow{color:var(--yellow2)}
+.up-label-yellow{color:var(--green2)}
 
 /* ── PIXEL REALISM SECTION (11) ── */
-.real-section{padding:80px 0;background:var(--yellow2);color:#000;overflow:hidden}
+.real-section{padding:80px 0;background:var(--green2);color:#000;overflow:hidden}
 @media(min-width:1024px){.real-section{padding:120px 0}}
 .real-block{display:grid;gap:32px;align-items:center}
 @media(min-width:1024px){.real-block{grid-template-columns:1fr 1fr;gap:96px}}
@@ -500,7 +500,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 
 /* Pill superior "Zoom in and drag" */
 .real-zoom-hint{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:12px;padding:10px 24px;background:rgba(0,0,0,.6);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:100px;z-index:2;white-space:nowrap}
-.real-zoom-hint svg{color:var(--yellow2);width:14px;height:14px;flex-shrink:0;animation:realPulse 2s ease-in-out infinite}
+.real-zoom-hint svg{color:var(--green2);width:14px;height:14px;flex-shrink:0;animation:realPulse 2s ease-in-out infinite}
 @keyframes realPulse{0%,100%{opacity:1}50%{opacity:.5}}
 .real-zoom-hint span{font-size:10px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:#fff}
 
@@ -508,7 +508,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .real-zoom-ctrl{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:8px;background:rgba(0,0,0,.6);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:100px;z-index:2}
 .real-zoom-btn{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.05);color:#fff;border:none;cursor:pointer;transition:background .3s;padding:0}
 .real-zoom-btn:hover{background:rgba(255,255,255,.1)}
-.real-zoom-btn-yellow{background:var(--yellow2);color:#000;box-shadow:0 4px 12px rgba(0,0,0,.2)}
+.real-zoom-btn-yellow{background:var(--green2);color:#000;box-shadow:0 4px 12px rgba(0,0,0,.2)}
 .real-zoom-btn-yellow:hover{background:#d4dd2a}
 .real-zoom-pct{height:40px;padding:0 18px;display:flex;align-items:center;border-radius:100px;background:rgba(255,255,255,.05);font-size:11px;font-weight:900;letter-spacing:.2em;text-transform:uppercase;color:#fff}
 
@@ -519,7 +519,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .real-stat-div{width:1px;height:48px;background:rgba(0,0,0,.15)}
 
 /* Botón negro con texto amarillo */
-.real-cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:16px 32px;background:#000;color:var(--yellow2);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;border-radius:100px;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.2);text-decoration:none}
+.real-cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:16px 32px;background:#000;color:var(--green2);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;border-radius:100px;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.2);text-decoration:none}
 .real-cta:hover{transform:scale(1.05)}
 .real-cta svg{transition:transform .3s}
 .real-cta:hover svg{transform:translateX(4px)}
@@ -548,7 +548,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .imgen-img img{width:100%;height:auto;object-fit:cover;display:block}
 .imgen-cta{
   display:inline-flex;align-items:center;gap:12px;
-  padding:18px 44px;background:var(--yellow2);color:#000;
+  padding:18px 44px;background:var(--green2);color:#000;
   font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
   border-radius:100px;transition:all .3s;box-shadow:0 12px 30px -10px rgba(225,234,50,.4);
 }
@@ -571,7 +571,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 @media(min-width:640px){.ps-upload{width:140px;border-radius:18px;font-size:12px}}
 @media(min-width:1024px){.ps-upload{width:180px;border-radius:20px;font-size:13px}}
-.ps-arrow{display:flex;align-items:center;justify-content:center;color:var(--yellow2);flex-shrink:0}
+.ps-arrow{display:flex;align-items:center;justify-content:center;color:var(--green2);flex-shrink:0}
 .ps-arrow svg{transform:rotate(90deg)}
 @media(min-width:1024px){.ps-arrow svg{transform:none}}
 .ps-gallery{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:100%}
@@ -583,7 +583,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .ps-cta-wrap{text-align:center;margin-top:40px}
 .ps-cta{
   display:inline-flex;align-items:center;gap:14px;
-  padding:18px 44px;background:var(--yellow2);color:#000;
+  padding:18px 44px;background:var(--green2);color:#000;
   font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.5px;
   border-radius:100px;transition:all .3s;box-shadow:0 10px 40px -10px rgba(225,234,50,.5);
 }
@@ -687,7 +687,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .cmp-cta-wrap{text-align:center;margin-top:40px}
 .cmp-cta{
   display:inline-flex;align-items:center;gap:14px;
-  padding:22px 72px;background:var(--yellow2);color:#000;
+  padding:22px 72px;background:var(--green2);color:#000;
   font-size:18px;font-weight:800;text-transform:uppercase;letter-spacing:.02em;
   border-radius:100px;transition:all .3s;
   box-shadow:0 0 50px -10px rgba(225,234,50,.4);
@@ -793,7 +793,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   margin-bottom:20px;text-transform:uppercase;line-height:.95;letter-spacing:-.02em;
   font-weight:800;
 }
-.faq-header h2 .faq-accent{color:var(--yellow2);display:block}
+.faq-header h2 .faq-accent{color:var(--green2);display:block}
 .faq-header p{font-size:15px;color:rgba(255,255,255,.4);font-weight:500;max-width:320px;line-height:1.5}
 .faq-list{max-width:none;margin:0;display:flex;flex-direction:column;gap:0}
 .faq-item{border-bottom:1px solid rgba(255,255,255,.1)}
@@ -812,7 +812,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;transition:all .3s;color:rgba(255,255,255,.45);font-size:22px;font-weight:300;
 }
-.faq-item.open .faq-icon{transform:rotate(45deg);background:transparent;color:var(--yellow2)}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:transparent;color:var(--green2)}
 .faq-item.open .faq-q{color:#fff}
 .faq-body{
   max-height:0;overflow:hidden;transition:max-height .4s ease;
@@ -903,7 +903,7 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
  <a href="/apps" onclick="closeMobile()">Plataforma</a>
   <a href="#pricing" onclick="closeMobile()">Precios</a>
   <a href="/contact" onclick="closeMobile()">Contacto</a>
-  <a href="https://www.rasgo.ai/auth?mode=login" style="color:var(--yellow2)">Entrar al Sistema →</a>
+  <a href="https://www.rasgo.ai/auth?mode=login" style="color:var(--green2)">Entrar al Sistema →</a>
 </div>
 
 <!-- HERO -->
