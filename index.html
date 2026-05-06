@@ -1711,7 +1711,7 @@ window.addEventListener('load', function(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { data, error } = await supabaseClient.auth.signUp({
+    const { error } = await supabaseClient.auth.signUp({
       email: email,
       password: password
     });
@@ -1728,7 +1728,7 @@ window.addEventListener('load', function(){
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
 
-    const { data, error } = await supabaseClient.auth.signInWithPassword({
+    const { error } = await supabaseClient.auth.signInWithPassword({
       email: email,
       password: password
     });
@@ -1737,7 +1737,15 @@ window.addEventListener('load', function(){
       alert("Error login: " + error.message);
     } else {
       alert("Sesión iniciada correctamente");
+      location.reload();
     }
+  }
+
+  // LOGOUT
+  async function logout() {
+    await supabaseClient.auth.signOut();
+    alert("Sesión cerrada");
+    location.reload();
   }
 
   // CHECK USER
@@ -1745,12 +1753,15 @@ window.addEventListener('load', function(){
     const { data: { user } } = await supabaseClient.auth.getUser();
 
     const authBox = document.getElementById("authBox");
+    const logoutBtn = document.getElementById("logoutBtn");
 
     if (user) {
       if (authBox) authBox.style.display = "none";
-      alert("Bienvenido " + user.email);
+      if (logoutBtn) logoutBtn.style.display = "block";
+      console.log("Usuario logueado:", user.email);
     } else {
       if (authBox) authBox.style.display = "block";
+      if (logoutBtn) logoutBtn.style.display = "none";
     }
   }
 
@@ -1763,6 +1774,11 @@ window.addEventListener('load', function(){
   <input type="password" id="password" placeholder="Tu contraseña" />
   <button onclick="signUp()">Crear cuenta</button>
   <button onclick="login()">Iniciar sesión</button>
+</div>
+
+<button id="logoutBtn" onclick="logout()" style="display:none; margin-top:10px;">
+  Cerrar sesión
+</button>
 </div>
 </body>
 </html>
