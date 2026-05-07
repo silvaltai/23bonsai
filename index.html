@@ -875,7 +875,9 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
     FULL AUTOMATIZADO
   </div>
   <span class="banner-item">TESTEA, OPTIMIZA Y ESCALA EN HORAS</span>
-  <a href="https://www.rasgo.ai/auth?mode=signup" class="banner-cta">REGÍSTRATE GRATIS ↗</a>
+  <a href="https://www.rasgo.ai/auth?mode=signup" 
+    onclick="event.preventDefault(); startSignup()"
+    class="banner-cta">REGÍSTRATE GRATIS ↗</a>
   <button class="banner-close" onclick="this.parentElement.style.display='none'" aria-label="Cerrar">×</button>
 </div>
 
