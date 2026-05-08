@@ -1948,31 +1948,11 @@ async function selectPlan(planName) {
 
 }
 
-function startSignup() {
-
-  const authBox = document.getElementById("authBox");
-
-  if (authBox) {
-
-    authBox.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-
-    authBox.style.display = "block";
-
-    const emailInput = document.getElementById("email");
-
-    if (emailInput) {
-
-      setTimeout(() => {
-        emailInput.focus();
-      }, 500);
-
-    }
-
-  }
-
+function startSignup(plan) {
+  const validPlans = ['free', 'starter', 'growth', 'scale'];
+  const selectedPlan = validPlans.includes(plan) ? plan : 'free';
+  localStorage.setItem('selectedPlan', selectedPlan);
+  window.location.href = `/signup?plan=${selectedPlan}`;
 }
 </script>
 
