@@ -1762,11 +1762,42 @@ window.addEventListener('load', function(){
   }
 
   // LOGOUT
-  async function logout() {
-    await supabaseClient.auth.signOut();
-    alert("Sesión cerrada");
-    location.reload();
+async function logout() {
+  await supabaseClient.auth.signOut();
+  alert("Sesión cerrada");
+  location.reload();
+}
+
+
+// NUEVA FUNCIÓN
+async function getCurrentUserProfile() {
+
+  const {
+    data: { user },
+    error: userError
+  } = await supabaseClient.auth.getUser()
+
+  if (userError || !user) {
+    return null
   }
+
+  const { data: profile, error: profileError } = await supabaseClient
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single()
+
+  if (profileError) {
+    console.error('Error cargando perfil:', profileError)
+    return null
+  }
+
+  return {
+    auth: user,
+    profile: profile
+  }
+
+}
 
   // CHECK USER
   async function checkUser() {
