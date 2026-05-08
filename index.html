@@ -1786,7 +1786,6 @@ async function getCurrentUserProfile() {
   let { data: profile, error: profileError } = await supabaseClient
     .from('profiles')
     .select('*')
-    .eq('id', user.id)
     .maybeSingle()
 
   // SI NO EXISTE PERFIL → CREARLO
