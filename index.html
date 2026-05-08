@@ -1732,6 +1732,8 @@ window.addEventListener('load', function(){
 
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+let currentUserData = null;
+
   // REGISTRO
   async function signUp() {
     const email = document.getElementById('email').value;
@@ -1800,30 +1802,57 @@ async function getCurrentUserProfile() {
 }
 
   // CHECK USER
-  async function checkUser() {
-    const { data: { user } } = await supabaseClient.auth.getUser();
+async function checkUser() {
 
-    const authBox = document.getElementById("authBox");
-    const logoutBtn = document.getElementById("logoutBtn");
+  const authBox = document.getElementById("authBox");
+  const logoutBtn = document.getElementById("logoutBtn");
 
-    console.log("Usuario:", user);
+  const userData = await getCurrentUserProfile();
 
-    if (user) {
-      if (authBox) authBox.style.display = "none";
-      if (logoutBtn) {
-        logoutBtn.style.display = "block";
-        logoutBtn.innerText = "Cerrar sesión (" + user.email + ")";
-      }
-    } else {
-      if (authBox) authBox.style.display = "block";
-      if (logoutBtn) logoutBtn.style.display = "none";
+  console.log("Current User Data:", userData);
+
+  if (userData && userData.profile) {
+
+    currentUserData = userData;
+
+    const email = userData.profile.email;
+    const plan = userData.profile.plan;
+    const status = userData.profile.status;
+
+    console.log("Plan:", plan);
+    console.log("Status:", status);
+
+    if (authBox) {
+      authBox.style.display = "none";
     }
+
+    if (logoutBtn) {
+      logoutBtn.style.display = "block";
+      logoutBtn.innerText = "Cerrar sesión (" + email + ")";
+    }
+
+  } else {
+
+    currentUserData = null;
+
+    if (authBox) {
+      authBox.style.display = "block";
+    }
+
+    if (logoutBtn) {
+      logoutBtn.style.display = "none";
+    }
+
   }
 
-  document.addEventListener("DOMContentLoaded", function() {
-    checkUser();
-  });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+  checkUser();
+});
+
 async function selectPlan(planName) {
+
   const { data: { user } } = await supabaseClient.auth.getUser();
 
   if (!user) {
@@ -1837,16 +1866,29 @@ async function selectPlan(planName) {
     .eq('id', user.id);
 
   if (error) {
+
     alert("Error al guardar el plan");
+
   } else {
+
+    if (currentUserData && currentUserData.profile) {
+      currentUserData.profile.plan = planName;
+    }
+
     alert("Plan seleccionado: " + planName);
+
+    console.log("Nuevo plan:", planName);
+
   }
+
 }
 
 function startSignup() {
+
   const authBox = document.getElementById("authBox");
 
   if (authBox) {
+
     authBox.scrollIntoView({
       behavior: "smooth",
       block: "start"
@@ -1857,11 +1899,15 @@ function startSignup() {
     const emailInput = document.getElementById("email");
 
     if (emailInput) {
+
       setTimeout(() => {
         emailInput.focus();
       }, 500);
+
     }
+
   }
+
 }
 </script>
 
