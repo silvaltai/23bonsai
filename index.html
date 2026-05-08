@@ -1783,15 +1783,51 @@ async function getCurrentUserProfile() {
     return null
   }
 
-  const { data: profile, error: profileError } = await supabaseClient
+  let { data: profile, error: profileError } = await supabaseClient
     .from('profiles')
     .select('*')
     .eq('id', user.id)
-    .single()
+    .maybeSingle()
 
-  if (profileError) {
-    console.error('Error cargando perfil:', profileError)
-    return null
+  // SI NO EXISTE PERFIL → CREARLO
+  if (!profile) {
+
+    console.log("Perfil no existe. Creando profile automáticamente...")
+
+    const { error: insertError } = await supabaseClient
+      .from('profiles')
+      .insert([
+        {
+          id: user.id,
+          email: user.email,
+          plan: 'FREE',
+          status: 'active'
+        }
+      ])
+
+    if (insertError) {
+
+      console.error("Error creando profile:", insertError)
+      return null
+
+    }
+
+    // VOLVER A CARGAR PROFILE
+    const { data: newProfile, error: reloadError } = await supabaseClient
+      .from('profiles')
+      .select('*')
+      .eq('id', user.id)
+      .single()
+
+    if (reloadError) {
+
+      console.error("Error recargando profile:", reloadError)
+      return null
+
+    }
+
+    profile = newProfile
+
   }
 
   return {
