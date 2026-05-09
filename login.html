@@ -202,14 +202,15 @@ function getRedirectAfterLogin() {
   if (fromStorage && VALID_PLANS.includes(fromStorage)) {
     return PLAN_REDIRECTS[fromStorage];
   }
-  return '/dashboard';
+  return '/';
 }
 
 // ── Si ya hay sesión activa, redirigir directo ──
+// TODO: cambiar a '/dashboard' cuando esté lista esa página (sáb 9 may)
 (async () => {
   const { data } = await supa.auth.getSession();
   if (data?.session) {
-    window.location.href = '/dashboard';
+    window.location.href = '/';
   }
 })();
 
