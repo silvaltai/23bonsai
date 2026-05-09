@@ -1762,35 +1762,6 @@ window.addEventListener('load', function(){
 
 let currentUserData = null;
 
-  // REGISTRO
-  async function signUp() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    const { error } = await supabaseClient.auth.signUp({ email, password });
-
-    if (error) {
-      alert("Error: " + error.message);
-    } else {
-      alert("Usuario creado correctamente");
-    }
-  }
-
-  // LOGIN
-  async function login() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
-
-    if (error) {
-      alert("Error login: " + error.message);
-    } else {
-      alert("Sesión iniciada correctamente");
-      location.reload();
-    }
-  }
-
   // LOGOUT
 async function logout() {
   await supabaseClient.auth.signOut();
@@ -1865,10 +1836,9 @@ async function getCurrentUserProfile() {
 
 }
 
-  // CHECK USER
+ // CHECK USER
 async function checkUser() {
 
-  const authBox = document.getElementById("authBox");
   const logoutBtn = document.getElementById("logoutBtn");
 
   const userData = await getCurrentUserProfile();
@@ -1886,10 +1856,6 @@ async function checkUser() {
     console.log("Plan:", plan);
     console.log("Status:", status);
 
-    if (authBox) {
-      authBox.style.display = "none";
-    }
-
     if (logoutBtn) {
       logoutBtn.style.display = "block";
       logoutBtn.innerText = "Cerrar sesión (" + email + ")";
@@ -1898,10 +1864,6 @@ async function checkUser() {
   } else {
 
     currentUserData = null;
-
-    if (authBox) {
-      authBox.style.display = "block";
-    }
 
     if (logoutBtn) {
       logoutBtn.style.display = "none";
@@ -1915,38 +1877,6 @@ document.addEventListener("DOMContentLoaded", function() {
   checkUser();
 });
 
-async function selectPlan(planName) {
-
-  const { data: { user } } = await supabaseClient.auth.getUser();
-
-  if (!user) {
-    alert("Debes iniciar sesión primero");
-    return;
-  }
-
-  const { error } = await supabaseClient
-    .from('profiles')
-    .update({ plan: planName })
-    .eq('id', user.id);
-
-  if (error) {
-
-    alert("Error al guardar el plan");
-
-  } else {
-
-    if (currentUserData && currentUserData.profile) {
-      currentUserData.profile.plan = planName;
-    }
-
-    alert("Plan seleccionado: " + planName);
-
-    console.log("Nuevo plan:", planName);
-
-  }
-
-}
-
 function startSignup(plan) {
   const validPlans = ['free', 'starter', 'growth', 'scale'];
   const selectedPlan = validPlans.includes(plan) ? plan : 'free';
@@ -1954,14 +1884,6 @@ function startSignup(plan) {
   window.location.href = `/signup?plan=${selectedPlan}`;
 }
 </script>
-
-<!-- FORMULARIO -->
-<div id="authBox" style="margin-top:20px;">
-  <input type="email" id="email" placeholder="Tu email" />
-  <input type="password" id="password" placeholder="Tu contraseña" />
-  <button onclick="signUp()">Crear cuenta</button>
-  <button onclick="login()">Iniciar sesión</button>
-</div>
 
 <!-- LOGOUT -->
 <button id="logoutBtn" onclick="logout()" 
