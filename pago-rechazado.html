@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pago rechazado · 23BONSAI</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root{
+  --font:'Geist',sans-serif;
+  --rich-black:#02181A;
+  --bangladesh:#03624C;
+  --caribbean:#00DF81;
+  --mountain:#2CC295;
+  --anti-flash:#F1F7F6;
+  --reject:#f87171;
+}
+body{background:var(--rich-black);color:var(--anti-flash);font-family:var(--font);min-height:100vh;line-height:1.5;overflow-x:hidden;position:relative}
+
+.bg-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#02181A 0%,#032221 50%,#03624C 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:float 18s ease-in-out infinite}
+.orb-1{width:520px;height:520px;background:#00DF81;top:-100px;right:-150px}
+.orb-2{width:420px;height:420px;background:#2CC295;bottom:-80px;left:-100px;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-30px,30px) scale(.95)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+.app{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
+
+.dh{padding:20px 24px;border-bottom:1px solid rgba(241,247,246,.06);display:flex;align-items:center;justify-content:space-between;background:rgba(2,24,26,.4);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%)}
+@media(min-width:768px){.dh{padding:24px 48px}}
+.dh-logo{font-size:20px;font-weight:900;letter-spacing:-.04em;color:var(--anti-flash)}
+@media(min-width:768px){.dh-logo{font-size:22px}}
+
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+@media(min-width:768px){.main{padding:48px 24px}}
+.card{
+  width:100%;max-width:520px;
+  position:relative;
+  background:linear-gradient(135deg,rgba(241,247,246,.08) 0%,rgba(241,247,246,.03) 100%);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(241,247,246,.1);
+  border-radius:24px;
+  padding:36px 28px;
+  text-align:center;
+  overflow:hidden;
+  animation:fadeUp .6s ease-out;
+}
+.card::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%);pointer-events:none}
+@media(min-width:768px){.card{padding:48px 40px}}
+
+.x-circle{
+  width:88px;height:88px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(248,113,113,.18),rgba(248,113,113,.04));
+  border:2px solid var(--reject);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+  position:relative;
+  animation:scaleIn .5s cubic-bezier(.34,1.56,.64,1);
+}
+.x-circle::before,.x-circle::after{
+  content:'';
+  position:absolute;
+  width:32px;height:3px;
+  background:var(--reject);
+  border-radius:2px;
+}
+.x-circle::before{transform:rotate(45deg)}
+.x-circle::after{transform:rotate(-45deg)}
+
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--reject);margin-bottom:10px}
+.title{font-size:32px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+@media(min-width:768px){.title{font-size:38px}}
+.desc{font-size:15px;color:rgba(241,247,246,.7);font-weight:500;line-height:1.55;margin-bottom:8px;max-width:420px;margin-left:auto;margin-right:auto}
+
+.reason-box{
+  margin:20px auto 28px;max-width:420px;
+  padding:14px 18px;
+  background:rgba(248,113,113,.08);
+  border:1px solid rgba(248,113,113,.2);
+  border-radius:12px;
+  font-size:13.5px;font-weight:500;color:#fca5a5;
+  line-height:1.5;text-align:left;
+}
+.reason-box strong{color:#fecaca;font-weight:700;display:block;margin-bottom:4px}
+
+.actions{display:flex;flex-direction:column;gap:12px;align-items:center}
+
+.cta-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;
+  background:var(--caribbean);
+  color:var(--rich-black);
+  font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border:none;border-radius:100px;
+  cursor:pointer;
+  font-family:var(--font);
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.cta-primary:hover{transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(0,223,129,.5)}
+
+.cta-secondary{
+  display:inline-block;
+  font-size:13px;font-weight:500;
+  color:rgba(241,247,246,.55);
+  text-decoration:none;
+  transition:color .2s;
+}
+.cta-secondary:hover{color:var(--anti-flash)}
+
+.support{
+  margin-top:24px;
+  font-size:13px;color:rgba(241,247,246,.5);font-weight:500;
+}
+.support a{color:var(--caribbean);text-decoration:none;font-weight:600}
+.support a:hover{text-decoration:underline}
+
+@media(max-width:380px){
+  .card{padding:28px 22px;border-radius:20px}
+  .title{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<div class="app">
+
+  <header class="dh">
+    <a class="dh-logo" href="/">23BONSAI</a>
+  </header>
+
+  <main class="main">
+    <div class="card">
+
+      <div class="x-circle"></div>
+      <div class="eyebrow">Pago no procesado</div>
+      <h1 class="title">No pudimos procesar tu pago</h1>
+      <p class="desc">No te preocupes, no se cobró nada en tu tarjeta. Puedes reintentar con otro método o revisar los datos.</p>
+
+      <div class="reason-box" id="reasonBox" style="display:none">
+        <strong id="reasonTitle">Motivo:</strong>
+        <span id="reasonText"></span>
+      </div>
+
+      <div class="actions">
+        <a href="/#pricing" class="cta-primary">
+          Reintentar pago
+          <span>→</span>
+        </a>
+        <a href="/" class="cta-secondary">Volver al inicio</a>
+      </div>
+
+      <div class="support">
+        ¿Necesitas ayuda? Escríbenos a <a href="mailto:hola@23bonsai.com">hola@23bonsai.com</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+// ── Mapeo de status_detail de Mercado Pago a mensajes en chileno ──
+const REJECT_REASONS = {
+  cc_rejected_insufficient_amount: 'Tu tarjeta no tiene fondos suficientes. Prueba con otra tarjeta o método de pago.',
+  cc_rejected_bad_filled_card_number: 'El número de tarjeta no es correcto. Revísalo e inténtalo de nuevo.',
+  cc_rejected_bad_filled_date: 'La fecha de vencimiento no es válida. Verifica los datos de tu tarjeta.',
+  cc_rejected_bad_filled_security_code: 'El código de seguridad (CVV) no es correcto.',
+  cc_rejected_bad_filled_other: 'Algunos datos de la tarjeta están incorrectos. Revísalos.',
+  cc_rejected_call_for_authorize: 'Tu banco requiere que autorices el pago. Llama a tu banco o usa otra tarjeta.',
+  cc_rejected_card_disabled: 'Tu tarjeta está deshabilitada. Llama a tu banco para activarla.',
+  cc_rejected_duplicated_payment: 'Ya hay un pago similar en proceso. Espera unos minutos antes de reintentar.',
+  cc_rejected_high_risk: 'El pago fue rechazado por seguridad. Prueba con otra tarjeta o método de pago.',
+  cc_rejected_max_attempts: 'Alcanzaste el máximo de intentos. Espera unos minutos o usa otra tarjeta.',
+  cc_rejected_other_reason: 'Tu banco no procesó el pago. Prueba con otra tarjeta o método.',
+  cc_rejected_blacklist: 'No pudimos procesar tu pago. Contáctanos si crees que hay un error.',
+  cc_rejected_invalid_installments: 'No se aceptan esas cuotas para esta tarjeta.'
+};
+
+const params = new URLSearchParams(window.location.search);
+const statusDetail = params.get('status_detail');
+
+if(statusDetail && REJECT_REASONS[statusDetail]){
+  document.getElementById('reasonText').textContent = REJECT_REASONS[statusDetail];
+  document.getElementById('reasonBox').style.display = 'block';
+} else if(statusDetail){
+  // Status no mapeado: mostramos genérico pero con dato
+  document.getElementById('reasonText').textContent = 'No pudimos procesar tu pago. Prueba con otra tarjeta o método.';
+  document.getElementById('reasonBox').style.display = 'block';
+}
+</script>
+
+</body>
+</html>
