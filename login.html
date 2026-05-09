@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Iniciar sesión · 23BONSAI</title>
+<meta name="description" content="Inicia sesión en 23BONSAI y sigue lanzando productos que venden."/>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&family=EB+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root{
+  --font:'Geist',sans-serif;
+  --green:#00df81;
+  --black:#000;
+  --white:#fff;
+  --border:rgba(255,255,255,.08);
+  --muted:rgba(255,255,255,.5);
+}
+body{background:#000;color:#fff;font-family:var(--font);min-height:100vh;display:flex;flex-direction:column;line-height:1.5}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;border:none;background:none;font-family:var(--font)}
+input{font-family:var(--font)}
+
+/* Header */
+.au-header{padding:20px 24px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+@media(min-width:768px){.au-header{padding:24px 48px}}
+.au-logo{font-size:20px;font-weight:900;letter-spacing:-.04em;color:#fff}
+@media(min-width:768px){.au-logo{font-size:24px}}
+.au-back{font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:rgba(255,255,255,.5);transition:color .2s}
+.au-back:hover{color:#fff}
+
+/* Main */
+.au-main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+@media(min-width:768px){.au-main{padding:48px 24px}}
+.au-card{width:100%;max-width:440px;display:flex;flex-direction:column;gap:24px}
+
+/* Título */
+.au-title{font-size:32px;font-weight:600;letter-spacing:-.03em;line-height:1.05;color:#fff;margin-bottom:4px}
+@media(min-width:768px){.au-title{font-size:40px}}
+.au-subtitle{font-size:15px;color:rgba(255,255,255,.5);font-weight:500}
+
+/* Botón Google */
+.au-google{
+  display:flex;align-items:center;justify-content:center;gap:12px;
+  width:100%;padding:14px 20px;
+  background:#fff;color:#000;
+  font-size:14px;font-weight:600;
+  border-radius:12px;transition:all .2s;
+  border:1px solid #fff;
+}
+.au-google:hover{background:#f0f0f0}
+.au-google:disabled{opacity:.6;cursor:not-allowed}
+.au-google svg{width:18px;height:18px;flex-shrink:0}
+
+/* Divider */
+.au-divider{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.3);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.au-divider::before,.au-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.1)}
+
+/* Form */
+.au-form{display:flex;flex-direction:column;gap:14px}
+.au-field{display:flex;flex-direction:column;gap:6px}
+.au-label-row{display:flex;justify-content:space-between;align-items:center}
+.au-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:.02em}
+.au-forgot{font-size:12px;color:rgba(255,255,255,.5);font-weight:500;transition:color .2s}
+.au-forgot:hover{color:var(--green)}
+.au-input{
+  width:100%;padding:14px 16px;
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;
+  color:#fff;font-size:15px;font-weight:500;
+  transition:border-color .2s,background .2s;
+}
+.au-input:focus{outline:none;border-color:var(--green);background:rgba(255,255,255,.05)}
+.au-input::placeholder{color:rgba(255,255,255,.3)}
+
+/* Submit */
+.au-submit{
+  width:100%;padding:16px 20px;
+  background:var(--green);color:#000;
+  font-size:14px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;
+  border-radius:12px;transition:all .2s;
+  margin-top:8px;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.au-submit:hover:not(:disabled){transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(0,223,129,.5)}
+.au-submit:disabled{opacity:.5;cursor:not-allowed}
+.au-submit-loader{
+  width:16px;height:16px;border:2px solid rgba(0,0,0,.2);
+  border-top-color:#000;border-radius:50%;
+  animation:spin .8s linear infinite;display:none;
+}
+.au-submit.loading .au-submit-loader{display:block}
+.au-submit.loading .au-submit-text{display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Mensajes */
+.au-msg{
+  padding:12px 14px;border-radius:10px;
+  font-size:13px;font-weight:500;line-height:1.5;
+  display:none;
+}
+.au-msg.show{display:block}
+.au-msg.error{background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.3);color:#fca5a5}
+.au-msg.success{background:rgba(0,223,129,.08);border:1px solid rgba(0,223,129,.3);color:var(--green)}
+
+/* Footer link */
+.au-footer-link{font-size:14px;color:rgba(255,255,255,.5);text-align:center;font-weight:500}
+.au-footer-link a{color:var(--green);font-weight:600}
+.au-footer-link a:hover{text-decoration:underline}
+
+/* Mobile ≤380 */
+@media(max-width:380px){
+  .au-main{padding:24px 16px}
+  .au-title{font-size:26px}
+  .au-input{padding:13px 14px;font-size:14px}
+  .au-google{padding:13px 16px;font-size:13px}
+  .au-submit{padding:15px 18px;font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<header class="au-header">
+  <a class="au-logo" href="/">23BONSAI</a>
+  <a class="au-back" href="/">← Volver</a>
+</header>
+
+<main class="au-main">
+  <div class="au-card">
+
+    <div>
+      <h1 class="au-title">Inicia sesión</h1>
+      <p class="au-subtitle">Vuelve a tu panel y sigue vendiendo.</p>
+    </div>
+
+    <div class="au-msg" id="globalMsg"></div>
+
+    <button type="button" class="au-google" id="googleBtn" disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+      </svg>
+      <span>Continuar con Google</span>
+    </button>
+
+    <div class="au-divider">o con email</div>
+
+    <form class="au-form" id="loginForm" novalidate>
+      <div class="au-field">
+        <label class="au-label" for="email">Email</label>
+        <input class="au-input" type="email" id="email" name="email" placeholder="tu@email.com" autocomplete="email" required/>
+      </div>
+
+      <div class="au-field">
+        <div class="au-label-row">
+          <label class="au-label" for="password">Contraseña</label>
+          <a class="au-forgot" id="forgotLink" href="#">¿Olvidaste tu contraseña?</a>
+        </div>
+        <input class="au-input" type="password" id="password" name="password" placeholder="Tu contraseña" autocomplete="current-password" required/>
+      </div>
+
+      <button type="submit" class="au-submit" id="submitBtn">
+        <span class="au-submit-text">Iniciar sesión</span>
+        <div class="au-submit-loader"></div>
+      </button>
+    </form>
+
+    <p class="au-footer-link">¿No tienes cuenta? <a href="/signup">Crea una gratis</a></p>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+// ── Config Supabase ──
+const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// ── Plan elegido (si viene del pricing y eligió "iniciar sesión") ──
+const VALID_PLANS = ['free', 'starter', 'growth', 'scale'];
+const PLAN_REDIRECTS = {
+  free: '/dashboard',
+  starter: '/pago-pendiente',
+  growth: '/pago-pendiente',
+  scale: '/pago-pendiente'
+};
+
+function getRedirectAfterLogin() {
+  const params = new URLSearchParams(window.location.search);
+  const fromUrl = params.get('plan');
+  if (fromUrl && VALID_PLANS.includes(fromUrl)) {
+    return PLAN_REDIRECTS[fromUrl];
+  }
+  const fromStorage = localStorage.getItem('selectedPlan');
+  if (fromStorage && VALID_PLANS.includes(fromStorage)) {
+    return PLAN_REDIRECTS[fromStorage];
+  }
+  return '/dashboard';
+}
+
+// ── Si ya hay sesión activa, redirigir directo ──
+(async () => {
+  const { data } = await supa.auth.getSession();
+  if (data?.session) {
+    window.location.href = '/dashboard';
+  }
+})();
+
+// ── Mensajes ──
+const globalMsg = document.getElementById('globalMsg');
+function showMsg(text, type = 'error') {
+  globalMsg.textContent = text;
+  globalMsg.className = `au-msg show ${type}`;
+}
+function clearMsg() {
+  globalMsg.className = 'au-msg';
+  globalMsg.textContent = '';
+}
+
+// ── Errores en chileno ──
+function translateError(err) {
+  const msg = (err?.message || '').toLowerCase();
+  if (msg.includes('invalid login') || msg.includes('invalid credentials') || msg.includes('invalid email or password')) {
+    return 'Email o contraseña incorrectos. Revisa e intenta de nuevo.';
+  }
+  if (msg.includes('email not confirmed')) {
+    return 'Tu email aún no está confirmado. Revisa tu bandeja de entrada.';
+  }
+  if (msg.includes('rate limit') || msg.includes('too many')) {
+    return 'Demasiados intentos. Espera unos minutos antes de volver a intentar.';
+  }
+  if (msg.includes('user not found')) {
+    return 'No encontramos una cuenta con ese email. ¿Quieres crear una?';
+  }
+  return 'No pudimos iniciar sesión. Intenta de nuevo o escríbenos si persiste.';
+}
+
+// ── Submit ──
+const form = document.getElementById('loginForm');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  clearMsg();
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!email) return showMsg('Ingresa tu email.');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showMsg('El email no parece válido.');
+  if (!password) return showMsg('Ingresa tu contraseña.');
+
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+
+  try {
+    const { data, error } = await supa.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      showMsg(translateError(error));
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    if (!data.session) {
+      showMsg('No pudimos iniciar sesión. Intenta de nuevo.');
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      return;
+    }
+
+    showMsg('¡Bienvenida de vuelta! Redirigiendo...', 'success');
+    localStorage.removeItem('selectedPlan');
+    setTimeout(() => {
+      window.location.href = getRedirectAfterLogin();
+    }, 600);
+
+  } catch (err) {
+    console.error('Login error:', err);
+    showMsg('Algo falló. Revisa tu conexión e intenta de nuevo.');
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
+});
+
+// ── Google (dormido) ──
+document.getElementById('googleBtn').addEventListener('click', () => {
+  showMsg('El acceso con Google estará disponible en los próximos días. Por ahora usa email y contraseña.');
+});
+
+// ── Olvidé contraseña (dormido) ──
+document.getElementById('forgotLink').addEventListener('click', (e) => {
+  e.preventDefault();
+  showMsg('La recuperación de contraseña estará lista pronto. Por ahora escríbenos a hola@23bonsai.com y te ayudamos.');
+});
+
+// Cuando esté listo Google Cloud Console, reemplazar el listener del googleBtn por:
+// document.getElementById('googleBtn').addEventListener('click', async () => {
+//   const { error } = await supa.auth.signInWithOAuth({
+//     provider: 'google',
+//     options: { redirectTo: window.location.origin + '/dashboard' }
+//   });
+//   if (error) showMsg(translateError(error));
+// });
+// Y quitar el atributo "disabled" del botón.
+</script>
+
+</body>
+</html>
