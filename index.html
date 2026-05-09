@@ -1762,14 +1762,6 @@ window.addEventListener('load', function(){
 
 let currentUserData = null;
 
-  // LOGOUT
-async function logout() {
-  await supabaseClient.auth.signOut();
-  alert("Sesión cerrada");
-  location.reload();
-}
-
-
 // NUEVA FUNCIÓN
 async function getCurrentUserProfile() {
 
@@ -1884,11 +1876,5 @@ function startSignup(plan) {
   window.location.href = `/signup?plan=${selectedPlan}`;
 }
 </script>
-
-<!-- LOGOUT -->
-<button id="logoutBtn" onclick="logout()" 
-style="display:none; position:fixed; top:20px; right:20px; z-index:9999; padding:10px; background:white; color:black;">
-  Cerrar sesión
-</button>
 </body>
 </html>
