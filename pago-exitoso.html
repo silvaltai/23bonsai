@@ -258,6 +258,10 @@ const params = new URLSearchParams(window.location.search);
 const paymentId = params.get('payment_id') || params.get('collection_id');
 const planFromUrl = params.get('plan'); // opcional, MP no lo manda nativo, lo agregaríamos en back_urls
 
+// ── Polling al webhook ──
+const MAX_ATTEMPTS = 10; // 10 intentos x 3 seg = 30 seg total
+let attempts = 0;
+
 // ── Si no hay payment_id, mostrar unknown ──
 if(!paymentId){
   // Damos 800ms para que se vea el spinner antes de mostrar unknown (mejor UX)
@@ -265,10 +269,6 @@ if(!paymentId){
 } else {
   pollPayment();
 }
-
-// ── Polling al webhook ──
-const MAX_ATTEMPTS = 10; // 10 intentos x 3 seg = 30 seg total
-let attempts = 0;
 
 async function pollPayment(){
   attempts++;
