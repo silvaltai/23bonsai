@@ -303,7 +303,75 @@ body{
 .sk-line{height:14px;margin-bottom:10px;width:60%}
 .sk-line.lg{height:36px;width:40%;margin-bottom:14px}
 .sk-line.sm{height:12px;width:80%}
+/* Toast notificación */
+.toast{
+  position:fixed;top:80px;right:20px;left:20px;
+  max-width:420px;margin-left:auto;
+  padding:14px 18px;
+  background:linear-gradient(135deg,rgba(0,223,129,.95),rgba(44,194,149,.95));
+  color:var(--rich-black);
+  border-radius:14px;
+  font-size:14px;font-weight:600;
+  box-shadow:0 16px 40px -10px rgba(0,223,129,.5);
+  display:flex;align-items:center;gap:12px;
+  z-index:100;
+  transform:translateY(-20px);opacity:0;
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),opacity .3s;
+}
+.toast.show{transform:translateY(0);opacity:1}
+.toast-icon{
+  width:24px;height:24px;border-radius:50%;
+  background:var(--rich-black);color:var(--caribbean);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:800;flex-shrink:0;
+}
 
+/* Lista de orders */
+.orders-list{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+.order-item{
+  display:flex;align-items:center;gap:14px;
+  padding:14px 16px;
+  background:rgba(241,247,246,.04);
+  border:1px solid rgba(241,247,246,.08);
+  border-radius:12px;
+  transition:background .2s;
+}
+.order-item:hover{background:rgba(241,247,246,.06)}
+.order-status-dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--caribbean);
+  box-shadow:0 0 10px var(--caribbean);
+  flex-shrink:0;
+}
+.order-status-dot.processing{background:#ffd866;box-shadow:0 0 10px #ffd866}
+.order-status-dot.delivered{background:var(--mountain);box-shadow:none;opacity:.6}
+.order-status-dot.failed{background:#fca5a5;box-shadow:0 0 10px #fca5a5}
+.order-info{flex:1;min-width:0}
+.order-product{font-size:13.5px;font-weight:600;color:var(--anti-flash);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:3px}
+.order-meta{font-size:12px;color:rgba(241,247,246,.5);font-weight:500}
+.order-status{
+  font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  padding:4px 10px;border-radius:100px;
+  background:rgba(0,223,129,.12);color:var(--caribbean);
+  flex-shrink:0;
+}
+.order-status.processing{background:rgba(255,216,102,.12);color:#ffd866}
+.order-status.delivered{background:rgba(241,247,246,.08);color:rgba(241,247,246,.7)}
+.order-status.failed{background:rgba(248,113,113,.12);color:#fca5a5}
+
+.orders-cta-add{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:14px;padding:10px 16px;
+  background:rgba(0,223,129,.1);
+  color:var(--caribbean);
+  font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  border:1px solid rgba(0,223,129,.25);
+  border-radius:100px;cursor:pointer;
+  transition:background .2s;
+  font-family:var(--font);
+}
+.orders-cta-add:hover{background:rgba(0,223,129,.18)}
+  
 /* Mobile ≤380 */
 @media(max-width:380px){
   .dm{padding:24px 16px 48px}
@@ -315,7 +383,11 @@ body{
 </style>
 </head>
 <body>
-
+<div class="toast" id="toast">
+  <div class="toast-icon">✓</div>
+  <span id="toastText">¡Pedido creado!</span>
+</div>
+  
 <div class="bg-layer">
   <div class="orb orb-1"></div>
   <div class="orb orb-2"></div>
@@ -471,10 +543,86 @@ async function loadProfile(authUser){
   // Plan card
   renderPlanCard(profile);
 
-  // Alert pago pendiente
+// Alert pago pendiente
   if(profile.status==='pending_payment'){
     document.getElementById('paymentAlert').classList.add('show');
   }
+
+  // Cargar lista de orders
+  await loadOrders();
+
+  // Toast si viene de crear pedido
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('new_order') === '1'){
+    showToast('¡Pedido creado! Lo verás procesándose en las próximas horas.');
+    // Limpiar query param sin recargar
+    window.history.replaceState({}, '', '/dashboard');
+  }
+}
+
+const STATUS_BADGES = {
+  paid: { label:'En cola', cls:'' },
+  scraping: { label:'Procesando', cls:'processing' },
+  generating_video: { label:'Generando videos', cls:'processing' },
+  editing: { label:'Editando', cls:'processing' },
+  delivering: { label:'Subiendo a Shopify', cls:'processing' },
+  delivered: { label:'Entregado', cls:'delivered' },
+  failed: { label:'Falló', cls:'failed' },
+  refunded: { label:'Reembolsado', cls:'delivered' },
+  pending_payment: { label:'Pago pendiente', cls:'processing' }
+};
+
+async function loadOrders(){
+  const { data:orders, error } = await supa
+    .from('orders')
+    .select('id,product_url,status,created_at,plan')
+    .order('created_at', { ascending:false })
+    .limit(10);
+
+  if(error){
+    console.error('Error cargando orders:', error);
+    return;
+  }
+
+  if(!orders || orders.length === 0){
+    return; // Mantiene el estado "Aún no tienes pedidos"
+  }
+
+  // Reemplazar contenido de la card de orders
+  const ordersCard = document.getElementById('ordersCard');
+  ordersCard.innerHTML = `
+    <div class="gcard-eyebrow"><span class="gcard-eyebrow-dot"></span>Tus pedidos</div>
+    <div class="orders-list" id="ordersList"></div>
+    <button class="orders-cta-add" onclick="window.location.href='/nuevo-pedido'">
+      + Crear otro pedido
+    </button>
+  `;
+
+  const list = document.getElementById('ordersList');
+  orders.forEach(order=>{
+    const badge = STATUS_BADGES[order.status] || { label:order.status, cls:'' };
+    const productHost = (()=>{ try{ return new URL(order.product_url).hostname.replace('www.',''); }catch{ return 'producto'; } })();
+    const date = new Date(order.created_at).toLocaleDateString('es-CL',{day:'numeric',month:'short'});
+
+    const item = document.createElement('div');
+    item.className = 'order-item';
+    item.innerHTML = `
+      <div class="order-status-dot ${badge.cls}"></div>
+      <div class="order-info">
+        <div class="order-product">${productHost}</div>
+        <div class="order-meta">Creado el ${date}</div>
+      </div>
+      <div class="order-status ${badge.cls}">${badge.label}</div>
+    `;
+    list.appendChild(item);
+  });
+}
+
+function showToast(msg){
+  const toast = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  toast.classList.add('show');
+  setTimeout(()=>toast.classList.remove('show'), 4500);
 }
 
 function renderPlanCard(profile){
