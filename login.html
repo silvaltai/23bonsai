@@ -183,33 +183,31 @@ const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-// ── Plan elegido (si viene del pricing y eligió "iniciar sesión") ──
+// ── Config de planes ──
 const VALID_PLANS = ['free', 'starter', 'growth', 'scale'];
-const PLAN_REDIRECTS = {
-  free: '/dashboard',
-  starter: '/pago-pendiente',
-  growth: '/pago-pendiente',
-  scale: '/pago-pendiente'
-};
+const PAID_PLANS = ['starter', 'growth', 'scale'];
+const EDGE_CREAR_SUSCRIPCION = `${SUPABASE_URL}/functions/v1/crear-suscripcion`;
 
-function getRedirectAfterLogin() {
+// ── Leer plan seleccionado: URL > localStorage ──
+function getSelectedPlan() {
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get('plan');
-  if (fromUrl && VALID_PLANS.includes(fromUrl)) {
-    return PLAN_REDIRECTS[fromUrl];
-  }
+  if (fromUrl && VALID_PLANS.includes(fromUrl)) return fromUrl;
   const fromStorage = localStorage.getItem('selectedPlan');
-  if (fromStorage && VALID_PLANS.includes(fromStorage)) {
-    return PLAN_REDIRECTS[fromStorage];
-  }
-  return '/dashboard';
+  if (fromStorage && VALID_PLANS.includes(fromStorage)) return fromStorage;
+  return null;
 }
 
-// ── Si ya hay sesión activa, redirigir directo ──
+// ── Si ya hay sesión activa, redirigir ──
 (async () => {
   const { data } = await supa.auth.getSession();
   if (data?.session) {
-    window.location.href = '/dashboard';
+    const plan = getSelectedPlan();
+    if (plan && PAID_PLANS.includes(plan)) {
+      iniciarPago(plan);
+    } else {
+      window.location.href = '/dashboard';
+    }
   }
 })();
 
@@ -224,25 +222,121 @@ function clearMsg() {
   globalMsg.textContent = '';
 }
 
-// ── Errores en chileno ──
+// ── Errores Supabase ──
 function translateError(err) {
   const msg = (err?.message || '').toLowerCase();
   if (msg.includes('invalid login') || msg.includes('invalid credentials') || msg.includes('invalid email or password')) {
     return 'Email o contraseña incorrectos. Revisa e intenta de nuevo.';
   }
-  if (msg.includes('email not confirmed')) {
-    return 'Tu email aún no está confirmado. Revisa tu bandeja de entrada.';
-  }
-  if (msg.includes('rate limit') || msg.includes('too many')) {
-    return 'Demasiados intentos. Espera unos minutos antes de volver a intentar.';
-  }
-  if (msg.includes('user not found')) {
-    return 'No encontramos una cuenta con ese email. ¿Quieres crear una?';
-  }
+  if (msg.includes('email not confirmed')) return 'Tu email aún no está confirmado. Revisa tu bandeja de entrada.';
+  if (msg.includes('rate limit') || msg.includes('too many')) return 'Demasiados intentos. Espera unos minutos antes de volver a intentar.';
+  if (msg.includes('user not found')) return 'No encontramos una cuenta con ese email. ¿Quieres crear una?';
   return 'No pudimos iniciar sesión. Intenta de nuevo o escríbenos si persiste.';
 }
 
-// ── Submit ──
+// ── Overlay de pago ──
+function showPaymentOverlay() {
+  if (document.getElementById('paymentOverlay')) return;
+  const o = document.createElement('div');
+  o.id = 'paymentOverlay';
+  o.innerHTML = `
+    <div class="po-card">
+      <div class="po-spinner"></div>
+      <div class="po-title">Preparando tu pago seguro</div>
+      <div class="po-sub">Te estamos redirigiendo a Mercado Pago...</div>
+    </div>
+    <style>
+      #paymentOverlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(2,24,26,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);animation:fadeIn .3s ease;padding:20px}
+      #paymentOverlay .po-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:40px 32px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px -20px rgba(0,0,0,.5)}
+      #paymentOverlay .po-spinner{width:48px;height:48px;border:3px solid rgba(0,223,129,.15);border-top-color:#00DF81;border-radius:50%;margin:0 auto 24px;animation:spin .9s linear infinite}
+      #paymentOverlay .po-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
+      #paymentOverlay .po-sub{font-size:14px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.5}
+      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    </style>
+  `;
+  document.body.appendChild(o);
+}
+function hidePaymentOverlay() {
+  const o = document.getElementById('paymentOverlay');
+  if (o) o.remove();
+}
+
+// ── Pantalla de error ──
+function showPaymentError(message, retryFn) {
+  hidePaymentOverlay();
+  const existing = document.getElementById('paymentError');
+  if (existing) existing.remove();
+  const o = document.createElement('div');
+  o.id = 'paymentError';
+  o.innerHTML = `
+    <div class="pe-card">
+      <div class="pe-icon">⚠️</div>
+      <div class="pe-title">No pudimos iniciar el pago</div>
+      <div class="pe-msg">${message}</div>
+      <button class="pe-btn" id="peRetryBtn">Reintentar</button>
+      <button class="pe-btn pe-btn-ghost" id="peCancelBtn">Cancelar y volver</button>
+    </div>
+    <style>
+      #paymentError{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(2,24,26,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:20px}
+      #paymentError .pe-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:36px 28px;max-width:380px;width:100%;text-align:center}
+      #paymentError .pe-icon{font-size:42px;margin-bottom:16px}
+      #paymentError .pe-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px}
+      #paymentError .pe-msg{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:24px;line-height:1.5}
+      #paymentError .pe-btn{width:100%;padding:14px 18px;background:#00DF81;color:#000;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;border:none;cursor:pointer;transition:all .2s;margin-bottom:10px}
+      #paymentError .pe-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(0,223,129,.5)}
+      #paymentError .pe-btn-ghost{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15)}
+      #paymentError .pe-btn-ghost:hover{background:rgba(255,255,255,.04);transform:none;box-shadow:none;color:#fff}
+    </style>
+  `;
+  document.body.appendChild(o);
+  document.getElementById('peRetryBtn').onclick = () => { o.remove(); retryFn(); };
+  document.getElementById('peCancelBtn').onclick = () => { o.remove(); window.location.href = '/dashboard'; };
+}
+
+// ── Llamar a Edge Function crear-suscripcion ──
+async function iniciarPago(plan) {
+  showPaymentOverlay();
+  try {
+    const { data: s } = await supa.auth.getSession();
+    if (!s?.session?.access_token) {
+      showPaymentError('No encontramos tu sesión. Inicia sesión de nuevo.', () => iniciarPago(plan));
+      return;
+    }
+    const r = await fetch(EDGE_CREAR_SUSCRIPCION, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + s.session.access_token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ plan })
+    });
+    const data = await r.json();
+
+    if (r.ok && data.success && data.checkout_url) {
+      localStorage.removeItem('selectedPlan');
+      window.location.href = data.checkout_url;
+      return;
+    }
+    if (r.status === 409 || data.error === 'already_subscribed') {
+      localStorage.removeItem('selectedPlan');
+      hidePaymentOverlay();
+      window.location.href = '/dashboard?notice=already_subscribed';
+      return;
+    }
+    if (data.error === 'mp_error') {
+      const mpMsg = data.message || 'Mercado Pago rechazó la operación.';
+      showPaymentError(mpMsg, () => iniciarPago(plan));
+      return;
+    }
+    const fallbackMsg = data.message || 'Hubo un problema al iniciar el pago. Intenta de nuevo.';
+    showPaymentError(fallbackMsg, () => iniciarPago(plan));
+  } catch (err) {
+    console.error('Error iniciarPago:', err);
+    showPaymentError('No pudimos conectar con el servidor. Revisa tu conexión.', () => iniciarPago(plan));
+  }
+}
+
+// ── Submit del formulario ──
 const form = document.getElementById('loginForm');
 const submitBtn = document.getElementById('submitBtn');
 
@@ -262,14 +356,12 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const { data, error } = await supa.auth.signInWithPassword({ email, password });
-
     if (error) {
       showMsg(translateError(error));
       submitBtn.classList.remove('loading');
       submitBtn.disabled = false;
       return;
     }
-
     if (!data.session) {
       showMsg('No pudimos iniciar sesión. Intenta de nuevo.');
       submitBtn.classList.remove('loading');
@@ -277,11 +369,17 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    showMsg('¡Bienvenida de vuelta! Redirigiendo...', 'success');
+    // Bifurcación: plan pago pendiente → Edge Function. Si no, dashboard.
+    const plan = getSelectedPlan();
+    if (plan && PAID_PLANS.includes(plan)) {
+      showMsg('¡Bienvenida! Preparando tu pago...', 'success');
+      await iniciarPago(plan);
+      return;
+    }
+
     localStorage.removeItem('selectedPlan');
-    setTimeout(() => {
-      window.location.href = getRedirectAfterLogin();
-    }, 600);
+    showMsg('¡Bienvenida de vuelta! Redirigiendo...', 'success');
+    setTimeout(() => { window.location.href = '/dashboard'; }, 600);
 
   } catch (err) {
     console.error('Login error:', err);
