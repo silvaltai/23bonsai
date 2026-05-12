@@ -228,7 +228,7 @@ input{font-family:var(--font)}
 <!-- Supabase -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// ── Config Supabase (mismas keys del index) ──
+// ── Config Supabase ──
 const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -242,8 +242,10 @@ const PLAN_CONFIG = {
 };
 const VALID_PLANS = Object.keys(PLAN_CONFIG);
 const DEFAULT_PLAN = 'free';
+const PAID_PLANS = ['starter', 'growth', 'scale'];
+const EDGE_CREAR_SUSCRIPCION = `${SUPABASE_URL}/functions/v1/crear-suscripcion`;
 
-// ── 1. Leer plan: URL > localStorage > default ──
+// ── Leer plan: URL > localStorage > default ──
 function getSelectedPlan() {
   const params = new URLSearchParams(window.location.search);
   const fromUrl = params.get('plan');
@@ -261,7 +263,7 @@ function getSelectedPlan() {
 const selectedPlan = getSelectedPlan();
 document.getElementById('planName').textContent = PLAN_CONFIG[selectedPlan].label;
 
-// ── 2. Mensajes ──
+// ── Mensajes ──
 const globalMsg = document.getElementById('globalMsg');
 function showMsg(text, type = 'error') {
   globalMsg.textContent = text;
@@ -272,32 +274,135 @@ function clearMsg() {
   globalMsg.textContent = '';
 }
 
-// ── 3. Validación password (mín 8 + al menos 1 número) ──
+// ── Validación password ──
 function validatePassword(pw) {
   if (pw.length < 8) return 'La contraseña debe tener al menos 8 caracteres.';
   if (!/\d/.test(pw)) return 'La contraseña debe incluir al menos 1 número.';
   return null;
 }
 
-// ── 4. Mapeo de errores Supabase a chileno ──
+// ── Errores Supabase ──
 function translateError(err) {
   const msg = (err?.message || '').toLowerCase();
   if (msg.includes('already registered') || msg.includes('already exists') || msg.includes('user already')) {
     return 'Ya existe una cuenta con este email. Intenta iniciar sesión.';
   }
-  if (msg.includes('invalid email')) {
-    return 'El email no parece válido. Revísalo e intenta de nuevo.';
-  }
-  if (msg.includes('password') && msg.includes('weak')) {
-    return 'La contraseña es muy débil. Usa mínimo 8 caracteres con un número.';
-  }
-  if (msg.includes('rate limit')) {
-    return 'Demasiados intentos. Espera unos minutos antes de volver a intentar.';
-  }
+  if (msg.includes('invalid email')) return 'El email no parece válido. Revísalo e intenta de nuevo.';
+  if (msg.includes('password') && msg.includes('weak')) return 'La contraseña es muy débil. Usa mínimo 8 caracteres con un número.';
+  if (msg.includes('rate limit')) return 'Demasiados intentos. Espera unos minutos antes de volver a intentar.';
   return 'No pudimos crear la cuenta. Intenta de nuevo o escríbenos si persiste.';
 }
 
-// ── 5. Submit del formulario ──
+// ── Overlay de pago (Loading state full-screen) ──
+function showPaymentOverlay() {
+  if (document.getElementById('paymentOverlay')) return;
+  const o = document.createElement('div');
+  o.id = 'paymentOverlay';
+  o.innerHTML = `
+    <div class="po-card">
+      <div class="po-spinner"></div>
+      <div class="po-title">Preparando tu pago seguro</div>
+      <div class="po-sub">Te estamos redirigiendo a Mercado Pago...</div>
+    </div>
+    <style>
+      #paymentOverlay{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(2,24,26,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);animation:fadeIn .3s ease;padding:20px}
+      #paymentOverlay .po-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:40px 32px;max-width:360px;width:100%;text-align:center;box-shadow:0 20px 60px -20px rgba(0,0,0,.5)}
+      #paymentOverlay .po-spinner{width:48px;height:48px;border:3px solid rgba(0,223,129,.15);border-top-color:#00DF81;border-radius:50%;margin:0 auto 24px;animation:spin .9s linear infinite}
+      #paymentOverlay .po-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.01em}
+      #paymentOverlay .po-sub{font-size:14px;color:rgba(255,255,255,.6);font-weight:500;line-height:1.5}
+      @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    </style>
+  `;
+  document.body.appendChild(o);
+}
+function hidePaymentOverlay() {
+  const o = document.getElementById('paymentOverlay');
+  if (o) o.remove();
+}
+
+// ── Pantalla de error post-signup con botón reintentar ──
+function showPaymentError(message, retryFn) {
+  hidePaymentOverlay();
+  const existing = document.getElementById('paymentError');
+  if (existing) existing.remove();
+  const o = document.createElement('div');
+  o.id = 'paymentError';
+  o.innerHTML = `
+    <div class="pe-card">
+      <div class="pe-icon">⚠️</div>
+      <div class="pe-title">No pudimos iniciar el pago</div>
+      <div class="pe-msg">${message}</div>
+      <button class="pe-btn" id="peRetryBtn">Reintentar</button>
+      <button class="pe-btn pe-btn-ghost" id="peCancelBtn">Cancelar y volver</button>
+    </div>
+    <style>
+      #paymentError{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;background:rgba(2,24,26,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:20px}
+      #paymentError .pe-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:36px 28px;max-width:380px;width:100%;text-align:center}
+      #paymentError .pe-icon{font-size:42px;margin-bottom:16px}
+      #paymentError .pe-title{font-size:18px;font-weight:700;color:#fff;margin-bottom:10px}
+      #paymentError .pe-msg{font-size:14px;color:rgba(255,255,255,.65);margin-bottom:24px;line-height:1.5}
+      #paymentError .pe-btn{width:100%;padding:14px 18px;background:#00DF81;color:#000;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:12px;border:none;cursor:pointer;transition:all .2s;margin-bottom:10px}
+      #paymentError .pe-btn:hover{transform:translateY(-1px);box-shadow:0 8px 24px -8px rgba(0,223,129,.5)}
+      #paymentError .pe-btn-ghost{background:transparent;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.15)}
+      #paymentError .pe-btn-ghost:hover{background:rgba(255,255,255,.04);transform:none;box-shadow:none;color:#fff}
+    </style>
+  `;
+  document.body.appendChild(o);
+  document.getElementById('peRetryBtn').onclick = () => { o.remove(); retryFn(); };
+  document.getElementById('peCancelBtn').onclick = () => { o.remove(); window.location.href = '/dashboard'; };
+}
+
+// ── Llamar a Edge Function crear-suscripcion ──
+async function iniciarPago(plan) {
+  showPaymentOverlay();
+  try {
+    const { data: s } = await supa.auth.getSession();
+    if (!s?.session?.access_token) {
+      showPaymentError('No encontramos tu sesión. Inicia sesión de nuevo.', () => iniciarPago(plan));
+      return;
+    }
+    const r = await fetch(EDGE_CREAR_SUSCRIPCION, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + s.session.access_token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ plan })
+    });
+    const data = await r.json();
+
+    // Caso éxito
+    if (r.ok && data.success && data.checkout_url) {
+      localStorage.removeItem('selectedPlan');
+      window.location.href = data.checkout_url;
+      return;
+    }
+
+    // Caso 409: ya suscrito
+    if (r.status === 409 || data.error === 'already_subscribed') {
+      localStorage.removeItem('selectedPlan');
+      hidePaymentOverlay();
+      window.location.href = '/dashboard?notice=already_subscribed';
+      return;
+    }
+
+    // Caso mp_error
+    if (data.error === 'mp_error') {
+      const mpMsg = data.message || 'Mercado Pago rechazó la operación.';
+      showPaymentError(mpMsg, () => iniciarPago(plan));
+      return;
+    }
+
+    // Otros errores 4xx/5xx
+    const fallbackMsg = data.message || 'Hubo un problema al iniciar el pago. Intenta de nuevo.';
+    showPaymentError(fallbackMsg, () => iniciarPago(plan));
+  } catch (err) {
+    console.error('Error iniciarPago:', err);
+    showPaymentError('No pudimos conectar con el servidor. Revisa tu conexión.', () => iniciarPago(plan));
+  }
+}
+
+// ── Submit del formulario ──
 const form = document.getElementById('signupForm');
 const submitBtn = document.getElementById('submitBtn');
 
@@ -309,27 +414,20 @@ form.addEventListener('submit', async (e) => {
   const password = document.getElementById('password').value;
   const accepted = document.getElementById('acceptTerms').checked;
 
-  // Validaciones cliente
   if (!email) return showMsg('Ingresa tu email.');
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showMsg('El email no parece válido.');
-
   const pwErr = validatePassword(password);
   if (pwErr) return showMsg(pwErr);
-
   if (!accepted) return showMsg('Debes aceptar los Términos y la Política de Privacidad para continuar.');
 
-  // Loading state
   submitBtn.classList.add('loading');
   submitBtn.disabled = true;
 
   try {
-    // Crear cuenta
     const { data, error } = await supa.auth.signUp({
       email,
       password,
-      options: {
-        data: { selected_plan: selectedPlan }
-      }
+      options: { data: { selected_plan: selectedPlan } }
     });
 
     if (error) {
@@ -338,7 +436,6 @@ form.addEventListener('submit', async (e) => {
       submitBtn.disabled = false;
       return;
     }
-
     if (!data.user) {
       showMsg('No pudimos crear la cuenta. Intenta de nuevo.');
       submitBtn.classList.remove('loading');
@@ -346,7 +443,7 @@ form.addEventListener('submit', async (e) => {
       return;
     }
 
-    // Crear/actualizar profile con el plan elegido
+    // Upsert profile (mantenemos el comportamiento previo como fallback al trigger)
     const { error: profileError } = await supa
       .from('profiles')
       .upsert({
@@ -355,20 +452,20 @@ form.addEventListener('submit', async (e) => {
         plan: selectedPlan,
         status: 'active'
       }, { onConflict: 'id' });
+    if (profileError) console.error('Error creando profile:', profileError);
 
-    if (profileError) {
-      console.error('Error creando profile:', profileError);
-      // No bloqueamos: el profile se reintenta al hacer login con la lógica del index
+    // Bifurcación: plan free → dashboard, plan pago → Edge Function
+    if (PAID_PLANS.includes(selectedPlan)) {
+      // Llamar a crear-suscripcion (NO limpia localStorage hasta confirmar éxito)
+      await iniciarPago(selectedPlan);
+      // No restauramos el botón porque iniciarPago redirige o muestra overlay de error
+      return;
     }
 
-    // Limpiar plan del localStorage
+    // Plan free
     localStorage.removeItem('selectedPlan');
-
-    // Redirigir según el plan
     showMsg('¡Listo! Redirigiendo...', 'success');
-    setTimeout(() => {
-      window.location.href = PLAN_CONFIG[selectedPlan].redirect;
-    }, 600);
+    setTimeout(() => { window.location.href = PLAN_CONFIG[selectedPlan].redirect; }, 600);
 
   } catch (err) {
     console.error('Signup error:', err);
@@ -378,7 +475,7 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-// ── 6. Botón Google (dormido por ahora) ──
+// ── Botón Google (dormido) ──
 document.getElementById('googleBtn').addEventListener('click', () => {
   showMsg('El acceso con Google estará disponible en los próximos días. Por ahora usa email y contraseña.');
 });
