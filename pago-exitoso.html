@@ -230,96 +230,110 @@ body{background:var(--rich-black);color:var(--anti-flash);font-family:var(--font
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
-<script>
 const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
+const EDGE_CHECK_STATUS = `${SUPABASE_URL}/functions/v1/check-payment-status`;
+
 const PLAN_LABELS = {
-  free:'Plan Gratis',
-  starter:'Starter',
-  growth:'Growth',
-  scale:'Scale'
+  free: 'Plan Gratis',
+  starter: 'Starter',
+  growth: 'Growth',
+  scale: 'Scale'
 };
 const PLAN_DESCS = {
-  starter:'Tu plan Starter está activo. Ya puedes lanzar hasta 5 productos al mes.',
-  growth:'Tu plan Growth está activo. Tienes acceso a tienda Shopify y hasta 15 productos al mes.',
-  scale:'Tu plan Scale está activo. Equipo completo para 30 productos al mes.'
+  starter: 'Tu plan Starter está activo. Ya puedes lanzar hasta 5 productos al mes.',
+  growth: 'Tu plan Growth está activo. Tienes acceso a tienda Shopify y hasta 15 productos al mes.',
+  scale: 'Tu plan Scale está activo. Equipo completo para 30 productos al mes.'
 };
 
 // ── Estados ──
-function showState(id){
-  document.querySelectorAll('.state').forEach(el=>el.classList.remove('show'));
+function showState(id) {
+  document.querySelectorAll('.state').forEach(el => el.classList.remove('show'));
   document.getElementById(id).classList.add('show');
 }
 
-// ── Lectura de query params ──
-const params = new URLSearchParams(window.location.search);
-const paymentId = params.get('payment_id') || params.get('collection_id');
-const planFromUrl = params.get('plan'); // opcional, MP no lo manda nativo, lo agregaríamos en back_urls
-
-// ── Polling al webhook ──
-const MAX_ATTEMPTS = 6; // 6 intentos x 2 seg = 12 seg total
+// ── Polling: 2s al inicio, 5s después, máx 60s (~14 intentos) ──
+const INITIAL_INTERVAL = 2000;
+const FOLLOWUP_INTERVAL = 5000;
+const MAX_DURATION_MS = 60000;
+const startTime = Date.now();
 let attempts = 0;
 
-// ── Si no hay payment_id, mostrar unknown ──
-if(!paymentId){
-  // Damos 800ms para que se vea el spinner antes de mostrar unknown (mejor UX)
-  setTimeout(()=>showState('stateUnknown'), 800);
-} else {
-  pollPayment();
-}
+// ── Lectura opcional de query params (MP a veces los manda, otras no) ──
+const params = new URLSearchParams(window.location.search);
+const preapprovalIdFromUrl = params.get('preapproval_id') || params.get('subscription_id') || null;
+const planFromUrl = params.get('plan'); // opcional, lo agregamos en back_url de crear-suscripcion
 
-async function pollPayment(){
-  attempts++;
-
-  const { data, error } = await supa
-    .from('mp_events')
-    .select('mp_payment_id,status,processed,order_id')
-    .eq('mp_payment_id', paymentId)
-    .eq('status', 'approved')
-    .eq('processed', true)
-    .maybeSingle();
-
-  if(error){
-    console.error('Error consultando mp_events:', error);
-    // No es bloqueante: seguimos reintentando
-  }
-
-  if(data){
-    // Pago confirmado server-side
-    await renderSuccess(data);
+// ── Verificar que haya sesión antes de iniciar polling ──
+(async () => {
+  const { data } = await supa.auth.getSession();
+  if (!data?.session) {
+    // Sin sesión, no podemos consultar nada
+    setTimeout(() => showState('stateUnknown'), 800);
     return;
   }
+  pollStatus();
+})();
 
-  if(attempts >= MAX_ATTEMPTS){
+async function pollStatus() {
+  attempts++;
+  const elapsed = Date.now() - startTime;
+
+  try {
+    const { data: s } = await supa.auth.getSession();
+    if (!s?.session?.access_token) {
+      showState('stateUnknown');
+      return;
+    }
+
+    const body = {};
+    if (preapprovalIdFromUrl) body.mp_subscription_id = preapprovalIdFromUrl;
+
+    const r = await fetch(EDGE_CHECK_STATUS, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + s.session.access_token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    const result = await r.json();
+
+    if (r.ok && result.success) {
+      // Éxito si: status=active Y plan distinto a free Y tiene mp_subscription_id
+      const isActive = result.status === 'active'
+                    && result.plan
+                    && result.plan !== 'free'
+                    && result.mp_subscription_id;
+
+      if (isActive) {
+        renderSuccess(result.plan);
+        return;
+      }
+    }
+  } catch (err) {
+    console.error('Error check-payment-status:', err);
+    // No bloqueante, seguimos reintentando
+  }
+
+  // Si pasó el tiempo máximo, mostrar pending
+  if (elapsed >= MAX_DURATION_MS) {
     showState('statePending');
     return;
   }
 
-  setTimeout(pollPayment, 2000);
+  // Próximo intento: 2s los primeros 3 intentos, luego 5s
+  const nextInterval = attempts < 3 ? INITIAL_INTERVAL : FOLLOWUP_INTERVAL;
+  setTimeout(pollStatus, nextInterval);
 }
 
-async function renderSuccess(mpEvent){
-  let planLabel = null;
-  let planDesc = null;
-  let planKey = planFromUrl;
+function renderSuccess(planKey) {
+  const planLabel = PLAN_LABELS[planKey];
+  const planDesc = PLAN_DESCS[planKey] || 'Tu plan está activo. Ya puedes empezar.';
 
-  // Si tenemos order_id, leemos el plan real desde orders
-  if(mpEvent.order_id){
-    const { data:order } = await supa
-      .from('orders')
-      .select('plan')
-      .eq('id', mpEvent.order_id)
-      .maybeSingle();
-    if(order && order.plan){
-      planKey = order.plan;
-    }
-  }
-
-  if(planKey && PLAN_LABELS[planKey]){
-    planLabel = PLAN_LABELS[planKey];
-    planDesc = PLAN_DESCS[planKey] || 'Tu plan está activo. Ya puedes empezar.';
+  if (planLabel) {
     document.getElementById('successTitle').textContent = '¡Bienvenido a ' + planLabel + '!';
     document.getElementById('successDesc').textContent = planDesc;
     document.getElementById('successPlanLabel').textContent = planLabel + ' activado';
@@ -334,12 +348,11 @@ async function renderSuccess(mpEvent){
 }
 
 // ── Confetti sutil ──
-function fireConfetti(){
-  if(typeof confetti === 'undefined') return;
+function fireConfetti() {
+  if (typeof confetti === 'undefined') return;
 
-  const colors = ['#00DF81','#2CC295','#F1F7F6'];
+  const colors = ['#00DF81', '#2CC295', '#F1F7F6'];
 
-  // Disparo principal
   confetti({
     particleCount: 80,
     spread: 70,
@@ -349,8 +362,7 @@ function fireConfetti(){
     scalar: 0.9
   });
 
-  // Disparos laterales sutiles
-  setTimeout(()=>{
+  setTimeout(() => {
     confetti({ particleCount: 40, angle: 60, spread: 55, origin: { x: 0, y: 0.65 }, colors, scalar: 0.8 });
     confetti({ particleCount: 40, angle: 120, spread: 55, origin: { x: 1, y: 0.65 }, colors, scalar: 0.8 });
   }, 250);
