@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Términos y Condiciones · ALTY</title>
+<meta name="description" content="Términos y Condiciones de uso de la plataforma ALTY."/>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="https://www.altyapp.com/terms"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --font:'Geist',sans-serif;
+  --bg:#02181A;
+  --green:#00df81;
+  --white:#fff;
+  --muted:rgba(241,247,246,0.55);
+  --muted2:rgba(241,247,246,0.25);
+  --card:rgba(255,255,255,0.04);
+  --border:rgba(255,255,255,0.08);
+  --max:780px;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;
+  background:rgba(2,24,26,.85);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{
+  font-size:20px;font-weight:800;letter-spacing:-.02em;
+  color:var(--white);text-decoration:none;
+}
+.nav-logo span{color:var(--green)}
+.nav-back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--muted);
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--white);text-decoration:none}
+.nav-back svg{flex-shrink:0}
+
+/* ── HERO LEGAL ── */
+.legal-hero{
+  padding:64px 24px 40px;
+  max-width:var(--max);
+  margin:0 auto;
+  border-bottom:1px solid var(--border);
+}
+.legal-badge{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);
+  background:rgba(0,223,129,.08);
+  border:1px solid rgba(0,223,129,.2);
+  padding:5px 12px;border-radius:20px;
+  margin-bottom:20px;
+}
+.legal-hero h1{
+  font-size:clamp(28px,5vw,42px);
+  font-weight:800;letter-spacing:-.03em;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+.legal-hero p{
+  font-size:15px;color:var(--muted);
+  max-width:560px;
+}
+.legal-meta{
+  display:flex;gap:24px;flex-wrap:wrap;
+  margin-top:24px;
+}
+.legal-meta span{
+  font-size:12px;color:var(--muted2);
+  display:flex;align-items:center;gap:6px;
+}
+.legal-meta span::before{
+  content:'';display:inline-block;
+  width:4px;height:4px;border-radius:50%;background:var(--green);
+}
+
+/* ── CONTENIDO ── */
+.legal-body{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:48px 24px 80px;
+}
+.legal-toc{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:48px;
+}
+.legal-toc h2{
+  font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+}
+.legal-toc ol{
+  list-style:none;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;
+}
+@media(max-width:480px){.legal-toc ol{grid-template-columns:1fr}}
+.legal-toc li a{
+  font-size:14px;color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+  transition:color .15s;
+}
+.legal-toc li a:hover{color:var(--green);text-decoration:none}
+.legal-toc li a::before{
+  content:attr(data-n);
+  font-size:11px;font-weight:700;color:var(--green);
+  background:rgba(0,223,129,.1);
+  width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+
+section.legal-section{margin-bottom:40px}
+.legal-section h2{
+  font-size:20px;font-weight:700;
+  color:var(--white);
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+  scroll-margin-top:80px;
+}
+.section-num{
+  font-size:12px;font-weight:800;color:var(--green);
+  background:rgba(0,223,129,.1);
+  width:26px;height:26px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.legal-section p{
+  font-size:15px;color:rgba(241,247,246,.75);
+  margin-bottom:12px;
+}
+.legal-section ul{
+  list-style:none;
+  margin:12px 0 16px;
+}
+.legal-section ul li{
+  font-size:15px;color:rgba(241,247,246,.75);
+  padding:6px 0 6px 20px;
+  position:relative;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.legal-section ul li::before{
+  content:'→';
+  position:absolute;left:0;
+  color:var(--green);font-size:13px;
+}
+.legal-section strong{color:var(--white)}
+
+.highlight-box{
+  background:rgba(0,223,129,.05);
+  border:1px solid rgba(0,223,129,.15);
+  border-radius:12px;
+  padding:16px 20px;
+  margin:16px 0;
+  font-size:14px;color:rgba(241,247,246,.8);
+}
+.highlight-box strong{color:var(--green)}
+
+/* ── FOOTER ── */
+.legal-footer{
+  border-top:1px solid var(--border);
+  padding:32px 24px;
+  text-align:center;
+}
+.legal-footer-inner{
+  max-width:var(--max);
+  margin:0 auto;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+}
+.footer-links{
+  display:flex;gap:24px;flex-wrap:wrap;justify-content:center;
+}
+.footer-links a{
+  font-size:13px;color:var(--muted);
+  transition:color .15s;
+}
+.footer-links a:hover{color:var(--green);text-decoration:none}
+.footer-copy{font-size:12px;color:var(--muted2)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">ALTY<span>.</span></a>
+  <a href="/" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al inicio
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="legal-badge">Legal</div>
+  <h1>Términos y Condiciones</h1>
+  <p>Al usar ALTY aceptas estas condiciones. Léelas con calma — están escritas en español de verdad.</p>
+  <div class="legal-meta">
+    <span>Última actualización: junio 2026</span>
+    <span>Versión 1.0</span>
+    <span>Aplica en Chile</span>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="legal-body">
+
+  <!-- ÍNDICE -->
+  <div class="legal-toc">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#s1" data-n="1">Quiénes somos</a></li>
+      <li><a href="#s2" data-n="2">Aceptación</a></li>
+      <li><a href="#s3" data-n="3">Descripción del servicio</a></li>
+      <li><a href="#s4" data-n="4">Uso de inteligencia artificial</a></li>
+      <li><a href="#s5" data-n="5">Registro y cuenta</a></li>
+      <li><a href="#s6" data-n="6">Planes y pagos</a></li>
+      <li><a href="#s7" data-n="7">Cancelación y reembolsos</a></li>
+      <li><a href="#s8" data-n="8">Propiedad intelectual</a></li>
+      <li><a href="#s9" data-n="9">Conducta del usuario</a></li>
+      <li><a href="#s10" data-n="10">Limitación de responsabilidad</a></li>
+      <li><a href="#s11" data-n="11">Modificaciones</a></li>
+      <li><a href="#s12" data-n="12">Contacto</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section class="legal-section" id="s1">
+    <h2><span class="section-num">1</span>Quiénes somos</h2>
+    <p>ALTY (en adelante, "ALTY", "nosotros" o "la plataforma") es una plataforma de software como servicio (SaaS) operada bajo el dominio <strong>altyapp.com</strong>, orientada a empresas y personas que desarrollan actividades de comercio electrónico, en particular dropshipping, en Chile y Latinoamérica.</p>
+    <p>Para cualquier consulta legal o comercial, puedes escribirnos a <a href="mailto:hola@altyapp.com">hola@altyapp.com</a>.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="legal-section" id="s2">
+    <h2><span class="section-num">2</span>Aceptación de los términos</h2>
+    <p>Al registrarte, acceder o utilizar cualquier función de ALTY, declaras haber leído, entendido y aceptado estos Términos y Condiciones en su totalidad, junto con nuestra <a href="/privacy">Política de Privacidad</a>.</p>
+    <p>Si no estás de acuerdo con alguna de estas condiciones, debes abstenerte de usar la plataforma.</p>
+    <div class="highlight-box">
+      <strong>Edad mínima:</strong> Debes tener al menos 18 años para crear una cuenta y usar los servicios de pago de ALTY.
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section class="legal-section" id="s3">
+    <h2><span class="section-num">3</span>Descripción del servicio</h2>
+    <p>ALTY es una plataforma de marketing automatizado diseñada para negocios de ecommerce y dropshipping. El servicio incluye, según el plan contratado:</p>
+    <ul>
+      <li>Búsqueda e identificación de productos con potencial de venta</li>
+      <li>Calculadora de costos y definición de precios de venta</li>
+      <li>Creación de landings de producto para Shopify</li>
+      <li>Generación de anuncios estáticos (static ads) y videos publicitarios</li>
+      <li>Copys optimizados para conversión</li>
+      <li>Implementación de email marketing y recuperación de carritos abandonados</li>
+      <li>Gestión de atención al cliente vía WhatsApp (plan Scale)</li>
+      <li>Publicación en redes sociales</li>
+      <li>Dashboard con métricas de marketing y auditoría de campañas</li>
+    </ul>
+    <p>ALTY se reserva el derecho de modificar, ampliar o restringir funcionalidades en cualquier momento, notificando a los usuarios con al menos 15 días de anticipación cuando el cambio afecte características ya contratadas.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="legal-section" id="s4">
+    <h2><span class="section-num">4</span>Uso de inteligencia artificial</h2>
+    <p>ALTY utiliza sistemas de inteligencia artificial (IA) para generar y optimizar contenido de marketing, incluyendo textos publicitarios, imágenes, videos y análisis de datos.</p>
+    <div class="highlight-box">
+      <strong>Importante:</strong> El contenido generado por IA es de carácter orientativo y automatizado. ALTY no garantiza que dicho contenido sea preciso, completo, libre de errores o que cumpla con normativas publicitarias específicas de plataformas de terceros (Meta, TikTok, Google, etc.). Es responsabilidad del usuario revisar y validar el contenido antes de publicarlo.
+    </div>
+    <ul>
+      <li>Los prompts, modelos e instrucciones de sistema utilizados son propiedad exclusiva de ALTY y no se exponen al usuario</li>
+      <li>El contenido generado puede estar sujeto a políticas de uso de los proveedores de IA subyacentes</li>
+      <li>ALTY no se hace responsable de eventuales errores, sesgos o imprecisiones presentes en el contenido generado automáticamente</li>
+      <li>El usuario es el responsable final del contenido que publica en sus canales y plataformas</li>
+    </ul>
+  </section>
+
+  <!-- 5 -->
+  <section class="legal-section" id="s5">
+    <h2><span class="section-num">5</span>Registro y cuenta</h2>
+    <p>Para acceder a los servicios de ALTY debes crear una cuenta con un correo electrónico válido y una contraseña segura. Eres responsable de:</p>
+    <ul>
+      <li>Mantener la confidencialidad de tus credenciales de acceso</li>
+      <li>Notificarnos de inmediato ante cualquier uso no autorizado de tu cuenta</li>
+      <li>Toda actividad que ocurra bajo tu cuenta</li>
+      <li>Proporcionar información veraz y actualizada</li>
+    </ul>
+    <p>ALTY se reserva el derecho de suspender o eliminar cuentas que incumplan estos términos, sin previo aviso en casos de uso fraudulento o actividad ilícita.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="legal-section" id="s6">
+    <h2><span class="section-num">6</span>Planes, precios y pagos</h2>
+    <p>ALTY ofrece los siguientes planes de suscripción mensual (precios en pesos chilenos, IVA incluido):</p>
+    <ul>
+      <li><strong>Free · $0/mes</strong> — 1 landing Shopify, 3 static ads y copys optimizados</li>
+      <li><strong>Starter · $150.000/mes</strong> — 5 productos mensuales con búsqueda, calculadora y dashboard básico</li>
+      <li><strong>Growth · $300.000/mes</strong> — 15 productos mensuales con suite completa de marketing</li>
+      <li><strong>Scale · $450.000/mes</strong> — 30 productos mensuales con SAC, email marketing y soporte prioritario</li>
+    </ul>
+    <p>Los pagos se procesan exclusivamente a través de <strong>Mercado Pago Chile</strong>. ALTY no almacena datos de tarjetas de crédito ni débito. Las suscripciones se cobran mensualmente de forma automática desde la fecha de activación del plan.</p>
+    <p>En caso de fallo en el cobro, el acceso al plan de pago puede suspenderse hasta regularizar el pago. ALTY notificará al usuario por correo electrónico ante cualquier problema con el cobro.</p>
+  </section>
+
+  <!-- 7 -->
+  <section class="legal-section" id="s7">
+    <h2><span class="section-num">7</span>Cancelación y reembolsos</h2>
+    <p>Puedes cancelar tu suscripción en cualquier momento desde tu cuenta o escribiendo a <a href="mailto:hola@altyapp.com">hola@altyapp.com</a>. La cancelación tendrá efecto al término del ciclo de facturación vigente; mantendrás acceso al plan hasta esa fecha.</p>
+    <div class="highlight-box">
+      <strong>Política de reembolsos:</strong> ALTY no ofrece reembolsos prorrateados por períodos no utilizados. Si experimentas un problema técnico grave atribuible a ALTY, puedes solicitar una revisión caso a caso escribiéndonos dentro de los 7 días siguientes al incidente.
+    </div>
+    <p>ALTY puede cancelar o suspender el servicio por incumplimiento de estos términos, sin derecho a reembolso en caso de uso fraudulento o violación de las normas de conducta.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="legal-section" id="s8">
+    <h2><span class="section-num">8</span>Propiedad intelectual</h2>
+    <p>Todo el contenido de la plataforma ALTY — incluyendo diseño, código, metodologías, prompts, workflows, marca, logotipos y documentación — es propiedad exclusiva de ALTY y está protegido por las leyes de propiedad intelectual aplicables en Chile.</p>
+    <p>El usuario conserva la propiedad del contenido que sube a la plataforma (imágenes de productos, información de su negocio, etc.) y otorga a ALTY una licencia limitada para procesarlo con el único fin de prestar el servicio contratado.</p>
+    <p>Respecto al contenido generado por ALTY para el usuario:</p>
+    <ul>
+      <li>El usuario puede usarlo libremente para sus actividades comerciales</li>
+      <li>ALTY puede utilizarlo de forma agregada y anonimizada para mejorar sus servicios</li>
+      <li>Queda prohibida la reventa del contenido generado como un servicio independiente</li>
+    </ul>
+  </section>
+
+  <!-- 9 -->
+  <section class="legal-section" id="s9">
+    <h2><span class="section-num">9</span>Conducta del usuario</h2>
+    <p>Al usar ALTY, el usuario se compromete a no:</p>
+    <ul>
+      <li>Usar el servicio para actividades ilegales, fraudulentas o que vulneren derechos de terceros</li>
+      <li>Intentar acceder o manipular sistemas, cuentas o datos que no le pertenezcan</li>
+      <li>Realizar ingeniería inversa de la plataforma o intentar extraer lógica de negocio, prompts o arquitectura interna</li>
+      <li>Generar contenido que infrinja derechos de autor, sea difamatorio o promueva actividades ilegales</li>
+      <li>Compartir credenciales de acceso con terceros no autorizados</li>
+      <li>Hacer un uso excesivo de los recursos de la plataforma que afecte a otros usuarios</li>
+    </ul>
+    <p>El incumplimiento de estas normas puede resultar en la suspensión inmediata de la cuenta sin derecho a reembolso.</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="legal-section" id="s10">
+    <h2><span class="section-num">10</span>Limitación de responsabilidad</h2>
+    <p>ALTY se esfuerza por mantener el servicio disponible de forma continua, pero no garantiza un uptime del 100%. La plataforma se ofrece "tal como está" (<em>as is</em>), sin garantías de ningún tipo, expresas o implícitas.</p>
+    <p>ALTY no será responsable por:</p>
+    <ul>
+      <li>Pérdidas de ingresos, ventas o datos derivadas de interrupciones del servicio</li>
+      <li>Resultados comerciales del usuario basados en el contenido generado por la plataforma</li>
+      <li>Decisiones de plataformas de terceros (Meta, TikTok, Shopify, etc.) respecto al contenido publicado</li>
+      <li>Daños indirectos, incidentales o consecuentes de cualquier naturaleza</li>
+    </ul>
+    <p>En ningún caso la responsabilidad total de ALTY frente a un usuario superará el monto pagado por el usuario en los 3 meses anteriores al incidente.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="legal-section" id="s11">
+    <h2><span class="section-num">11</span>Modificaciones a estos términos</h2>
+    <p>ALTY puede actualizar estos Términos y Condiciones en cualquier momento. Los cambios serán notificados al correo electrónico registrado y/o mediante un aviso visible en la plataforma, con un mínimo de 15 días de anticipación para cambios materiales.</p>
+    <p>El uso continuado del servicio tras la fecha de entrada en vigencia de los nuevos términos constituye aceptación de los mismos.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="legal-section" id="s12">
+    <h2><span class="section-num">12</span>Contacto y legislación aplicable</h2>
+    <p>Estos Términos se rigen por las leyes de la República de Chile. Para cualquier consulta, reclamo o notificación legal, contáctanos en:</p>
+    <div class="highlight-box">
+      <strong>ALTY</strong><br>
+      Correo electrónico: <a href="mailto:hola@altyapp.com">hola@altyapp.com</a><br>
+      Sitio web: <a href="https://www.altyapp.com">www.altyapp.com</a><br>
+      País de operación: Chile
+    </div>
+    <p>Las partes acuerdan someter cualquier controversia derivada de estos términos a los tribunales ordinarios de justicia de la República de Chile.</p>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="legal-footer">
+  <div class="legal-footer-inner">
+    <div class="footer-links">
+      <a href="/">Inicio</a>
+      <a href="/privacy">Política de Privacidad</a>
+      <a href="mailto:hola@altyapp.com">Contacto</a>
+    </div>
+    <p class="footer-copy">© 2026 ALTY · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Política de Privacidad · ALTY</title>
+<meta name="description" content="Política de Privacidad de ALTY: cómo recopilamos, usamos y protegemos tus datos personales."/>
+<meta name="robots" content="noindex, follow"/>
+<link rel="canonical" href="https://www.altyapp.com/privacy"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --font:'Geist',sans-serif;
+  --bg:#02181A;
+  --green:#00df81;
+  --white:#fff;
+  --muted:rgba(241,247,246,.55);
+  --muted2:rgba(241,247,246,.25);
+  --card:rgba(255,255,255,.04);
+  --border:rgba(255,255,255,.08);
+  --max:780px;
+}
+body{background:var(--bg);color:var(--white);font-family:var(--font);line-height:1.7;overflow-x:hidden}
+a{color:var(--green);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 24px;
+  background:rgba(2,24,26,.85);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+}
+.nav-logo{font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--white);text-decoration:none}
+.nav-logo span{color:var(--green)}
+.nav-back{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:500;color:var(--muted);
+  transition:color .2s;
+}
+.nav-back:hover{color:var(--white);text-decoration:none}
+
+/* ── HERO ── */
+.legal-hero{
+  padding:64px 24px 40px;
+  max-width:var(--max);
+  margin:0 auto;
+  border-bottom:1px solid var(--border);
+}
+.legal-badge{
+  display:inline-block;
+  font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);
+  background:rgba(0,223,129,.08);
+  border:1px solid rgba(0,223,129,.2);
+  padding:5px 12px;border-radius:20px;
+  margin-bottom:20px;
+}
+.legal-hero h1{
+  font-size:clamp(28px,5vw,42px);
+  font-weight:800;letter-spacing:-.03em;
+  line-height:1.1;
+  margin-bottom:16px;
+}
+.legal-hero p{font-size:15px;color:var(--muted);max-width:560px}
+.legal-meta{display:flex;gap:24px;flex-wrap:wrap;margin-top:24px}
+.legal-meta span{
+  font-size:12px;color:var(--muted2);
+  display:flex;align-items:center;gap:6px;
+}
+.legal-meta span::before{
+  content:'';display:inline-block;
+  width:4px;height:4px;border-radius:50%;background:var(--green);
+}
+
+/* ── BODY ── */
+.legal-body{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:48px 24px 80px;
+}
+.legal-toc{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:48px;
+}
+.legal-toc h2{
+  font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:16px;
+}
+.legal-toc ol{
+  list-style:none;
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 24px;
+}
+@media(max-width:480px){.legal-toc ol{grid-template-columns:1fr}}
+.legal-toc li a{
+  font-size:14px;color:var(--muted);
+  display:flex;align-items:center;gap:6px;
+  transition:color .15s;
+}
+.legal-toc li a:hover{color:var(--green);text-decoration:none}
+.legal-toc li a::before{
+  content:attr(data-n);
+  font-size:11px;font-weight:700;color:var(--green);
+  background:rgba(0,223,129,.1);
+  width:20px;height:20px;border-radius:6px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+
+/* Tabla de datos */
+.data-table{
+  width:100%;border-collapse:collapse;
+  margin:16px 0;font-size:14px;
+}
+.data-table th{
+  text-align:left;padding:10px 14px;
+  font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);
+  border-bottom:1px solid var(--border);
+}
+.data-table td{
+  padding:12px 14px;
+  color:rgba(241,247,246,.75);
+  border-bottom:1px solid rgba(255,255,255,.04);
+  vertical-align:top;
+}
+.data-table td:first-child{font-weight:500;color:var(--white)}
+@media(max-width:520px){
+  .data-table thead{display:none}
+  .data-table td{display:block;padding:6px 0}
+  .data-table td:first-child{color:var(--green);font-size:13px;font-weight:700;margin-top:12px}
+  .data-table tr{display:block;border-bottom:1px solid var(--border);padding-bottom:12px;margin-bottom:4px}
+}
+
+section.legal-section{margin-bottom:40px}
+.legal-section h2{
+  font-size:20px;font-weight:700;
+  color:var(--white);
+  margin-bottom:16px;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+  scroll-margin-top:80px;
+}
+.section-num{
+  font-size:12px;font-weight:800;color:var(--green);
+  background:rgba(0,223,129,.1);
+  width:26px;height:26px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.legal-section p{font-size:15px;color:rgba(241,247,246,.75);margin-bottom:12px}
+.legal-section ul{list-style:none;margin:12px 0 16px}
+.legal-section ul li{
+  font-size:15px;color:rgba(241,247,246,.75);
+  padding:6px 0 6px 20px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.legal-section ul li::before{content:'→';position:absolute;left:0;color:var(--green);font-size:13px}
+.legal-section strong{color:var(--white)}
+
+.highlight-box{
+  background:rgba(0,223,129,.05);
+  border:1px solid rgba(0,223,129,.15);
+  border-radius:12px;
+  padding:16px 20px;
+  margin:16px 0;
+  font-size:14px;color:rgba(241,247,246,.8);
+}
+.highlight-box strong{color:var(--green)}
+
+.rights-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  margin:16px 0;
+}
+@media(max-width:480px){.rights-grid{grid-template-columns:1fr}}
+.right-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+}
+.right-card h3{
+  font-size:13px;font-weight:700;color:var(--green);
+  margin-bottom:6px;
+}
+.right-card p{font-size:13px;color:var(--muted);margin:0}
+
+/* ── FOOTER ── */
+.legal-footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center}
+.legal-footer-inner{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;justify-content:center}
+.footer-links a{font-size:13px;color:var(--muted);transition:color .15s}
+.footer-links a:hover{color:var(--green);text-decoration:none}
+.footer-copy{font-size:12px;color:var(--muted2)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-logo">ALTY<span>.</span></a>
+  <a href="/" class="nav-back">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Volver al inicio
+  </a>
+</nav>
+
+<!-- HERO -->
+<div class="legal-hero">
+  <div class="legal-badge">Legal</div>
+  <h1>Política de Privacidad</h1>
+  <p>Transparencia total sobre qué datos recopilamos, para qué los usamos y cómo los protegemos.</p>
+  <div class="legal-meta">
+    <span>Última actualización: junio 2026</span>
+    <span>Versión 1.0</span>
+    <span>Aplica en Chile</span>
+  </div>
+</div>
+
+<!-- CUERPO -->
+<div class="legal-body">
+
+  <!-- ÍNDICE -->
+  <div class="legal-toc">
+    <h2>Contenido</h2>
+    <ol>
+      <li><a href="#p1" data-n="1">Responsable del tratamiento</a></li>
+      <li><a href="#p2" data-n="2">Datos que recopilamos</a></li>
+      <li><a href="#p3" data-n="3">Cómo usamos tus datos</a></li>
+      <li><a href="#p4" data-n="4">Pagos y datos financieros</a></li>
+      <li><a href="#p5" data-n="5">Cookies y analítica</a></li>
+      <li><a href="#p6" data-n="6">Uso de IA y datos de contenido</a></li>
+      <li><a href="#p7" data-n="7">Terceros y transferencias</a></li>
+      <li><a href="#p8" data-n="8">Conservación de datos</a></li>
+      <li><a href="#p9" data-n="9">Tus derechos</a></li>
+      <li><a href="#p10" data-n="10">Seguridad</a></li>
+      <li><a href="#p11" data-n="11">Cambios a esta política</a></li>
+      <li><a href="#p12" data-n="12">Contacto</a></li>
+    </ol>
+  </div>
+
+  <!-- 1 -->
+  <section class="legal-section" id="p1">
+    <h2><span class="section-num">1</span>Responsable del tratamiento</h2>
+    <p>El responsable del tratamiento de tus datos personales es <strong>ALTY</strong>, operador de la plataforma accesible en <a href="https://www.altyapp.com">altyapp.com</a>.</p>
+    <div class="highlight-box">
+      <strong>Contacto del responsable:</strong><br>
+      Correo electrónico: <a href="mailto:hola@altyapp.com">hola@altyapp.com</a><br>
+      Para solicitudes de privacidad: <a href="mailto:hola@altyapp.com">hola@altyapp.com</a> con asunto "Solicitud de privacidad"
+    </div>
+    <p>Esta política se rige por la <strong>Ley N° 19.628 sobre Protección de la Vida Privada</strong> de Chile y la normativa complementaria aplicable.</p>
+  </section>
+
+  <!-- 2 -->
+  <section class="legal-section" id="p2">
+    <h2><span class="section-num">2</span>Datos que recopilamos</h2>
+    <p>Recopilamos únicamente los datos necesarios para prestar el servicio:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Dato</th>
+          <th>Cómo se recopila</th>
+          <th>Finalidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nombre</td>
+          <td>Formulario de registro</td>
+          <td>Identificación y personalización</td>
+        </tr>
+        <tr>
+          <td>Correo electrónico</td>
+          <td>Registro y uso de la plataforma</td>
+          <td>Autenticación, comunicaciones del servicio</td>
+        </tr>
+        <tr>
+          <td>Datos de pago</td>
+          <td>Procesados por Mercado Pago</td>
+          <td>Gestión de suscripciones (no almacenamos tarjetas)</td>
+        </tr>
+        <tr>
+          <td>Datos de uso</td>
+          <td>Automáticamente durante el uso</td>
+          <td>Mejora del servicio, soporte técnico</td>
+        </tr>
+        <tr>
+          <td>Contenido subido</td>
+          <td>Archivos e información que subes</td>
+          <td>Generación de contenido de marketing</td>
+        </tr>
+        <tr>
+          <td>Datos de analítica</td>
+          <td>Cookies y herramientas de seguimiento</td>
+          <td>Análisis de uso y mejora de la plataforma</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>No recopilamos datos sensibles (datos de salud, origen étnico, creencias religiosas, datos biométricos u otros definidos como sensibles por la legislación chilena) a menos que sean estrictamente necesarios y tú los proporciones voluntariamente.</p>
+  </section>
+
+  <!-- 3 -->
+  <section class="legal-section" id="p3">
+    <h2><span class="section-num">3</span>Cómo usamos tus datos</h2>
+    <p>Usamos tus datos personales exclusivamente para:</p>
+    <ul>
+      <li>Crear y gestionar tu cuenta en la plataforma</li>
+      <li>Prestar los servicios del plan contratado</li>
+      <li>Procesar pagos y gestionar suscripciones</li>
+      <li>Enviarte comunicaciones sobre el servicio (confirmaciones, avisos de cobro, novedades)</li>
+      <li>Resolver consultas y solicitudes de soporte</li>
+      <li>Mejorar la plataforma y detectar errores técnicos</li>
+      <li>Cumplir obligaciones legales</li>
+    </ul>
+    <p><strong>No vendemos, arrendamos ni cedemos tus datos personales a terceros con fines comerciales o publicitarios.</strong></p>
+  </section>
+
+  <!-- 4 -->
+  <section class="legal-section" id="p4">
+    <h2><span class="section-num">4</span>Pagos y datos financieros</h2>
+    <p>Todos los pagos en ALTY son procesados por <strong>Mercado Pago Chile</strong>, un proveedor externo de servicios de pago.</p>
+    <div class="highlight-box">
+      <strong>Lo que ALTY NO almacena:</strong> números de tarjetas de crédito o débito, datos de cuentas bancarias ni CVV. Toda la información financiera sensible es gestionada exclusivamente por Mercado Pago bajo sus propias políticas de seguridad y privacidad.
+    </div>
+    <p>ALTY sí almacena información relativa al estado de la suscripción (plan activo, fecha de renovación, historial de pagos a nivel de referencia) necesaria para gestionar tu acceso al servicio.</p>
+    <p>Para conocer cómo Mercado Pago trata tus datos financieros, consulta su <a href="https://www.mercadopago.cl/privacidad" target="_blank" rel="noopener">Política de Privacidad</a>.</p>
+  </section>
+
+  <!-- 5 -->
+  <section class="legal-section" id="p5">
+    <h2><span class="section-num">5</span>Cookies y analítica</h2>
+    <p>ALTY utiliza cookies y tecnologías similares para el funcionamiento de la plataforma y para analítica básica de uso. Los tipos de cookies que usamos son:</p>
+    <ul>
+      <li><strong>Cookies esenciales:</strong> necesarias para el funcionamiento de la plataforma (sesión, autenticación). No pueden desactivarse.</li>
+      <li><strong>Cookies de analítica:</strong> recopilan información sobre cómo se usa la plataforma (páginas visitadas, tiempo de sesión, errores). Usamos herramientas de analítica básica para mejorar el servicio.</li>
+    </ul>
+    <p>Puedes configurar tu navegador para rechazar cookies, aunque esto puede afectar el funcionamiento de algunas funciones de la plataforma.</p>
+    <p>ALTY no utiliza cookies de publicidad dirigida ni comparte datos de comportamiento con redes publicitarias de terceros.</p>
+  </section>
+
+  <!-- 6 -->
+  <section class="legal-section" id="p6">
+    <h2><span class="section-num">6</span>Uso de IA y datos de contenido</h2>
+    <p>ALTY utiliza sistemas de inteligencia artificial para generar contenido de marketing personalizado. En este contexto:</p>
+    <ul>
+      <li>La información de tus productos (nombre, descripción, imágenes) que subes a la plataforma es procesada por sistemas de IA para generar el contenido solicitado</li>
+      <li>Esta información puede ser enviada a proveedores de IA externos bajo acuerdos de confidencialidad y procesamiento de datos</li>
+      <li>Los proveedores de IA utilizados no están autorizados a usar tus datos para entrenar sus modelos con fines comerciales propios</li>
+      <li>ALTY no expone tus datos de negocio a otros usuarios de la plataforma</li>
+    </ul>
+    <div class="highlight-box">
+      <strong>Propiedad del contenido generado:</strong> El contenido creado por ALTY usando tus datos es tuyo. ALTY puede usar datos anonimizados y agregados para mejorar sus servicios, nunca información identificable de tu negocio.
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="legal-section" id="p7">
+    <h2><span class="section-num">7</span>Terceros y transferencias internacionales</h2>
+    <p>Para prestar el servicio, ALTY trabaja con los siguientes tipos de proveedores que pueden tener acceso a tus datos en la medida necesaria:</p>
+    <ul>
+      <li><strong>Infraestructura y hosting:</strong> servicios de nube para almacenamiento y procesamiento de datos</li>
+      <li><strong>Autenticación y base de datos:</strong> servicios de gestión de usuarios y almacenamiento seguro</li>
+      <li><strong>Pagos:</strong> Mercado Pago Chile para procesamiento de transacciones</li>
+      <li><strong>Inteligencia artificial:</strong> proveedores externos para generación de contenido</li>
+      <li><strong>Analítica:</strong> herramientas de medición de uso de la plataforma</li>
+    </ul>
+    <p>Todos los proveedores son seleccionados con criterios de seguridad y privacidad. Cuando el procesamiento ocurre fuera de Chile, ALTY toma medidas para asegurar un nivel de protección adecuado.</p>
+    <p>ALTY no transfiere datos a gobiernos, fuerzas del orden u organismos estatales, salvo requerimiento legal expreso.</p>
+  </section>
+
+  <!-- 8 -->
+  <section class="legal-section" id="p8">
+    <h2><span class="section-num">8</span>Conservación de datos</h2>
+    <p>Conservamos tus datos personales durante el tiempo necesario para prestar el servicio y cumplir con obligaciones legales:</p>
+    <ul>
+      <li><strong>Datos de cuenta activa:</strong> mientras la cuenta esté activa</li>
+      <li><strong>Datos tras cancelación:</strong> hasta 12 meses después del cierre de cuenta para fines de soporte, resolución de disputas y obligaciones legales</li>
+      <li><strong>Datos de transacciones:</strong> hasta 6 años según normativa tributaria chilena</li>
+      <li><strong>Contenido generado:</strong> eliminado junto con la cuenta a solicitud del usuario</li>
+    </ul>
+    <p>Puedes solicitar la eliminación de tu cuenta y datos en cualquier momento escribiendo a <a href="mailto:hola@altyapp.com">hola@altyapp.com</a>.</p>
+  </section>
+
+  <!-- 9 -->
+  <section class="legal-section" id="p9">
+    <h2><span class="section-num">9</span>Tus derechos</h2>
+    <p>Conforme a la Ley N° 19.628 y normativa aplicable, tienes los siguientes derechos respecto a tus datos personales:</p>
+    <div class="rights-grid">
+      <div class="right-card">
+        <h3>Acceso</h3>
+        <p>Solicitar una copia de los datos personales que tenemos sobre ti.</p>
+      </div>
+      <div class="right-card">
+        <h3>Rectificación</h3>
+        <p>Corregir datos inexactos o incompletos.</p>
+      </div>
+      <div class="right-card">
+        <h3>Cancelación</h3>
+        <p>Solicitar la eliminación de tus datos cuando ya no sean necesarios.</p>
+      </div>
+      <div class="right-card">
+        <h3>Oposición</h3>
+        <p>Oponerte al tratamiento de tus datos para determinadas finalidades.</p>
+      </div>
+      <div class="right-card">
+        <h3>Portabilidad</h3>
+        <p>Recibir tus datos en un formato estructurado y de uso común.</p>
+      </div>
+      <div class="right-card">
+        <h3>Revocación</h3>
+        <p>Retirar el consentimiento otorgado en cualquier momento.</p>
+      </div>
+    </div>
+    <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:hola@altyapp.com">hola@altyapp.com</a> con asunto <strong>"Solicitud de privacidad"</strong> e indicando el derecho que deseas ejercer. Responderemos en un plazo máximo de 30 días hábiles.</p>
+  </section>
+
+  <!-- 10 -->
+  <section class="legal-section" id="p10">
+    <h2><span class="section-num">10</span>Seguridad</h2>
+    <p>ALTY implementa medidas técnicas y organizativas para proteger tus datos personales, incluyendo:</p>
+    <ul>
+      <li>Cifrado de comunicaciones mediante HTTPS/TLS</li>
+      <li>Control de acceso basado en roles con aislamiento por usuario</li>
+      <li>Almacenamiento seguro de contraseñas con hashing</li>
+      <li>Variables de entorno seguras para credenciales y secretos</li>
+      <li>No almacenamiento de datos de tarjetas de crédito</li>
+    </ul>
+    <p>Sin embargo, ningún sistema es 100% infalible. En caso de una brecha de seguridad que afecte tus datos personales, ALTY te notificará en un plazo razonable y tomará las medidas correctivas necesarias.</p>
+    <p>Si detectas una vulnerabilidad de seguridad, repórtala a <a href="mailto:hola@altyapp.com">hola@altyapp.com</a>.</p>
+  </section>
+
+  <!-- 11 -->
+  <section class="legal-section" id="p11">
+    <h2><span class="section-num">11</span>Cambios a esta política</h2>
+    <p>ALTY puede actualizar esta Política de Privacidad cuando sea necesario para reflejar cambios en el servicio, la legislación aplicable o las prácticas de tratamiento de datos.</p>
+    <p>Los cambios materiales serán notificados por correo electrónico y/o mediante un aviso visible en la plataforma con al menos 15 días de anticipación. El uso continuado del servicio después de la entrada en vigor de los cambios implica aceptación de la política actualizada.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="legal-section" id="p12">
+    <h2><span class="section-num">12</span>Contacto</h2>
+    <p>Para cualquier consulta, ejercicio de derechos o reclamo relacionado con el tratamiento de tus datos personales:</p>
+    <div class="highlight-box">
+      <strong>ALTY — Responsable de Privacidad</strong><br>
+      Correo: <a href="mailto:hola@altyapp.com">hola@altyapp.com</a> con asunto "Solicitud de privacidad"<br>
+      Sitio web: <a href="https://www.altyapp.com">www.altyapp.com</a><br>
+      País: Chile
+    </div>
+    <p>Si no quedas conforme con nuestra respuesta, puedes acudir al Consejo para la Transparencia o a los tribunales ordinarios de justicia de la República de Chile.</p>
+  </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="legal-footer">
+  <div class="legal-footer-inner">
+    <div class="footer-links">
+      <a href="/">Inicio</a>
+      <a href="/terms">Términos y Condiciones</a>
+      <a href="mailto:hola@altyapp.com">Contacto</a>
+    </div>
+    <p class="footer-copy">© 2026 ALTY · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+</body>
+</html>
