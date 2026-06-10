@@ -1669,9 +1669,9 @@ window.addEventListener('scroll', updateHeader, {passive: true});
 window.addEventListener('resize', updateHeader);
 updateHeader();
 // Barra CTA mobile — aparece tras el hero
-const mcta = document.querySelector('.mcta');
-const heroEl = document.querySelector('.hero');
 function updateMcta(){
+  const mcta = document.querySelector('.mcta');
+  const heroEl = document.querySelector('.hero');
   if(!mcta || !heroEl) return;
   const heroBottom = heroEl.offsetTop + heroEl.offsetHeight;
   mcta.classList.toggle('visible', window.scrollY > heroBottom - 80);
