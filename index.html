@@ -152,9 +152,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   background:#000;overflow:hidden;
 }
 .hero-bg{
-  position:absolute;inset:0;padding-top:64px;
+  position:absolute;inset:0;
 }
-@media(min-width:1024px){.hero-bg{padding-top:80px}}
 .hero-grid{
   height:100%;display:grid;grid-template-columns:1fr;gap:2px;
   animation:heroFadeIn 1.2s ease both;
@@ -186,7 +185,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   margin-bottom:20px;
   animation:heroFadeIn 1s .2s ease both;opacity:0;
 }
-@media(min-width:640px){.hero-badge{font-size:11px;margin-bottom:28px}}
+@media(min-width:640px){.hero-badge{font-size:10px;margin-bottom:12px}}
 @keyframes heroFadeIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .hero-h1{
   font-size:clamp(36px,7vw,80px);
