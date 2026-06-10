@@ -858,7 +858,23 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
 }
 @media(min-width:640px){.footer-back{display:inline}}
 .footer-back:hover{color:#fff}
-  </style>
+/* ── CTA FIJO MOBILE ── */
+.mcta{
+  display:none;
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  padding:8px 14px calc(8px + env(safe-area-inset-bottom));
+  background:rgba(2,24,26,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-top:1px solid var(--border);
+}
+@media(max-width:767px){.mcta{display:block}}
+.mcta a{
+  display:flex;align-items:center;justify-content:center;
+  padding:12px;border-radius:100px;
+  background:var(--green2);color:#02181A;
+  font-size:14px;font-weight:700;letter-spacing:-.01em;
+}
+@media(max-width:767px){body{padding-bottom:72px}}
+</style>
   
 <!-- HEADER -->
 <header id="main-header">
@@ -1993,5 +2009,9 @@ async function startSignup(plan) {
   await iniciarPagoDesdeIndex(selectedPlan);
 }
 </script>
+  <!-- CTA FIJO MOBILE -->
+<div class="mcta">
+  <a href="https://www.rasgo.ai/auth?mode=signup" onclick="event.preventDefault(); startSignup()">Pruébalo gratis</a>
+</div>
 </body>
 </html>
