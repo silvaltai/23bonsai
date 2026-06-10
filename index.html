@@ -542,7 +542,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .imgen-img{max-width:1024px;margin:0 auto;border-radius:16px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,.1)}
 @media(min-width:640px){.imgen-img{border-radius:24px}}
 .imgen-img img{width:100%;height:auto;object-fit:cover;display:block}
-.imgen-cta{
+@media(max-width:639px){.imgen-img{max-width:none;width:calc(100% + 48px);margin-left:-24px;margin-right:-24px;border-radius:0;border-left:0;border-right:0}}
+  .imgen-cta{
   display:inline-flex;align-items:center;gap:12px;
   padding:18px 44px;background:var(--green2);color:#000;
   font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;
