@@ -1738,8 +1738,6 @@ async function checkUser() {
 
   const userData = await getCurrentUserProfile();
 
-  console.log("Current User Data:", userData);
-
   if (userData && userData.profile) {
 
     currentUserData = userData;
@@ -1747,9 +1745,6 @@ async function checkUser() {
     const email = userData.profile.email;
     const plan = userData.profile.plan;
     const status = userData.profile.status;
-
-    console.log("Plan:", plan);
-    console.log("Status:", status);
 
     if (logoutBtn) {
       logoutBtn.style.display = "block";
