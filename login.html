@@ -331,7 +331,6 @@ async function iniciarPago(plan) {
     const fallbackMsg = data.message || 'Hubo un problema al iniciar el pago. Intenta de nuevo.';
     showPaymentError(fallbackMsg, () => iniciarPago(plan));
   } catch (err) {
-    console.error('Error iniciarPago:', err);
     showPaymentError('No pudimos conectar con el servidor. Revisa tu conexión.', () => iniciarPago(plan));
   }
 }
@@ -382,7 +381,6 @@ form.addEventListener('submit', async (e) => {
     setTimeout(() => { window.location.href = '/dashboard'; }, 600);
 
   } catch (err) {
-    console.error('Login error:', err);
     showMsg('Algo falló. Revisa tu conexión e intenta de nuevo.');
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
