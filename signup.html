@@ -397,7 +397,6 @@ async function iniciarPago(plan) {
     const fallbackMsg = data.message || 'Hubo un problema al iniciar el pago. Intenta de nuevo.';
     showPaymentError(fallbackMsg, () => iniciarPago(plan));
   } catch (err) {
-    console.error('Error iniciarPago:', err);
     showPaymentError('No pudimos conectar con el servidor. Revisa tu conexión.', () => iniciarPago(plan));
   }
 }
@@ -452,7 +451,6 @@ form.addEventListener('submit', async (e) => {
         plan: selectedPlan,
         status: 'active'
       }, { onConflict: 'id' });
-    if (profileError) console.error('Error creando profile:', profileError);
 
     // Bifurcación: plan free → dashboard, plan pago → Edge Function
     if (PAID_PLANS.includes(selectedPlan)) {
@@ -468,7 +466,6 @@ form.addEventListener('submit', async (e) => {
     setTimeout(() => { window.location.href = PLAN_CONFIG[selectedPlan].redirect; }, 600);
 
   } catch (err) {
-    console.error('Signup error:', err);
     showMsg('Algo falló. Revisa tu conexión e intenta de nuevo.');
     submitBtn.classList.remove('loading');
     submitBtn.disabled = false;
