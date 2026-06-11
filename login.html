@@ -178,7 +178,7 @@ input{font-family:var(--font)}
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
-// ── Config Supabase ──
+// ── Config ──
 const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
 const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -222,7 +222,7 @@ function clearMsg() {
   globalMsg.textContent = '';
 }
 
-// ── Errores Supabase ──
+// ── Errores ──
 function translateError(err) {
   const msg = (err?.message || '').toLowerCase();
   if (msg.includes('invalid login') || msg.includes('invalid credentials') || msg.includes('invalid email or password')) {
@@ -293,7 +293,7 @@ function showPaymentError(message, retryFn) {
   document.getElementById('peCancelBtn').onclick = () => { o.remove(); window.location.href = '/dashboard'; };
 }
 
-// ── Llamar a Edge Function crear-suscripcion ──
+// ── Iniciar pago ──
 async function iniciarPago(plan) {
   showPaymentOverlay();
   try {
