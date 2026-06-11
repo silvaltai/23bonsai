@@ -132,6 +132,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .btn-enter:hover{background:#e5e5e5}
 @media(min-width:768px){.btn-enter{padding:10px 36px}}
+.nav-account{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:100%;border:1.5px solid rgba(0,223,129,.35);color:var(--green);transition:all .2s;background:transparent;flex-shrink:0}
+.nav-account:hover{background:rgba(0,223,129,.1);border-color:var(--green)}
 
 /* Mobile menu */
 .hamburger{display:flex;flex-direction:column;gap:5px;padding:4px;color:rgba(255,255,255,.7)}
@@ -889,27 +891,13 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
   <div class="header-inner">
     <div class="header-left">
       <a class="logo" href="/">Alty</a>
-     <ul class="header-nav">
-        
-        <li><a href="#pricing">Planes</a></li>
-        
-      </ul>
     </div>
     
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a class="nav-account" id="navAccountBtn" href="/signup" aria-label="Mi cuenta">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+    </a>
   </div>
 </header>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <button class="m-close" id="m-close" aria-label="Close">×</button>
- 
-  <a href="#pricing" onclick="closeMobile()">Planes</a>
-  
-  <a href="/login" style="color:var(--green2)">Entrar al Sistema →</a>
-</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1603,14 +1591,12 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
-// Mobile menu
-const hamburger = document.getElementById('hamburger');
-const mobileMenu = document.getElementById('mobile-menu');
-const mClose = document.getElementById('m-close');
-function openMobile() { mobileMenu.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMobile() { mobileMenu.classList.remove('open'); document.body.style.overflow = ''; }
-hamburger.addEventListener('click', openMobile);
-mClose.addEventListener('click', closeMobile);
+// Botón cuenta dinámico
+(async function(){
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  const btn = document.getElementById('navAccountBtn');
+  if (session && btn) btn.href = '/dashboard';
+})();
 
 var phrases = ['en minutos.', 'sin equipo.', 'en automático.'];
 if ('IntersectionObserver' in window) {
