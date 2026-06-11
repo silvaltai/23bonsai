@@ -521,7 +521,6 @@ confirmBtn.addEventListener('click', async ()=>{
     const { data:consumed, error:rpcError } = await supa.rpc('consume_quota', { p_user_id: currentUser.id });
 
     if(rpcError){
-      console.error('Error consume_quota:', rpcError);
       showMsg('No pudimos verificar tu cuota. Intenta de nuevo.');
       confirmBtn.classList.remove('loading');
       confirmBtn.disabled = false;
