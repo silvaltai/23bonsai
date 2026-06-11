@@ -295,13 +295,13 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 @media(min-width:640px){.marquee-track{gap:24px}}
 @keyframes marqScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .video-card{
-  flex-shrink:0;width:160px;height:240px;border-radius:20px;overflow:hidden;
+  flex-shrink:0;width:130px;aspect-ratio:9/16;border-radius:20px;overflow:hidden;
   border:1px solid rgba(255,255,255,.08);background:#111;
   position:relative;
 }
-@media(min-width:640px){.video-card{width:200px;height:300px}}
-@media(min-width:1024px){.video-card{width:220px;height:330px}}
-.video-card video{width:100%;height:100%;object-fit:cover;pointer-events:none}
+@media(min-width:640px){.video-card{width:150px}}
+@media(min-width:1024px){.video-card{width:165px}}
+.video-card img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none}
 .video-card:nth-child(even){margin-top:48px}
 
 /* ── FACE DRIFT SECTION ── */
@@ -971,24 +971,26 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
   </div>
   <div class="marquee-outer" style="margin-top:32px">
     <div class="marquee-track" id="video-marquee">
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo1_zsyeyg.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo2_t62da0.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo3_gqbel6.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo4_s9c90p.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo5_gcdna4.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo6_r3ggmh.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo7_kvy4tj.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo8_f0gbis.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo9_z10khp.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo1_zsyeyg.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo2_t62da0.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo3_gqbel6.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo4_s9c90p.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo5_gcdna4.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo6_r3ggmh.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo7_kvy4tj.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo8_f0gbis.mp4" type="video/mp4"/></video></div>
-      <div class="video-card"><video autoplay muted loop playsinline><source src="https://wsrv.nl/?url=https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Made%20with%20Rasgo%20section%20OK/madewithrasgo9_z10khp.mp4" type="video/mp4"/></video></div>
+      <div class="video-card"><img src="/images/alty-ganadores-1.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-2.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-3.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-4.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-5.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-6.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-7.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-8.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-9.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-10.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-1.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-2.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-3.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-4.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-5.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-6.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-7.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-8.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-9.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
+      <div class="video-card"><img src="/images/alty-ganadores-10.png" alt="Negocio ganador con ALTY" loading="lazy"/></div>
     </div>
   </div>
 </section>
