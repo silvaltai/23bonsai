@@ -442,7 +442,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .pp-img{border-radius:20px;overflow:hidden;aspect-ratio:3/4;background:#111}
 .pp-img img{width:100%;height:100%;object-fit:cover}
-
+@media(max-width:639px){.pp-img{max-width:none!important;width:calc(100% + 48px)!important;margin-left:-24px!important;margin-right:-24px!important;border-radius:0!important}}
 /* ── UPSCALER SECTION ── */
 .up-section{padding:80px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
 .up-header{text-align:center;max-width:720px;margin:0 auto 60px}
@@ -1061,79 +1061,6 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
     </div>
   </div>
 </section>
-
-<!-- TIKTOK SECTION -->
-<section class="tiktok-section">
-  <div class="container">
-    <div class="tiktok-header sr">
-      <h2 class="section-h2">Los dropshippers más grandes ya lo están usando.</h2>
-    </div>
-  </div>
-  <div class="marquee-outer" style="margin-top:32px">
-    <div class="tiktok-marquee">
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/iamsammieAi_saz6qs.jpg" alt="@camila.dropchile" loading="lazy"/></div>
-        <div><div class="creator-name">@camila.dropchile</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">15</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/elaseraa_jfcljs.jpg" alt="@matias.ecom" loading="lazy"/></div>
-        <div><div class="creator-name">@matias.ecom</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">12</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/itslinaveria_zajrxh.jpg" alt="@sofi.ventas" loading="lazy"/></div>
-        <div><div class="creator-name">@sofi.ventas</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">23</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/nianoir51_etoqpj.jpg" alt="@felipe.ads" loading="lazy"/></div>
-        <div><div class="creator-name">@felipe.ads</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">9</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/realcamiladiaz_djnrbq.jpg" alt="@valentina.shopify" loading="lazy"/></div>
-        <div><div class="creator-name">@valentina.shopify</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">29</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/iamsammieAi_saz6qs.jpg" alt="@camila.dropchile" loading="lazy"/></div>
-        <div><div class="creator-name">@camila.dropchile</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">18</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/elaseraa_jfcljs.jpg" alt="@matias.ecom" loading="lazy"/></div>
-        <div><div class="creator-name">@matias.ecom</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">30</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/itslinaveria_zajrxh.jpg" alt="@sofi.ventas" loading="lazy"/></div>
-        <div><div class="creator-name">@sofi.ventas</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">15</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/nianoir51_etoqpj.jpg" alt="@felipe.ads" loading="lazy"/></div>
-        <div><div class="creator-name">@felipe.ads</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">30</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-      <div class="creator-card">
-        <img class="creator-tiktok-icon" src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Icon%20OK/tiktokicon_m1bntr.webp" alt="TikTok"/>
-        <div class="creator-avatar"><img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/TikTok%20Creator%20avatars%20OK/realcamiladiaz_djnrbq.jpg" alt="@valentina.shopify" loading="lazy"/></div>
-        <div><div class="creator-name">@valentina.shopify</div><div class="creator-role">Dropshipper · Chile</div></div>
-        <div class="creator-stats"><div class="creator-stat"><div class="creator-stat-num">30</div><div class="creator-stat-lbl">Productos lanzados</div></div></div>
-      </div>
-    </div>
-</section>
-
 <!-- PRODUCT PLACEMENT -->
 <section class="pp-section">
   <div class="container">
