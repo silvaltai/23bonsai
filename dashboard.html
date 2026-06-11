@@ -522,7 +522,6 @@ async function loadProfile(authUser){
     .single();
 
   if(error || !profile){
-    console.error('Error cargando profile:', error);
     document.getElementById('greetingName').textContent='allá';
     document.getElementById('userEmail').textContent=authUser.email;
     document.getElementById('userMenuEmail').textContent=authUser.email;
@@ -580,7 +579,6 @@ async function loadOrders(){
     .limit(10);
 
   if(error){
-    console.error('Error cargando orders:', error);
     return;
   }
 
