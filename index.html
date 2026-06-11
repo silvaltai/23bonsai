@@ -1686,8 +1686,6 @@ async function getCurrentUserProfile() {
   // SI NO EXISTE PERFIL → CREARLO
   if (!profile) {
 
-    console.log("Perfil no existe. Creando profile automáticamente...")
-
     const { error: insertError } = await supabaseClient
       .from('profiles')
       .insert([
@@ -1701,7 +1699,6 @@ async function getCurrentUserProfile() {
 
     if (insertError) {
 
-      console.error("Error creando profile:", insertError)
       return null
 
     }
@@ -1715,7 +1712,6 @@ async function getCurrentUserProfile() {
 
     if (reloadError) {
 
-      console.error("Error recargando profile:", reloadError)
       return null
 
     }
@@ -1883,7 +1879,6 @@ async function iniciarPagoDesdeIndex(plan) {
     const fallbackMsg = data.message || 'Hubo un problema al iniciar el pago. Intenta de nuevo.';
     showPaymentError(fallbackMsg, () => iniciarPagoDesdeIndex(plan));
   } catch (err) {
-    console.error('Error iniciarPagoDesdeIndex:', err);
     showPaymentError('No pudimos conectar con el servidor. Revisa tu conexión.', () => iniciarPagoDesdeIndex(plan));
   }
 }
