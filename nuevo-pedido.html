@@ -549,7 +549,7 @@ confirmBtn.addEventListener('click', async ()=>{
       .single();
 
     if(orderError){
-      showMsg('No pudimos guardar tu pedido. Tu cuota no se descontó. Escríbenos a hola@23bonsai.com si persiste.');
+      showMsg('No pudimos guardar tu pedido. Tu cuota no se descontó. Escríbenos a hola@altyapp.com si persiste.');
       // Intentamos revertir cuota (best effort)
       try { await supa.rpc('release_quota', { p_user_id: currentUser.id }); } catch{}
       confirmBtn.classList.remove('loading');
