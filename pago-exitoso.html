@@ -216,7 +216,7 @@ body{background:var(--rich-black);color:var(--anti-flash);font-family:var(--font
       <div class="state" id="stateUnknown">
         <div class="unknown-icon">?</div>
         <h1 class="success-title">No encontramos tu pago</h1>
-        <p class="success-desc">Si pagaste recientemente, revisa tu email o entra a tu dashboard. Si crees que hay un error, escríbenos a <a href="mailto:hola@23bonsai.com" style="color:var(--caribbean);text-decoration:underline">hola@23bonsai.com</a>.</p>
+        <p class="success-desc">Si pagaste recientemente, revisa tu email o entra a tu dashboard. Si crees que hay un error, escríbenos a <a href="mailto:hola@altyapp.com" style="color:var(--caribbean);text-decoration:underline">hola@23bonsai.com</a>.</p>
         <a href="/dashboard" class="cta-primary">
           Ir a mi dashboard
           <span>→</span>
@@ -314,7 +314,6 @@ async function pollStatus() {
       }
     }
   } catch (err) {
-    console.error('Error check-payment-status:', err);
     // No bloqueante, seguimos reintentando
   }
 
