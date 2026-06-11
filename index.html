@@ -458,7 +458,17 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .up-arrow-label{font-size:10px;font-weight:700;letter-spacing:.2em;color:rgba(255,255,255,.4)}
 .up-label{margin-top:14px;text-align:center;font-size:10px;font-weight:900;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .up-label-yellow{color:var(--green2)}
-
+/* Comparador Antes/Después (slider) */
+.ba-slider{position:relative;width:100%;max-width:440px;aspect-ratio:4/5;margin:0 auto;border-radius:24px;overflow:hidden;user-select:none}
+.ba-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.ba-before{clip-path:polygon(0 0,50% 0,50% 100%,0 100%);z-index:2}
+.ba-tag{position:absolute;top:14px;z-index:3;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;padding:6px 12px;border-radius:999px;pointer-events:none}
+.ba-tag-left{left:14px;background:rgba(2,24,26,.7);color:#fff;backdrop-filter:blur(6px)}
+.ba-tag-right{right:14px;background:var(--green2);color:#02181A}
+.ba-bar{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--green2);transform:translateX(-50%);z-index:4;pointer-events:none}
+.ba-handle{position:absolute;top:50%;left:50%;width:44px;height:44px;background:#fff;border-radius:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;z-index:5;cursor:ew-resize;box-shadow:0 2px 10px rgba(0,0,0,.35)}
+.ba-handle svg{width:22px;height:22px;color:#02181A}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:6;margin:0}
 /* ── PIXEL REALISM SECTION (11) ── */
 .real-section{padding:80px 0;background:var(--green2);color:#000;overflow:hidden}
 @media(min-width:1024px){.real-section{padding:120px 0}}
@@ -1088,19 +1098,16 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
       <h3>Páginas Que Convierten</h3>
       <p>¿Sigues comprando temas carísimos o buscando la versión pirata llena de bugs? Pierdes tiempo. Alty ya diseñó un tema premium que te entrega lo mejor del mercado sin pagar demás, todo incluido en tu plan.</p>
     </div>
-    <div class="up-compare sr">
-      <div class="up-img-wrap">
-        <img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Before%20After%20comparison%20OK/original_esylms.webp" alt="Producto base sin contexto" loading="lazy"/>
-        <div class="up-label">Producto base · sin contexto</div>
+    <div class="ba-slider sr" id="ba-slider">
+      <img class="ba-img" src="/images/alty-landing-despues.png" alt="Landing ALTY lista para vender"/>
+      <img class="ba-img ba-before" id="ba-before" src="/images/alty-landing-antes.png" alt="Página base sin optimizar"/>
+      <span class="ba-tag ba-tag-left">Antes</span>
+      <span class="ba-tag ba-tag-right">Después</span>
+      <span class="ba-bar" id="ba-bar"></span>
+      <div class="ba-handle" id="ba-handle">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6L3 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 6L21 12L15 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </div>
-      <div class="up-arrow">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        <span class="up-arrow-label">+Conversión</span>
-      </div>
-      <div class="up-img-wrap">
-        <img src="https://pub-5255b871765a44a7a02dc6f725434bbf.r2.dev/Before%20After%20comparison%20OK/output_iqysf7.webp" alt="Landing ALTY lista para escalar" loading="lazy"/>
-        <div class="up-label up-label-yellow">Landing ALTY · lista para vender</div>
-      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range" id="ba-range" aria-label="Comparador antes y después"/>
     </div>
   </div>
 </section>
@@ -1915,5 +1922,21 @@ async function startSignup(plan) {
   <a href="https://www.rasgo.ai/auth?mode=signup" onclick="event.preventDefault(); startSignup()">Pruébalo Gratis</a>
 </div>
 </div>
+<script>
+(function(){
+  var range=document.getElementById('ba-range');
+  var before=document.getElementById('ba-before');
+  var bar=document.getElementById('ba-bar');
+  var handle=document.getElementById('ba-handle');
+  if(!range)return;
+  function update(v){
+    before.style.clipPath='polygon(0 0, '+v+'% 0, '+v+'% 100%, 0 100%)';
+    bar.style.left=v+'%';
+    handle.style.left=v+'%';
+  }
+  range.addEventListener('input',function(){update(this.value);});
+  update(50);
+})();
+</script>
 </body>
 </html>
