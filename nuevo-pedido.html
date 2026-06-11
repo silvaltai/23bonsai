@@ -549,8 +549,6 @@ confirmBtn.addEventListener('click', async ()=>{
       .single();
 
     if(orderError){
-      console.error('Error insert order:', orderError);
-      // ⚠️ Cuota ya fue consumida pero la orden falló. Crítico de auditar.
       showMsg('No pudimos guardar tu pedido. Tu cuota no se descontó. Escríbenos a hola@23bonsai.com si persiste.');
       // Intentamos revertir cuota (best effort)
       try { await supa.rpc('release_quota', { p_user_id: currentUser.id }); } catch{}
@@ -566,7 +564,6 @@ confirmBtn.addEventListener('click', async ()=>{
     }, 800);
 
   } catch(err){
-    console.error('Error confirmando pedido:', err);
     showMsg('Algo falló. Revisa tu conexión e intenta de nuevo.');
     confirmBtn.classList.remove('loading');
     confirmBtn.disabled = false;
