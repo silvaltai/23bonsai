@@ -1828,10 +1828,10 @@ function showPaymentError(message, retryFn) {
 
 // ── Toast simple ──
 function showToast(msg) {
-  const existing = document.getElementById('bonsaiToast');
+  const existing = document.getElementById('altyToast');
   if (existing) existing.remove();
   const t = document.createElement('div');
-  t.id = 'bonsaiToast';
+  t.id = 'altyToast';
   t.textContent = msg;
   t.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:rgba(2,24,26,.95);color:#fff;border:1px solid rgba(0,223,129,.3);padding:14px 22px;border-radius:12px;font-size:14px;font-weight:600;z-index:99999;box-shadow:0 8px 24px -6px rgba(0,0,0,.4);backdrop-filter:blur(10px)';
   document.body.appendChild(t);
