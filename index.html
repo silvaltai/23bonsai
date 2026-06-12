@@ -936,13 +936,13 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
       </div>
       <div class="hero-stats">
         <div class="hero-stat-item">
-          <span class="hero-stat-num">24 HRS</span>
-          <span class="hero-stat-lbl">Tiempo ahorrado</span>
+          <span class="hero-stat-num" id="statCount1">+54</span>
+          <span class="hero-stat-lbl">Tiendas Creadas</span>
         </div>
         <div class="hero-stat-div"></div>
         <div class="hero-stat-item">
-          <span class="hero-stat-num">0</span>
-          <span class="hero-stat-lbl">Freelancers por contratar</span>
+          <span class="hero-stat-num" id="statCount2">271</span>
+          <span class="hero-stat-lbl">Productos Ganadores</span>
         </div>
       </div>
     </div>
@@ -1638,6 +1638,29 @@ window.addEventListener('load', function(){
     });
   }
   loop();
+});
+// Hero stat counters
+window.addEventListener('load', function(){
+  var counters = [
+    { id: 'statCount1', target: 54, prefix: '+' },
+    { id: 'statCount2', target: 271, prefix: '' }
+  ];
+  setTimeout(function(){
+    counters.forEach(function(c){
+      var el = document.getElementById(c.id);
+      if (!el) return;
+      var start = null, duration = 1500;
+      function step(ts){
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        el.textContent = c.prefix + Math.round(ease * c.target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = c.prefix + c.target;
+      }
+      requestAnimationFrame(step);
+    });
+  }, 1200);
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
