@@ -536,7 +536,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .real-cta:hover svg{transform:translateX(4px)}
 
 /* ── IMAGE GEN SECTION ── */
-.imgen-section{padding:40px 0 16px;background:#000;color:#fff}
+.imgen-section{padding:24px 0 16px;background:#000;color:#fff}
 .imgen-toptitle{text-align:center;margin-bottom:24px}
 .imgen-toptitle h3{font-size:20px;font-weight:600;color:rgba(255,255,255,.6);letter-spacing:-.01em;line-height:1.05;margin:0}
 @media(min-width:640px){.imgen-toptitle h3{font-size:24px}}
@@ -566,6 +566,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 .imgen-cta svg{width:22px;height:22px}
 .imgen-cta:hover{transform:scale(1.05)}
+@media(max-width:639px){.imgen-cta{font-size:13px;padding:14px 24px;gap:8px;white-space:nowrap}}
 
 /* ── PRODUCT PHOTOSHOOT SECTION ── */
 .ps-section{padding:16px 0 40px;background:#000;color:#fff}
@@ -1164,21 +1165,17 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
 <!-- IMAGE GENERATOR SECTION -->
 <section class="imgen-section">
   <div class="container">
-    <div class="imgen-toptitle sr">
-      <h3>Automatizaciones</h3>
-    </div>
-    <div class="imgen-divider"></div>
     <div class="imgen-header sr">
       <div class="imgen-header-left">
         <span class="section-label">Mail Marketing Automatizado</span>
         <h2 class="imgen-h2">Recupera Ventas<br/>Mientras Duermes.</h2>
       </div>
       <div class="imgen-header-right">
-        <p class="imgen-sub">Más del 90% de las ventas se pierden en carritos abandonados que podrías recuperar fácilmente con una estrategia de mail marketing y remarketing por WhatsApp. En serio, Alty se paga solo.</p>
+        <p class="imgen-sub">Más del 90% de las ventas se pierden en <span class="hl">carritos abandonados</span> que podrías recuperar fácilmente con una estrategia de mail marketing y remarketing por WhatsApp. En serio, <span class="hl">Alty se paga solo</span>.</p>
         <a href="/signup"
           onclick="event.preventDefault(); startSignup()"
           class="imgen-cta">
-          Activar Mail Marketing
+          Recuperar ventas ahora
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
