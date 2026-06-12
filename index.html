@@ -488,18 +488,18 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 
 /* Tipografía */
-.real-h2{font-size:clamp(44px,7vw,84px);font-weight:700;line-height:.92;letter-spacing:-.03em;text-transform:uppercase;color:#000;margin:0}
-.real-h3{font-size:clamp(36px,5vw,60px);font-weight:600;line-height:.95;letter-spacing:-.03em;text-transform:uppercase;color:#000;margin:0}
+.real-h2{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.1;letter-spacing:-.02em;text-transform:uppercase;color:#000;margin:0}
+.real-h3{font-size:clamp(28px,4vw,44px);font-weight:800;line-height:1.1;letter-spacing:-.02em;text-transform:uppercase;color:#000;margin:0}
 .real-sub{font-size:18px;line-height:1.55;font-weight:500;color:rgba(0,0,0,.6);max-width:480px;margin-top:24px}
 
 /* Badges grandes tipo card */
 .real-badges{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;max-width:480px}
-.real-badge{padding:24px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:24px;transition:background .3s}
-@media(min-width:640px){.real-badge{padding:32px;border-radius:32px}}
+.real-badge{padding:12px 14px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:14px;transition:background .3s}
+@media(min-width:640px){.real-badge{padding:14px 16px;border-radius:16px}}
 .real-badge:hover{background:rgba(0,0,0,.1)}
-.real-badge-ic{width:24px;height:24px;color:rgba(0,0,0,.4);margin-bottom:24px;display:block}
-.real-badge-ttl{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;line-height:1.3}
-.real-badge-sub{display:block;margin-top:4px;font-size:10px;font-weight:500;color:rgba(0,0,0,.4);text-transform:uppercase;letter-spacing:.1em}
+.real-badge-ic{width:18px;height:18px;color:rgba(0,0,0,.4);margin-bottom:10px;display:block}
+.real-badge-ttl{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#000;line-height:1.3}
+.real-badge-sub{display:none}
 
 /* Imágenes */
 .real-img-1{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:4/5;background:#111}
@@ -531,6 +531,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 /* Botón negro con texto amarillo */
 .real-cta{display:inline-flex;align-items:center;gap:12px;margin-top:32px;padding:16px 32px;background:#000;color:var(--green2);font-size:18px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;border-radius:100px;transition:transform .3s;box-shadow:0 10px 30px rgba(0,0,0,.2);text-decoration:none}
 .real-cta:hover{transform:scale(1.05)}
+@media(max-width:639px){.real-cta{font-size:12px;padding:14px 20px;gap:8px;white-space:nowrap}}
 .real-cta svg{transition:transform .3s}
 .real-cta:hover svg{transform:translateX(4px)}
 
@@ -1116,11 +1117,11 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
         <div class="real-badges">
           <div class="real-badge">
             <svg class="real-badge-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 3h6v6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/><path d="M9 21H3v-6"/></svg>
-            <div class="real-badge-ttl">Hooks Ganadores<span class="real-badge-sub">Ángulos probados</span></div>
+            <div class="real-badge-ttl">Hooks probados</div>
           </div>
           <div class="real-badge">
             <svg class="real-badge-ic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-            <div class="real-badge-ttl">Listos para Meta y TikTok</div>
+            <div class="real-badge-ttl">Optimizados para paid y orgánico</div>
           </div>
         </div>
       </div>
@@ -1151,7 +1152,7 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
         <a href="/signup"
           onclick="event.preventDefault(); startSignup()"
           class="real-cta">
-          Ver mis Ads en Acción
+          Quiero Mis Ads Ganadores
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </a>
       </div>
