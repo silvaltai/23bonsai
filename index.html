@@ -367,10 +367,11 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .aiv-content{padding-top:8px}
 @media(min-width:1024px){.aiv-content{padding-top:24px}}
 .aiv-section .section-label{color:rgba(0,0,0,.45);margin-bottom:24px}
-.aiv-section .section-h2{color:#000;font-size:clamp(38px,5.5vw,64px);margin:0 0 28px}
+@media(max-width:639px){.aiv-section .section-label{font-size:9px;letter-spacing:.2em}}
+.aiv-section .section-h2{color:#000;font-size:clamp(32px,5vw,56px);font-weight:600;margin:0 0 28px}
 .aiv-section .section-sub{color:rgba(0,0,0,.55);font-size:clamp(16px,1.6vw,20px);margin:0 0 44px;max-width:520px}
 .aiv-tags{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px;max-width:560px}
-@media(max-width:520px){.aiv-tags{grid-template-columns:1fr}}
+@media(max-width:520px){.aiv-tags{grid-template-columns:1fr 1fr;gap:8px}.aiv-tag{padding:10px 10px;gap:3px;border-radius:10px}.aiv-tag span{font-size:8px;letter-spacing:.1em}.aiv-tag strong{font-size:11px;line-height:1.25}}
 .aiv-tag{
   padding:20px 24px;background:#00df81;
   border:none;border-radius:18px;
@@ -392,6 +393,7 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
   border-radius:100px;transition:all .3s;
 }
 .aiv-cta:hover{transform:scale(1.03);background:#0a0a0a}
+@media(max-width:639px){.aiv-cta{padding:14px 24px;font-size:12px;gap:8px;white-space:nowrap;align-self:flex-start}}
 .aiv-cta svg{stroke:#00df81}
 
 /* ── TIKTOK SECTION ── */
@@ -1036,13 +1038,13 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
         <div style="position:absolute;top:16px;left:16px;padding:4px 12px;background:rgba(0,0,0,.5);backdrop-filter:blur(16px);border-radius:100px;font-size:9px;font-weight:900;letter-spacing:.3em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.2)">Búsqueda de Productos</div>
       </div>
       <div class="aiv-content sr" style="order:2">
-        <span class="section-label">Búsqueda de Productos Ganadores</span>
+        <span class="section-label">Análisis Productos en Tendencia</span>
         <h2 class="section-h2">Adelántate A Tu Competencia</h2>
         <p class="section-sub">Mientras tú pierdes días buscando qué producto vender, abrumado e indeciso, tu competencia ya está testeando y ganando. Con Alty tienes tu propia plataforma para buscar ads, analizar precios y elegir productos.</p>
         <div class="aiv-tags">
           <div class="aiv-tag">
             <span>Filtros</span>
-            <strong>Margen · Demanda · Competencia</strong>
+            <strong>Mercado · Vistas · Precios</strong>
           </div>
           <div class="aiv-tag">
             <span>Data en Vivo</span>
@@ -1053,7 +1055,7 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
           <a href="/signup"
             onclick="event.preventDefault(); startSignup()"
             class="aiv-cta">
-            Buscar mi Próximo Ganador
+            Encontrar mi Winner
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
