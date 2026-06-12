@@ -665,7 +665,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 }
 @media(min-width:640px){.why-desc{font-size:16px}}
 
-.why-img-slot{max-width:280px;aspect-ratio:3/4;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.15);border-radius:16px;margin:32px auto 0} /* ── COMPARISON TABLE ── */
+.why-img-slot{width:100%;max-width:100%;height:auto;display:block;border-radius:16px;margin:32px 0 0}
+@media(max-width:639px){.why-img-slot{width:calc(100% + 48px);margin-left:-24px;border-radius:0}} /* ── COMPARISON TABLE ── */
 .cmp-section{padding:40px 0;background:#000;color:#fff;border-top:1px solid var(--border)}
 .cmp-header{text-align:left;margin-bottom:40px;max-width:900px}
 .cmp-header h2{font-size:clamp(36px,5vw,56px);font-weight:600;letter-spacing:-.03em;line-height:1;margin-bottom:10px}
