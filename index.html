@@ -287,8 +287,8 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .hw-section::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(rgba(0,223,129,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(0,223,129,.045) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(120% 78% at 50% 0%,#000 0%,transparent 72%);mask-image:radial-gradient(120% 78% at 50% 0%,#000 0%,transparent 72%)}
 .hw-section::after{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:680px;height:400px;max-width:100%;z-index:0;pointer-events:none;background:radial-gradient(ellipse at center,rgba(0,223,129,.16),transparent 68%)}
 .hw-section .container{position:relative;z-index:1}
-.hw-header{position:relative;text-align:center;max-width:760px;margin:0 auto 56px}
-@media(min-width:1024px){.hw-header{margin-bottom:72px}}
+.hw-header{position:relative;text-align:center;max-width:760px;margin:0 auto 60px}
+@media(min-width:768px){.hw-header{margin-bottom:72px}}
 .hw-badge{display:inline-block;padding:9px 20px;margin-bottom:24px;border:1px solid rgba(0,223,129,.35);border-radius:100px;background:rgba(0,223,129,.05);font-size:11px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:#fff}
 .hw-badge-accent{color:#00df81}
 .hw-title{font-size:clamp(30px,6vw,64px);font-weight:900;line-height:1.02;letter-spacing:-.03em;color:#fff}
@@ -296,23 +296,27 @@ button{cursor:pointer;border:none;background:none;font-family:var(--font)}
 .hw-underline{position:absolute;left:0;bottom:-.3em;width:100%;height:auto;overflow:visible}
 .hw-sub{margin-top:22px;font-size:clamp(15px,1.7vw,19px);font-weight:500;line-height:1.55;color:rgba(255,255,255,.5)}
 .hw-sub-accent{color:#00df81}
-.hw-arrow{display:none;position:absolute;z-index:0;pointer-events:none;width:120px;height:74px}
-@media(min-width:1024px){.hw-arrow{display:block}}
-.hw-arrow-l{left:0;bottom:-34px}
-.hw-arrow-r{right:0;bottom:-34px;transform:scaleX(-1)}
-.hw-steps{display:grid;grid-template-columns:1fr;gap:40px 24px;max-width:1080px;margin:0 auto}
-@media(min-width:640px){.hw-steps{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1024px){.hw-steps{grid-template-columns:repeat(4,1fr);gap:0 24px}}
-.hw-step{position:relative;display:flex;flex-direction:column;align-items:center}
+.hw-arrow{display:none;position:absolute;z-index:0;pointer-events:none}
+.hw-arrow-side{width:120px;height:74px;bottom:-22px}
+.hw-arrow-l{left:0}
+.hw-arrow-r{right:0;transform:scaleX(-1)}
+.hw-arrow-down{display:block;width:26px;height:52px;top:100%;left:50%;margin-top:6px;transform:translateX(-50%)}
+@media(min-width:768px){.hw-arrow-side{display:block}.hw-arrow-down{display:none}}
+.hw-steps{display:grid;grid-template-columns:1fr;gap:44px 24px;max-width:920px;margin:0 auto}
+@media(min-width:768px){.hw-steps{grid-template-columns:repeat(3,1fr);gap:0 28px}}
+.hw-step{position:relative;display:flex;flex-direction:column;align-items:center;transition:opacity .8s ease,transform .8s ease}
+.hw-steps .hw-step:nth-child(2){transition-delay:.15s}
+.hw-steps .hw-step:nth-child(3){transition-delay:.3s}
 .hw-num{font-size:clamp(56px,7vw,84px);font-weight:800;line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.4px rgba(0,223,129,.4);text-stroke:1.4px rgba(0,223,129,.4)}
-.hw-step:not(:last-child)::after{content:'»';position:absolute;top:clamp(28px,3.5vw,42px);left:100%;width:24px;text-align:center;transform:translateY(-50%);font-size:26px;font-weight:300;line-height:1;color:rgba(0,223,129,.45);pointer-events:none}
-@media(max-width:1023px){.hw-step:not(:last-child)::after{display:none}}
-.hw-icon{position:relative;z-index:2;width:64px;height:64px;border-radius:50%;margin-top:6px;margin-bottom:-32px;display:flex;align-items:center;justify-content:center;background:linear-gradient(155deg,#00df81 0%,#03624c 100%);box-shadow:0 10px 26px -8px rgba(0,223,129,.55),inset 0 1px 0 rgba(255,255,255,.25)}
-.hw-icon svg{width:30px;height:30px}
-.hw-card{width:100%;padding:48px 20px 28px;text-align:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:18px}
+.hw-step:not(:last-child)::after{content:'»';position:absolute;top:clamp(28px,3.5vw,42px);left:100%;width:28px;text-align:center;transform:translateY(-50%);font-size:26px;font-weight:300;line-height:1;color:rgba(0,223,129,.45);pointer-events:none}
+@media(max-width:767px){.hw-step:not(:last-child)::after{display:none}}
+.hw-icon{position:relative;z-index:2;width:68px;height:68px;border-radius:50%;margin-top:8px;margin-bottom:-34px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 120% at 30% 22%,#3bf7a6 0%,#00df81 42%,#04936a 100%);border:1px solid rgba(180,255,224,.55);box-shadow:0 0 0 6px rgba(0,223,129,.10),0 0 28px 2px rgba(0,223,129,.45),0 14px 30px -8px rgba(0,223,129,.6),inset 0 2px 3px rgba(255,255,255,.45),inset 0 -6px 12px rgba(2,24,26,.35)}
+.hw-icon svg{width:32px;height:32px;filter:drop-shadow(0 1px 1px rgba(2,24,26,.35))}
+.hw-card{width:100%;padding:50px 20px 28px;text-align:center;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-radius:18px}
 .hw-card-title{font-size:clamp(19px,2vw,22px);font-weight:700;letter-spacing:-.02em;color:#fff}
 .hw-card-line{display:block;width:34px;height:3px;border-radius:2px;background:#00df81;margin:10px auto 14px}
 .hw-card-desc{font-size:clamp(13px,1.4vw,14.5px);font-weight:500;line-height:1.55;color:rgba(255,255,255,.55)}
+.hw-em{color:#00df81;font-weight:700}
 .hw-closing{text-align:center;margin-top:56px;font-size:clamp(17px,2.4vw,26px);font-weight:600;letter-spacing:-.02em;color:#fff}
 @media(min-width:1024px){.hw-closing{margin-top:72px}}
 .hw-closing-accent{color:#00df81}
@@ -1006,64 +1010,55 @@ footer{padding:64px 0 32px;background:#000;color:#fff;border-top:1px solid var(-
 </section>
 
 <!-- CÓMO FUNCIONA ALTY -->
-<section class="hw-section sr">
+<section class="hw-section">
   <div class="container">
 
-    <div class="hw-header">
-      <!-- flechas decorativas: borra estas 2 líneas <svg> si las quieres fuera -->
-      <svg class="hw-arrow hw-arrow-l" viewBox="0 0 130 80" fill="none" aria-hidden="true"><path d="M122 6C72 2 20 16 11 55" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8" opacity=".5"/><path d="M3 46l8 12 9-7" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
-      <svg class="hw-arrow hw-arrow-r" viewBox="0 0 130 80" fill="none" aria-hidden="true"><path d="M122 6C72 2 20 16 11 55" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8" opacity=".5"/><path d="M3 46l8 12 9-7" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
+    <div class="hw-header sr">
+      <!-- flechas decorativas: borra los 3 <svg> de abajo si las quieres fuera -->
+      <svg class="hw-arrow hw-arrow-side hw-arrow-l" viewBox="0 0 130 80" fill="none" aria-hidden="true"><path d="M122 6C72 2 20 16 11 55" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8" opacity=".5"/><path d="M3 46l8 12 9-7" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
+      <svg class="hw-arrow hw-arrow-side hw-arrow-r" viewBox="0 0 130 80" fill="none" aria-hidden="true"><path d="M122 6C72 2 20 16 11 55" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 8" opacity=".5"/><path d="M3 46l8 12 9-7" stroke="#00df81" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
+      <svg class="hw-arrow hw-arrow-down" viewBox="0 0 24 56" fill="none" aria-hidden="true"><path d="M12 2v40" stroke="#00df81" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 9" opacity=".5"/><path d="M5 37l7 9 7-9" stroke="#00df81" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/></svg>
 
       <span class="hw-badge">¿CÓMO FUNCIONA <span class="hw-badge-accent">ALTY?</span></span>
-      <h2 class="hw-title">Pasos simples<br><span class="hw-title-accent">Resultados reales<svg class="hw-underline" viewBox="0 0 320 16" fill="none" aria-hidden="true"><path d="M5 11C70 4 132 4 178 8c52 4 108 6 138-3" stroke="#00df81" stroke-width="5" stroke-linecap="round"/></svg></span></h2>
-      <p class="hw-sub">Transforma un producto en tendencia en un <span class="hw-sub-accent">negocio automatizado y escalable.</span></p>
+      <h2 class="hw-title">Pasos simples.<br><span class="hw-title-accent">Resultados reales.<svg class="hw-underline" viewBox="0 0 320 16" fill="none" aria-hidden="true"><path d="M5 11C70 4 132 4 178 8c52 4 108 6 138-3" stroke="#00df81" stroke-width="5" stroke-linecap="round"/></svg></span></h2>
+      <p class="hw-sub">Un proceso optimizado para convertir productos ganadores en <span class="hw-sub-accent">tiendas que escalan.</span></p>
     </div>
 
     <div class="hw-steps">
 
-      <div class="hw-step">
+      <div class="hw-step sr">
         <span class="hw-num">01</span>
-        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M15.1 14c.4-1 1-1.7 1.8-2.5a6 6 0 1 0-9.8 0c.8.8 1.4 1.5 1.8 2.5"/></svg></div>
+        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="m2 12 10 5 10-5"/><path d="m2 17 10 5 10-5"/></svg></div>
         <div class="hw-card">
-          <h3 class="hw-card-title">Descubre</h3>
+          <h3 class="hw-card-title">Elige tu plan</h3>
           <span class="hw-card-line"></span>
-          <p class="hw-card-desc">Analizamos el mercado para encontrar los productos ganadores del momento con demanda real comprobada.</p>
+          <p class="hw-card-desc">Tenemos un plan para cada necesidad y cada etapa de tu tienda. Elige el que más te acomode.</p>
         </div>
       </div>
 
-      <div class="hw-step">
+      <div class="hw-step sr">
         <span class="hw-num">02</span>
-        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.6" fill="#fff" stroke="none"/></svg></div>
+        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14a4 4 0 0 0 5.66 0l3-3a4 4 0 1 0-5.66-5.66l-1.5 1.5"/><path d="M15 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 1 0 5.66 5.66l1.5-1.5"/></svg></div>
         <div class="hw-card">
-          <h3 class="hw-card-title">Planifica</h3>
+          <h3 class="hw-card-title">Ingresa tu producto</h3>
           <span class="hw-card-line"></span>
-          <p class="hw-card-desc">Definimos precio de venta y márgenes calculando todos los costos para que cada producto sea rentable.</p>
+          <p class="hw-card-desc">¿Tienes el link del producto que quieres vender? Ingrésalo. ¿No sabes qué vender? Búscalo en nuestro dashboard.</p>
         </div>
       </div>
 
-      <div class="hw-step">
+      <div class="hw-step sr">
         <span class="hw-num">03</span>
-        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3c.3 2.6 1.4 3.7 4 4-2.6.3-3.7 1.4-4 4-.3-2.6-1.4-3.7-4-4 2.6-.3 3.7-1.4 4-4Z"/><path d="M18 13c.2 1.5.8 2.1 2.3 2.3-1.5.2-2.1.8-2.3 2.3-.2-1.5-.8-2.1-2.3-2.3 1.5-.2 2.1-.8 2.3-2.3Z"/></svg></div>
         <div class="hw-card">
-          <h3 class="hw-card-title">Crea</h3>
+          <h3 class="hw-card-title">Alty hace el resto</h3>
           <span class="hw-card-line"></span>
-          <p class="hw-card-desc">Construimos tu landing, tus ads y tus copys optimizados para convertir, listos para publicar en 24 horas.</p>
-        </div>
-      </div>
-
-      <div class="hw-step">
-        <span class="hw-num">04</span>
-        <div class="hw-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
-        <div class="hw-card">
-          <h3 class="hw-card-title">Escala</h3>
-          <span class="hw-card-line"></span>
-          <p class="hw-card-desc">Lanzamos, medimos resultados y optimizamos tus campañas con datos para que vendas más cada día.</p>
+          <p class="hw-card-desc">Alty analiza tu información y desarrolla todo tu marketing por ti, <span class="hw-em">sin un solo prompt.</span></p>
         </div>
       </div>
 
     </div>
 
-    <p class="hw-closing">Del producto a la venta, <span class="hw-closing-accent">nos encargamos de todo.</span></p>
+    <p class="hw-closing sr">Del producto a la venta, <span class="hw-closing-accent">nos encargamos de todo.</span></p>
 
   </div>
 </section>
