@@ -15,7 +15,6 @@ import {
 // DATOS
 // ─────────────────────────────────────────────
 
-// GIFs externos del prompt original (sin depender de /images/ local)
 const ROW1_IMGS = [
   'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
   'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
@@ -42,7 +41,6 @@ const ROW2_IMGS = [
   'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
 ]
 
-// Imágenes de proyectos — CloudFront (del prompt original)
 const PROJECTS = [
   {
     num: '01', category: 'Campaña Generada', name: 'Skincare Orgánica',
@@ -88,11 +86,20 @@ const PLANS = [
 // COMPONENTES BASE
 // ─────────────────────────────────────────────
 
+// Fondo de seda fijo detrás de todo
+function SilkBackground() {
+  return (
+    <div className="silk-bg">
+      <div className="vignette" />
+    </div>
+  )
+}
+
 function CampaignButton() {
   return (
     <button
       onClick={() => { window.location.href = '/signup?plan=starter' }}
-      className="rounded-full font-medium uppercase tracking-widest text-white px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base transition-opacity hover:opacity-90"
+      className="rounded-full font-medium uppercase tracking-widest text-white px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base transition-opacity hover:opacity-90 whitespace-nowrap"
       style={{
         background: 'linear-gradient(123deg, #001a0e 7%, #00df81 37%, #007842 72%, #002b1a 100%)',
         boxShadow: '0px 4px 4px rgba(0,223,129,0.2), 4px 4px 12px #007842 inset',
@@ -107,7 +114,7 @@ function CampaignButton() {
 
 function LiveProjectButton() {
   return (
-    <button className="rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 transition-colors px-6 py-2 sm:px-8 sm:py-3 text-xs sm:text-sm whitespace-nowrap">
+    <button className="rounded-full border-2 border-[#D7E2EA] text-[#D7E2EA] font-medium uppercase tracking-widest hover:bg-[#D7E2EA]/10 transition-colors px-5 py-2 sm:px-8 sm:py-3 text-[10px] sm:text-sm whitespace-nowrap shrink-0">
       Ver campaña
     </button>
   )
@@ -182,46 +189,43 @@ function AnimatedText({ text, className, style }: { text: string; className?: st
 
 function HeroSection() {
   return (
-    <section className="relative h-screen flex flex-col overflow-x-clip" style={{ background: '#0c0c0c' }}>
+    <section className="relative min-h-screen flex flex-col overflow-x-clip">
+      {/* glow verde sutil sobre la seda */}
+      <div className="absolute inset-0 pointer-events-none" style={{
+        background: 'radial-gradient(ellipse 70% 50% at 50% 100%, rgba(0,223,129,0.08), transparent 70%)'
+      }} />
+
       {/* Navbar */}
-      <FadeIn delay={0} y={-20} className="flex items-center justify-between px-6 md:px-10 pt-6 md:pt-8">
+      <FadeIn delay={0} y={-20} className="relative z-10 flex items-center justify-between gap-2 px-5 sm:px-8 md:px-10 pt-6 md:pt-8">
         {['Cómo funciona', 'Precios', 'Ejemplos', 'Contacto'].map((link) => (
           <a key={link} href={`#${link.toLowerCase().replace(/\s/g, '-')}`}
-            className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
+            className="text-[11px] sm:text-base md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70 whitespace-nowrap"
             style={{ color: '#D7E2EA' }}>
             {link}
           </a>
         ))}
       </FadeIn>
 
-      {/* H1 masivo */}
-      <div className="overflow-hidden">
+      {/* H1 masivo en dos líneas */}
+      <div className="relative z-10 overflow-hidden px-4 sm:px-6 md:px-8">
         <FadeIn delay={0.15} y={40}>
-          <h1 className="hero-heading font-black uppercase tracking-tight leading-none whitespace-nowrap w-full mt-6 sm:mt-4 md:-mt-5 text-[14vw] sm:text-[15vw] md:text-[16vw] lg:text-[17.5vw] px-4 sm:px-6 md:px-8">
-            PUBLICIDAD CON IA.
+          <h1 className="hero-heading font-black uppercase tracking-tight leading-[0.85] mt-8 sm:mt-6 md:mt-2">
+            <span className="block text-[19vw] sm:text-[17vw] md:text-[15vw] lg:text-[13.5vw] whitespace-nowrap">PUBLICIDAD</span>
+            <span className="block text-[19vw] sm:text-[17vw] md:text-[15vw] lg:text-[13.5vw] whitespace-nowrap">CON IA.</span>
           </h1>
         </FadeIn>
       </div>
 
       {/* Bottom bar */}
-      <div className="flex items-end justify-between pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 mt-auto">
+      <div className="relative z-10 flex items-end justify-between gap-4 pb-8 sm:pb-8 md:pb-10 px-5 sm:px-8 md:px-10 mt-auto">
         <FadeIn delay={0.35} y={20}>
-          <p className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ color: '#D7E2EA', fontSize: 'clamp(0.75rem, 1.4vw, 1.5rem)' }}>
+          <p className="font-light uppercase tracking-wide leading-snug max-w-[150px] sm:max-w-[220px] md:max-w-[280px]"
+            style={{ color: '#D7E2EA', fontSize: 'clamp(0.7rem, 1.4vw, 1.4rem)' }}>
             el primer agente que transforma un producto en una campaña lista para vender
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}><CampaignButton /></FadeIn>
       </div>
-
-      {/* Portrait con Magnet */}
-      <FadeIn delay={0.6} y={30}
-        className="absolute left-1/2 -translate-x-1/2 z-10 w-[280px] sm:w-[360px] md:w-[440px] lg:w-[520px] top-1/2 -translate-y-1/2 sm:top-auto sm:translate-y-0 sm:bottom-0">
-        <Magnet padding={150} strength={3}>
-          <img src="/images/alty-hero.png" alt="ALTY — Agente IA de Publicidad"
-            className="w-full h-auto object-contain" loading="eager" />
-        </Magnet>
-      </FadeIn>
     </section>
   )
 }
@@ -246,18 +250,18 @@ function MarqueeSection() {
   }, [])
   const tripled = (arr: string[]) => [...arr, ...arr, ...arr]
   return (
-    <section ref={sectionRef} className="bg-[#0c0c0c] pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden">
+    <section ref={sectionRef} className="relative z-10 pt-20 sm:pt-28 md:pt-36 pb-10 overflow-hidden">
       <div className="flex flex-col gap-3">
         <div ref={row1Ref} className="flex gap-3" style={{ width: 'max-content', willChange: 'transform' }}>
           {tripled(ROW1_IMGS).map((src, i) => (
-            <div key={i} className="flex-shrink-0 rounded-2xl overflow-hidden" style={{ width: 420, height: 270, background: '#111' }}>
+            <div key={i} className="flex-shrink-0 rounded-2xl overflow-hidden w-[260px] h-[170px] sm:w-[340px] sm:h-[220px] md:w-[420px] md:h-[270px]" style={{ background: '#161616' }}>
               <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
         </div>
         <div ref={row2Ref} className="flex gap-3" style={{ width: 'max-content', willChange: 'transform' }}>
           {tripled(ROW2_IMGS).map((src, i) => (
-            <div key={i} className="flex-shrink-0 rounded-2xl overflow-hidden" style={{ width: 420, height: 270, background: '#111' }}>
+            <div key={i} className="flex-shrink-0 rounded-2xl overflow-hidden w-[260px] h-[170px] sm:w-[340px] sm:h-[220px] md:w-[420px] md:h-[270px]" style={{ background: '#161616' }}>
               <img src={src} alt="" className="w-full h-full object-cover" loading="lazy" />
             </div>
           ))}
@@ -271,30 +275,29 @@ function MarqueeSection() {
 
 function AboutSection() {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden"
-      style={{ background: '#0c0c0c' }}>
+    <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
       {/* Acentos decorativos de esquinas */}
       <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] pointer-events-none">
         <div className="w-[120px] sm:w-[160px] md:w-[210px] aspect-square rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.2) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.22) 0%, transparent 70%)' }} />
       </FadeIn>
       <FadeIn delay={0.15} x={80} y={0} duration={0.9} className="absolute top-[4%] right-[1%] sm:right-[2%] md:right-[4%] pointer-events-none">
         <div className="w-[120px] sm:w-[160px] md:w-[210px] aspect-square rounded-full"
-          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.14) 0%, transparent 70%)' }} />
+          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.15) 0%, transparent 70%)' }} />
       </FadeIn>
       <FadeIn delay={0.25} x={-80} y={0} duration={0.9} className="absolute bottom-[8%] left-[3%] sm:left-[6%] md:left-[10%] pointer-events-none">
         <div className="w-[100px] sm:w-[140px] md:w-[180px] aspect-square"
-          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.10) 0%, transparent 70%)', borderRadius: '40% 60% 55% 45%' }} />
+          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.12) 0%, transparent 70%)', borderRadius: '40% 60% 55% 45%' }} />
       </FadeIn>
       <FadeIn delay={0.3} x={80} y={0} duration={0.9} className="absolute bottom-[8%] right-[3%] sm:right-[6%] md:right-[10%] pointer-events-none">
         <div className="w-[130px] sm:w-[170px] md:w-[220px] aspect-square"
-          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.08) 0%, transparent 70%)', borderRadius: '55% 45% 40% 60%' }} />
+          style={{ background: 'radial-gradient(circle, rgba(0,223,129,0.09) 0%, transparent 70%)', borderRadius: '55% 45% 40% 60%' }} />
       </FadeIn>
 
       <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16 text-center z-10">
         <FadeIn delay={0} y={40}>
           <h2 className="hero-heading-muted font-black uppercase leading-none tracking-tight"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}>
+            style={{ fontSize: 'clamp(2.6rem, 12vw, 160px)' }}>
             Qué hacemos
           </h2>
         </FadeIn>
@@ -311,24 +314,24 @@ function AboutSection() {
   )
 }
 
-// ─── SERVICES ────────────────────────────────
+// ─── SERVICES (card blanca apilada) ──────────
 
 function ServicesSection() {
   return (
-    <section className="bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
+    <section className="relative z-20 bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.6)]">
       <FadeIn delay={0} y={40}>
         <h2 className="font-black uppercase text-center text-[#0c0c0c] mb-16 sm:mb-20 md:mb-28"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+          style={{ fontSize: 'clamp(2.6rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
           Campaña
         </h2>
       </FadeIn>
       <div className="max-w-5xl mx-auto">
         {SERVICES.map((svc, i) => (
           <FadeIn key={svc.num} delay={i * 0.1} y={24}>
-            <div className="flex items-start gap-4 md:gap-8 py-8 sm:py-10 md:py-12"
+            <div className="flex items-start gap-3 sm:gap-4 md:gap-8 py-8 sm:py-10 md:py-12"
               style={{ borderTop: i === 0 ? '1px solid rgba(12,12,12,0.15)' : undefined, borderBottom: '1px solid rgba(12,12,12,0.15)' }}>
               <span className="font-black leading-none shrink-0 text-[#0c0c0c]"
-                style={{ fontSize: 'clamp(3rem, 10vw, 140px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
+                style={{ fontSize: 'clamp(2.6rem, 10vw, 140px)', letterSpacing: '-0.04em', lineHeight: 1 }}>
                 {svc.num}
               </span>
               <div className="flex flex-col gap-2 pt-1 md:pt-2">
@@ -345,7 +348,7 @@ function ServicesSection() {
   )
 }
 
-// ─── PROJECTS ────────────────────────────────
+// ─── PROJECTS (cards apiladas sticky) ────────
 
 function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[0]; index: number; totalCards: number }) {
   const cardRef = useRef<HTMLDivElement>(null)
@@ -353,36 +356,36 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
   const targetScale = 1 - (totalCards - 1 - index) * 0.03
   const scale = useTransform(scrollYProgress, [0, 1], [targetScale, 1])
   return (
-    <div ref={cardRef} className="h-[85vh] flex items-start justify-center">
+    <div ref={cardRef} className="h-[80vh] sm:h-[85vh] flex items-start justify-center">
       <motion.div
-        style={{ scale, position: 'sticky', top: `${96 + index * 28}px`, width: '100%', background: '#0c0c0c' }}
-        className="rounded-[40px] sm:rounded-[50px] md:rounded-[60px] border-2 border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8"
+        style={{ scale, position: 'sticky', top: `${90 + index * 26}px`, width: '100%', background: '#0c0c0c' }}
+        className="rounded-[32px] sm:rounded-[44px] md:rounded-[56px] border-2 border-[#D7E2EA]/20 p-4 sm:p-6 md:p-8"
       >
-        <div className="flex items-center justify-between mb-4 md:mb-6 gap-4">
-          <span className="font-black leading-none"
-            style={{ fontSize: 'clamp(3rem, 8vw, 110px)', letterSpacing: '-0.04em', WebkitTextStroke: '1px rgba(215,226,234,0.3)', color: 'transparent' }}>
+        <div className="flex items-center justify-between mb-4 md:mb-6 gap-3">
+          <span className="font-black leading-none shrink-0"
+            style={{ fontSize: 'clamp(2.4rem, 8vw, 100px)', letterSpacing: '-0.04em', WebkitTextStroke: '1px rgba(215,226,234,0.3)', color: 'transparent' }}>
             {project.num}
           </span>
-          <div className="flex flex-col items-start gap-1 flex-1 min-w-0">
-            <span className="font-medium uppercase tracking-widest text-[#D7E2EA]/50"
-              style={{ fontSize: 'clamp(0.6rem, 1vw, 0.8rem)' }}>{project.category}</span>
-            <span className="font-black uppercase leading-tight text-[#D7E2EA]"
-              style={{ fontSize: 'clamp(1rem, 2.5vw, 2rem)' }}>{project.name}</span>
+          <div className="flex flex-col items-start gap-0.5 flex-1 min-w-0">
+            <span className="font-medium uppercase tracking-widest text-[#D7E2EA]/50 truncate max-w-full"
+              style={{ fontSize: 'clamp(0.55rem, 1vw, 0.8rem)' }}>{project.category}</span>
+            <span className="font-black uppercase leading-tight text-[#D7E2EA] truncate max-w-full"
+              style={{ fontSize: 'clamp(0.9rem, 2.5vw, 2rem)' }}>{project.name}</span>
           </div>
           <LiveProjectButton />
         </div>
-        <div className="grid gap-3" style={{ gridTemplateColumns: '2fr 3fr' }}>
-          <div className="flex flex-col gap-3">
-            <div className="rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden bg-[#111]"
-              style={{ height: 'clamp(130px, 16vw, 230px)' }}>
+        <div className="grid gap-2 sm:gap-3" style={{ gridTemplateColumns: '2fr 3fr' }}>
+          <div className="flex flex-col gap-2 sm:gap-3">
+            <div className="rounded-[20px] sm:rounded-[32px] md:rounded-[44px] overflow-hidden bg-[#161616]"
+              style={{ height: 'clamp(110px, 16vw, 230px)' }}>
               <img src={project.images.col1Top} alt={project.name} className="w-full h-full object-cover" loading="lazy" />
             </div>
-            <div className="rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden bg-[#111]"
-              style={{ height: 'clamp(160px, 22vw, 340px)' }}>
+            <div className="rounded-[20px] sm:rounded-[32px] md:rounded-[44px] overflow-hidden bg-[#161616]"
+              style={{ height: 'clamp(140px, 22vw, 340px)' }}>
               <img src={project.images.col1Bot} alt={project.name} className="w-full h-full object-cover" loading="lazy" />
             </div>
           </div>
-          <div className="rounded-[30px] sm:rounded-[40px] md:rounded-[50px] overflow-hidden bg-[#111]">
+          <div className="rounded-[20px] sm:rounded-[32px] md:rounded-[44px] overflow-hidden bg-[#161616]">
             <img src={project.images.col2} alt={project.name} className="w-full h-full object-cover" loading="lazy" />
           </div>
         </div>
@@ -393,10 +396,10 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
 
 function ProjectsSection() {
   return (
-    <section className="bg-[#0c0c0c] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 relative z-10">
+    <section className="relative z-30 bg-[#0a0a0a] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.8)]">
       <FadeIn delay={0} y={40}>
         <h2 className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"
-          style={{ fontSize: 'clamp(3rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+          style={{ fontSize: 'clamp(2.6rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
           Ejemplos
         </h2>
       </FadeIn>
@@ -405,7 +408,7 @@ function ProjectsSection() {
           <ProjectCard key={project.num} project={project} index={i} totalCards={PROJECTS.length} />
         ))}
       </div>
-      <FadeIn delay={0.2} y={24} className="flex flex-col items-center mt-24 md:mt-32 gap-6">
+      <FadeIn delay={0.2} y={24} className="flex flex-col items-center mt-20 md:mt-28 gap-6">
         <p className="font-medium uppercase tracking-widest text-center text-[#D7E2EA]/40" style={{ fontSize: '0.8rem' }}>
           ¿Lista para crear la tuya?
         </p>
@@ -419,23 +422,23 @@ function ProjectsSection() {
 
 function PricingSection() {
   return (
-    <section id="precios" className="bg-[#0c0c0c] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
+    <section id="precios" className="relative z-30 bg-[#0a0a0a] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
       style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-20 md:mb-24">
         <h2 className="hero-heading font-black uppercase"
-          style={{ fontSize: 'clamp(2.5rem, 10vw, 120px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
+          style={{ fontSize: 'clamp(2.4rem, 10vw, 120px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
           Precios
         </h2>
-        <p className="mt-4 font-light text-[#D7E2EA]/50" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.3rem)' }}>
+        <p className="mt-4 font-light text-[#D7E2EA]/50 max-w-xl mx-auto" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.3rem)' }}>
           Elige más, paga menos. Todos los planes entregan lo mismo — solo cambia el volumen.
         </p>
       </FadeIn>
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
         {PLANS.map((plan, i) => (
           <FadeIn key={plan.name} delay={i * 0.1} y={24}>
-            <div className="flex flex-col p-8 rounded-3xl relative h-full"
+            <div className="flex flex-col p-7 sm:p-8 rounded-3xl relative h-full"
               style={{
-                background: plan.featured ? 'rgba(0,223,129,0.05)' : 'rgba(255,255,255,0.03)',
+                background: plan.featured ? 'rgba(0,223,129,0.06)' : 'rgba(255,255,255,0.03)',
                 border: plan.featured ? '1px solid rgba(0,223,129,0.4)' : '1px solid rgba(255,255,255,0.08)',
               }}>
               {plan.featured && (
@@ -455,7 +458,7 @@ function PricingSection() {
               </p>
               <ul className="flex flex-col gap-3 flex-1 mb-8">
                 {plan.items.map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 font-medium text-[#D7E2EA]/78" style={{ fontSize: '0.875rem' }}>
+                  <li key={item} className="flex items-start gap-2.5 font-medium text-[#D7E2EA]/80" style={{ fontSize: '0.875rem' }}>
                     <span className="text-[#00df81] font-black shrink-0">✓</span>{item}
                   </li>
                 ))}
@@ -479,7 +482,7 @@ function PricingSection() {
 
 function Footer() {
   return (
-    <footer className="bg-[#0c0c0c] px-6 md:px-10 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
+    <footer className="relative z-30 bg-[#0a0a0a] px-6 md:px-10 py-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6"
       style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <span className="font-black tracking-tight text-[#D7E2EA]" style={{ fontSize: '1.2rem' }}>ALTY</span>
       <div className="flex items-center gap-6 flex-wrap">
@@ -522,15 +525,18 @@ function MobileStickyCTA() {
 
 export default function App() {
   return (
-    <main style={{ overflowX: 'clip', background: '#0c0c0c' }}>
-      <HeroSection />
-      <MarqueeSection />
-      <AboutSection />
-      <ServicesSection />
-      <ProjectsSection />
-      <PricingSection />
-      <Footer />
-      <MobileStickyCTA />
-    </main>
+    <>
+      <SilkBackground />
+      <main className="relative z-10" style={{ overflowX: 'clip' }}>
+        <HeroSection />
+        <MarqueeSection />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <PricingSection />
+        <Footer />
+        <MobileStickyCTA />
+      </main>
+    </>
   )
 }
