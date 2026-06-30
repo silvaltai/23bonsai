@@ -183,6 +183,27 @@ function AnimatedText({ text, className, style }: { text: string; className?: st
   )
 }
 
+// Panel apilable con movimiento ligado al scroll (sube + crece al aparecer)
+function StackPanel({
+  children, bg, z, shadow, className = '',
+}: {
+  children: ReactNode; bg: string; z: number; shadow: string; className?: string
+}) {
+  const ref = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start 0.35'] })
+  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1])
+  const y = useTransform(scrollYProgress, [0, 1], [90, 0])
+  return (
+    <motion.section
+      ref={ref as any}
+      style={{ background: bg, zIndex: z, scale, y, boxShadow: shadow }}
+      className={'relative rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[60px] -mt-12 sm:-mt-16 md:-mt-20 ' + className}
+    >
+      {children}
+    </motion.section>
+  )
+}
+
 // ─────────────────────────────────────────────
 // SECCIONES
 // ─────────────────────────────────────────────
@@ -275,7 +296,8 @@ function MarqueeSection() {
 
 function AboutSection() {
   return (
-    <section className="relative z-10 min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
+    <StackPanel bg="#0c0c0c" z={10} shadow="0 -30px 70px -15px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,255,255,0.10)"
+      className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-10 py-20 overflow-hidden">
       {/* Acentos decorativos de esquinas */}
       <FadeIn delay={0.1} x={-80} y={0} duration={0.9} className="absolute top-[4%] left-[1%] sm:left-[2%] md:left-[4%] pointer-events-none">
         <div className="w-[120px] sm:w-[160px] md:w-[210px] aspect-square rounded-full"
@@ -310,7 +332,7 @@ function AboutSection() {
           <CampaignButton />
         </div>
       </div>
-    </section>
+    </StackPanel>
   )
 }
 
@@ -318,7 +340,8 @@ function AboutSection() {
 
 function ServicesSection() {
   return (
-    <section className="relative z-20 bg-white rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.6)]">
+    <StackPanel bg="#ffffff" z={20} shadow="0 -30px 70px -15px rgba(0,0,0,0.55)"
+      className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
       <FadeIn delay={0} y={40}>
         <h2 className="font-black uppercase text-center text-[#0c0c0c] mb-16 sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(2.6rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
@@ -344,7 +367,7 @@ function ServicesSection() {
           </FadeIn>
         ))}
       </div>
-    </section>
+    </StackPanel>
   )
 }
 
@@ -396,7 +419,8 @@ function ProjectCard({ project, index, totalCards }: { project: typeof PROJECTS[
 
 function ProjectsSection() {
   return (
-    <section className="relative z-30 bg-[#0a0a0a] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32 shadow-[0_-40px_80px_-20px_rgba(0,0,0,0.8)]">
+    <section className="relative z-30 bg-[#0a0a0a] rounded-t-[36px] sm:rounded-t-[48px] md:rounded-t-[60px] -mt-12 sm:-mt-16 md:-mt-20 px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
+      style={{ boxShadow: '0 -30px 70px -15px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.10)' }}>
       <FadeIn delay={0} y={40}>
         <h2 className="hero-heading font-black uppercase text-center mb-16 sm:mb-20 md:mb-28"
           style={{ fontSize: 'clamp(2.6rem, 12vw, 160px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
@@ -422,8 +446,9 @@ function ProjectsSection() {
 
 function PricingSection() {
   return (
-    <section id="precios" className="relative z-30 bg-[#0a0a0a] px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32"
-      style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <StackPanel bg="#0c0c0c" z={40} shadow="0 -30px 70px -15px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.10)"
+      className="px-5 sm:px-8 md:px-10 py-20 sm:py-24 md:py-32">
+    <div id="precios">
       <FadeIn delay={0} y={40} className="text-center mb-16 sm:mb-20 md:mb-24">
         <h2 className="hero-heading font-black uppercase"
           style={{ fontSize: 'clamp(2.4rem, 10vw, 120px)', letterSpacing: '-0.03em', lineHeight: 1 }}>
@@ -474,7 +499,8 @@ function PricingSection() {
           </FadeIn>
         ))}
       </div>
-    </section>
+    </div>
+    </StackPanel>
   )
 }
 
