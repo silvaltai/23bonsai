@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pago confirmado · ALTY</title>
+<meta name="robots" content="noindex, nofollow"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+:root{
+  --font:'Geist',sans-serif;
+  --rich-black:#02181A;
+  --bangladesh:#03624C;
+  --caribbean:#00DF81;
+  --mountain:#2CC295;
+  --anti-flash:#F1F7F6;
+}
+body{background:var(--rich-black);color:var(--anti-flash);font-family:var(--font);min-height:100vh;line-height:1.5;overflow-x:hidden;position:relative}
+
+.bg-layer{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(180deg,#02181A 0%,#032221 50%,#03624C 100%)}
+.orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.4;animation:float 18s ease-in-out infinite}
+.orb-1{width:520px;height:520px;background:#00DF81;top:-100px;right:-150px}
+.orb-2{width:420px;height:420px;background:#2CC295;bottom:-80px;left:-100px;animation-delay:-6s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-30px,30px) scale(.95)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes scaleIn{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+.app{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
+
+.dh{padding:20px 24px;border-bottom:1px solid rgba(241,247,246,.06);display:flex;align-items:center;justify-content:space-between;background:rgba(2,24,26,.4);backdrop-filter:blur(20px) saturate(140%);-webkit-backdrop-filter:blur(20px) saturate(140%)}
+@media(min-width:768px){.dh{padding:24px 48px}}
+.dh-logo{font-size:20px;font-weight:900;letter-spacing:-.04em;color:var(--anti-flash)}
+@media(min-width:768px){.dh-logo{font-size:22px}}
+
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+@media(min-width:768px){.main{padding:48px 24px}}
+.card{
+  width:100%;max-width:520px;
+  position:relative;
+  background:linear-gradient(135deg,rgba(241,247,246,.08) 0%,rgba(241,247,246,.03) 100%);
+  backdrop-filter:blur(24px) saturate(160%);
+  -webkit-backdrop-filter:blur(24px) saturate(160%);
+  border:1px solid rgba(241,247,246,.1);
+  border-radius:24px;
+  padding:36px 28px;
+  text-align:center;
+  overflow:hidden;
+  animation:fadeUp .6s ease-out;
+}
+.card::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 50%);pointer-events:none}
+@media(min-width:768px){.card{padding:48px 40px}}
+
+/* Estados */
+.state{display:none}
+.state.show{display:block}
+
+/* Loading state */
+.spinner{
+  width:64px;height:64px;
+  border:3px solid rgba(0,223,129,.15);
+  border-top-color:var(--caribbean);
+  border-radius:50%;
+  margin:0 auto 24px;
+  animation:spin 1s linear infinite;
+}
+.loading-title{font-size:22px;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+.loading-desc{font-size:14px;color:rgba(241,247,246,.6);font-weight:500;animation:pulse 2s ease-in-out infinite}
+
+/* Success state */
+.check-circle{
+  width:88px;height:88px;
+  border-radius:50%;
+  background:linear-gradient(135deg,rgba(0,223,129,.2),rgba(0,223,129,.05));
+  border:2px solid var(--caribbean);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+  position:relative;
+  animation:scaleIn .5s cubic-bezier(.34,1.56,.64,1);
+}
+.check-circle::before{
+  content:'';
+  width:30px;height:16px;
+  border-left:3px solid var(--caribbean);
+  border-bottom:3px solid var(--caribbean);
+  transform:rotate(-45deg) translate(2px,-4px);
+}
+.success-eyebrow{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--mountain);margin-bottom:10px}
+.success-title{font-size:32px;font-weight:600;letter-spacing:-.03em;line-height:1.1;margin-bottom:14px}
+@media(min-width:768px){.success-title{font-size:38px}}
+.success-desc{font-size:15px;color:rgba(241,247,246,.65);font-weight:500;line-height:1.55;margin-bottom:28px;max-width:380px;margin-left:auto;margin-right:auto}
+
+.plan-pill{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 16px;
+  background:rgba(0,223,129,.12);
+  border:1px solid rgba(0,223,129,.3);
+  border-radius:100px;
+  font-size:13px;font-weight:600;
+  color:var(--caribbean);
+  margin-bottom:24px;
+}
+.plan-pill-dot{width:6px;height:6px;border-radius:50%;background:var(--caribbean);box-shadow:0 0 10px var(--caribbean)}
+
+.cta-primary{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;
+  background:var(--caribbean);
+  color:var(--rich-black);
+  font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;
+  border:none;border-radius:100px;
+  cursor:pointer;
+  font-family:var(--font);
+  text-decoration:none;
+  transition:transform .2s,box-shadow .2s;
+}
+.cta-primary:hover{transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(0,223,129,.5)}
+
+.cta-secondary{
+  display:inline-block;
+  margin-top:14px;
+  font-size:13px;font-weight:500;
+  color:rgba(241,247,246,.55);
+  text-decoration:none;
+  transition:color .2s;
+}
+.cta-secondary:hover{color:var(--anti-flash)}
+
+/* Pending state (timeout) */
+.pending-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(255,193,7,.1);
+  border:2px solid rgba(255,193,7,.4);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+  font-size:32px;font-weight:600;
+  color:#ffd866;
+}
+
+/* No payment_id state */
+.unknown-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(241,247,246,.08);
+  border:2px solid rgba(241,247,246,.2);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 24px;
+  font-size:36px;font-weight:300;
+  color:rgba(241,247,246,.6);
+}
+
+@media(max-width:380px){
+  .card{padding:28px 22px;border-radius:20px}
+  .success-title{font-size:26px}
+  .loading-title{font-size:20px}
+}
+
+/* Confetti canvas */
+#confettiCanvas{position:fixed;inset:0;pointer-events:none;z-index:100}
+</style>
+  <!-- Microsoft Clarity -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "x7yz5v40t6");
+</script>
+<!-- Vercel Web Analytics -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+
+<canvas id="confettiCanvas"></canvas>
+
+<div class="app">
+
+  <header class="dh">
+    <a class="dh-logo" href="/">ALTY</a>
+  </header>
+
+  <main class="main">
+    <div class="card">
+
+      <div class="state show" id="stateLoading">
+        <div class="spinner"></div>
+        <div class="loading-title">Verificando tu pago</div>
+        <div class="loading-desc">Esto toma solo unos segundos...</div>
+      </div>
+
+      <div class="state" id="stateSuccess">
+        <div class="check-circle"></div>
+        <div class="success-eyebrow">Pago confirmado</div>
+        <h1 class="success-title" id="successTitle">¡Listo!</h1>
+        <div class="plan-pill" id="successPlanPill" style="display:none">
+          <span class="plan-pill-dot"></span>
+          <span id="successPlanLabel"></span>
+        </div>
+        <p class="success-desc" id="successDesc">Ya puedes empezar a usar ALTY.</p>
+        <a href="/dashboard" class="cta-primary">
+          Ir a mi dashboard
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="state" id="statePending">
+        <div class="pending-icon">⏱</div>
+        <div class="success-eyebrow" style="color:#ffd866">Procesando</div>
+        <h1 class="success-title">Tu pago está siendo procesado</h1>
+        <p class="success-desc">A veces toma unos minutos confirmarse. Te avisaremos por email apenas se acredite. Puedes ir a tu dashboard mientras tanto.</p>
+        <a href="/dashboard" class="cta-primary">
+          Ir a mi dashboard
+          <span>→</span>
+        </a>
+      </div>
+
+      <div class="state" id="stateUnknown">
+        <div class="unknown-icon">?</div>
+        <h1 class="success-title">No encontramos tu pago</h1>
+        <p class="success-desc">Si pagaste recientemente, revisa tu email o entra a tu dashboard. Si crees que hay un error, escríbenos a <a href="mailto:hola@altyapp.com" style="color:var(--caribbean);text-decoration:underline">hola@ALTY.com</a>.</p>
+        <a href="/dashboard" class="cta-primary">
+          Ir a mi dashboard
+          <span>→</span>
+        </a>
+        <a href="/" class="cta-secondary">Volver al inicio</a>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script>
+const SUPABASE_URL = "https://glskfwhetombxkrjfrjl.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdsc2tmd2hldG9tYnhrcmpmcmpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwNzc1MjEsImV4cCI6MjA5MzY1MzUyMX0.cC2hg9BdeTJBHizUlduUb1vcPs0OV7IFZoEjArNE_j8";
+const supa = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+const EDGE_CHECK_STATUS = `${SUPABASE_URL}/functions/v1/check-payment-status`;
+
+const PLAN_LABELS = {
+  free: 'Plan Gratis',
+  starter: 'Starter',
+  pro: 'Pro',
+  business: 'Business'
+};
+const PLAN_DESCS = {
+  starter: 'Tu plan Starter está activo. Ya puedes lanzar hasta 18 anuncios al mes.',
+  pro: 'Tu plan Pro está activo. Hasta 36 anuncios al mes y 3 productos diferentes.',
+  business: 'Tu plan Business está activo. Hasta 70 anuncios al mes y equipo completo.'
+};
+
+// ── Estados ──
+function showState(id) {
+  document.querySelectorAll('.state').forEach(el => el.classList.remove('show'));
+  document.getElementById(id).classList.add('show');
+}
+
+// ── Polling: 2s al inicio, 5s después, máx 60s (~14 intentos) ──
+const INITIAL_INTERVAL = 2000;
+const FOLLOWUP_INTERVAL = 5000;
+const MAX_DURATION_MS = 60000;
+const startTime = Date.now();
+let attempts = 0;
+
+// ── Lectura opcional de query params (MP a veces los manda, otras no) ──
+const params = new URLSearchParams(window.location.search);
+const preapprovalIdFromUrl = params.get('preapproval_id') || params.get('subscription_id') || null;
+const planFromUrl = params.get('plan'); // opcional, lo agregamos en back_url de crear-suscripcion
+
+// ── Verificar que haya sesión antes de iniciar polling ──
+(async () => {
+  const { data } = await supa.auth.getSession();
+  if (!data?.session) {
+    // Sin sesión, no podemos consultar nada
+    setTimeout(() => showState('stateUnknown'), 800);
+    return;
+  }
+  pollStatus();
+})();
+
+async function pollStatus() {
+  attempts++;
+  const elapsed = Date.now() - startTime;
+
+  try {
+    const { data: s } = await supa.auth.getSession();
+    if (!s?.session?.access_token) {
+      showState('stateUnknown');
+      return;
+    }
+
+    const body = {};
+    if (preapprovalIdFromUrl) body.mp_subscription_id = preapprovalIdFromUrl;
+
+    const r = await fetch(EDGE_CHECK_STATUS, {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + s.session.access_token,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+    const result = await r.json();
+
+    if (r.ok && result.success) {
+      // Éxito si: status=active Y plan distinto a free Y tiene mp_subscription_id
+      const isActive = result.status === 'active'
+                    && result.plan
+                    && result.plan !== 'free'
+                    && result.mp_subscription_id;
+
+      if (isActive) {
+        renderSuccess(result.plan);
+        return;
+      }
+    }
+  } catch (err) {
+    // No bloqueante, seguimos reintentando
+  }
+
+  // Si pasó el tiempo máximo, mostrar pending
+  if (elapsed >= MAX_DURATION_MS) {
+    showState('statePending');
+    return;
+  }
+
+  // Próximo intento: 2s los primeros 3 intentos, luego 5s
+  const nextInterval = attempts < 3 ? INITIAL_INTERVAL : FOLLOWUP_INTERVAL;
+  setTimeout(pollStatus, nextInterval);
+}
+
+function renderSuccess(planKey) {
+  const planLabel = PLAN_LABELS[planKey];
+  const planDesc = PLAN_DESCS[planKey] || 'Tu plan está activo. Ya puedes empezar.';
+
+  if (planLabel) {
+    document.getElementById('successTitle').textContent = '¡Bienvenido a ' + planLabel + '!';
+    document.getElementById('successDesc').textContent = planDesc;
+    document.getElementById('successPlanLabel').textContent = planLabel + ' activado';
+    document.getElementById('successPlanPill').style.display = 'inline-flex';
+  } else {
+    document.getElementById('successTitle').textContent = '¡Pago confirmado!';
+    document.getElementById('successDesc').textContent = 'Tu plan está activo. Ya puedes empezar a usar ALTY.';
+  }
+
+  showState('stateSuccess');
+  fireConfetti();
+}
+
+// ── Confetti sutil ──
+function fireConfetti() {
+  if (typeof confetti === 'undefined') return;
+
+  const colors = ['#00DF81', '#2CC295', '#F1F7F6'];
+
+  confetti({
+    particleCount: 80,
+    spread: 70,
+    origin: { y: 0.6 },
+    colors: colors,
+    disableForReducedMotion: true,
+    scalar: 0.9
+  });
+
+  setTimeout(() => {
+    confetti({ particleCount: 40, angle: 60, spread: 55, origin: { x: 0, y: 0.65 }, colors, scalar: 0.8 });
+    confetti({ particleCount: 40, angle: 120, spread: 55, origin: { x: 1, y: 0.65 }, colors, scalar: 0.8 });
+  }, 250);
+}
+</script>
+
+</body>
+</html>
